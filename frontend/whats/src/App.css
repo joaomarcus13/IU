@@ -42,8 +42,29 @@
 }
 
 .typeArea{
-  grid-area: typeArea;
-  background-color: var(--head);
+  display: flex;
+  background-color: var(--chat);;
+  align-items: center;
+}
+
+.input{
+  width: 90% ;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgba(69, 81, 87, 0.8);
+  font-size: 15px;
+
+}
+
+.typeAreaIcons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;  
+    margin: 20px;
+ 
 }
 
 .imgPerfil{
