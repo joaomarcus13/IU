@@ -7,4 +7,7 @@
 
   html,body,#root{
     height: 100%;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, Ubuntu, Cantarell, "Fira Sans", sans-serif
+    ;
+    font-size: 16px;
 }
