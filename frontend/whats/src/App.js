@@ -7,15 +7,16 @@ import imgtest from './assets/images/imgtest.webp'
 function App() {
   return (
     <div className='container'>
+
       <nav className='header'>
 
         <div className='infoChat'>
-          <div className='imgPerfil'>
+          <div className='imgPerfilChat'>
             <img src={imgtest} alt="" />
           </div>
           <div className='info'>
-            <h1>fulana</h1>
-            <span>visto por ultimo as</span>
+            <h1>Gonçalo</h1>
+            <div className='span'>visto por ultimo hoje as 15:00</div>
           </div>
         </div>
 
@@ -25,6 +26,7 @@ function App() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg>
         </div>
       </nav>
+
       <aside className='aside'>
         <div className='headAside'>
           <div className='imgPerfil'>
@@ -42,6 +44,57 @@ function App() {
 
           </div>
         </div>
+
+        <div className='search-aside'>
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M15.009 13.805h-.636l-.22-.219a5.184 5.184 0 0 0 1.256-3.386 5.207 5.207 0 1 0-5.207 5.208 5.183 5.183 0 0 0 3.385-1.255l.221.22v.635l4.004 3.999 1.194-1.195-3.997-4.007zm-4.808 0a3.605 3.605 0 1 1 0-7.21 3.605 3.605 0 0 1 0 7.21z"></path></svg>
+          </span>
+          <input type='text' placeholder='Pesquisar ou começar uma nova conversa'>
+
+          </input>
+        </div>
+
+        <div className='chat-msgs'>
+          <ul>
+            <li>
+              <div className='perfil-chat'>
+                <div className='img-chat'>
+                  <img src={imgtest} alt="" />
+                </div>
+                <div className='nome-chat'>
+                  <h1>Goncalo</h1>
+                  <span>beleza</span>
+                </div>
+              </div>
+              <span className='hora-chat'>
+                Ontem
+              </span>
+            </li>
+
+            <li>
+              <div className='perfil-chat'>
+                <div className='img-chat'>
+                  <img src={imgtest} alt="" />
+                </div>
+                <div className='nome-chat'>
+                  <h1>Goncalo</h1>
+                  <div>beleza</div>
+                </div>
+              </div>
+              <span className='hora-chat'>
+                Ontem
+              </span>
+            </li>
+
+         
+
+
+
+
+
+          </ul>
+        </div>
+
       </aside>
       <main className='main'>
         main
