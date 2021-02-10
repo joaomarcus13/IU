@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+
+:root{
+    --head:#282f33;
+    --chat:#1e2325;
+    --border:rgba(69, 81, 87, 0.8);
+    --icons:#a1abb4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container{
+  height: 100%;
+  display: grid;
+  grid-template-areas: "aside header"
+                       "aside    main"
+                        "aside   typeArea";
+  grid-template-columns: 30% 1fr;                      
+  grid-template-rows:9.5% 81% 9.5% ;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header{
+  grid-area: header;
+  background-color: var(--head);
   display: flex;
-  flex-direction: column;
+}
+
+.aside{
+  grid-area: aside;
+  background-color: var(--chat);
+  border-right: 1px solid var(--border);
+}
+
+.aside .headAside{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 9.5%;
+  background-color: var(--head);
+  
+}
+
+.main{
+  grid-area: main;
+  background-image: url("./assets/images/bg-chat.png");
+  background-size: contain;
+}
+
+.typeArea{
+  grid-area: typeArea;
+  background-color: var(--head);
+}
+
+.imgPerfil{
+
+  width: 50%;
+}
+
+.imgPerfil img{
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+}
+
+.iconsAside{
+  width: 35%;
+  
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  
+}
+
+div svg{
+  color: var(--icons);
+}
+
+.infoChat{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 30%;
+  color: aliceblue;
+}
+
+.iconsChat{
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: 40%;
 }
