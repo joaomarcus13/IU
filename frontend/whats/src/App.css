@@ -28,13 +28,12 @@
   border-right: 1px solid var(--border);
 }
 
-.aside .headAside{
-  display: flex;
-  align-items: center;
-  height: 9.5%;
-  background-color: var(--head);
-
-}
+.aside .headAside{ 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-around; 
+  height: 9.5%; 
+  background-color: var(--head); }
 
 .main{
   grid-area: main;
@@ -58,11 +57,11 @@
   border-radius: 50%;
 }
 
-.iconsAside{
-  display: flex;
-  margin-right: 20px;
-  margin-left: 100*30%;
-}
+.iconsAside{ 
+  width: 35%; 
+  display: flex; 
+  align-self: center; 
+  justify-content: space-around; } 
 
 div svg{
   color: var(--icons);
