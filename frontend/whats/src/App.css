@@ -31,10 +31,9 @@
 .aside .headAside{
   display: flex;
   align-items: center;
-  justify-content: space-around;
   height: 9.5%;
   background-color: var(--head);
-  
+
 }
 
 .main{
@@ -49,8 +48,8 @@
 }
 
 .imgPerfil{
-
-  width: 50%;
+  margin: 10px;
+  margin-left: 20px;
 }
 
 .imgPerfil img{
@@ -60,12 +59,9 @@
 }
 
 .iconsAside{
-  width: 35%;
-  
   display: flex;
-  align-self: center;
-  justify-content: space-around;
-  
+  margin-right: 20px;
+  margin-left: 100*30%;
 }
 
 div svg{
@@ -76,13 +72,13 @@ div svg{
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 30%;
   color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
 }
 
 .iconsChat{
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40%;
+  margin-right: 20px;
 }
