@@ -15,7 +15,7 @@
                        "aside    main"
                         "aside   typeArea";
   grid-template-columns: 30% 1fr;                      
-  grid-template-rows:59px 81% 9.5% ;
+  grid-template-rows:59px 82% 9.5% ;
 }
 
 .header{
@@ -31,6 +31,7 @@
   background-color: var(--chat);
   border-right: 1px solid var(--border);
 }
+
 
 .aside .headAside{
   display: flex;
@@ -48,14 +49,36 @@
 }
 
 .typeArea{
-  grid-area: typeArea;
-  background-color: var(--head);
+  display: flex;
+  background-color: var(--chat);;
+  align-items: center;
+}
+
+.input{
+  width: 90% ;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--input);
+  color: var(--letter);
+  font-size: 15px;
+  font: inherit;
+  font-weight: 600;
+}
+
+.typeAreaIcons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 8%;  
+    margin: 20px;
+ 
 }
 
 .imgPerfil{
-
+  margin: 10px;
+  margin-left: 20px;
   width: 50%;
-  
 }
 
 .imgPerfil img, .imgPerfilChat img{
@@ -64,14 +87,11 @@
   border-radius: 50%;
 }
 
-.iconsAside{
-  width: 35%;
-  
-  display: flex;
-  align-self: center;
-  justify-content: space-around;
-  
-}
+.iconsAside{ 
+  width: 35%; 
+  display: flex; 
+  align-self: center; 
+  justify-content: space-around; } 
 
 div svg{
   color: var(--icons);
@@ -106,6 +126,7 @@ div svg{
   color: #a1abb4;
   font-weight: 500;
  
+
 }
 
 .iconsChat{
@@ -146,8 +167,6 @@ div svg{
   left: 6%;
   bottom: 12%;
 }
-
-
 
 .chat-msgs ul li{
   display: flex;
