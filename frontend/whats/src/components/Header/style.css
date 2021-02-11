@@ -1,0 +1,47 @@
+.header{
+    grid-area: header;
+    background-color: var(--head);
+    display: flex;
+    justify-content: space-between;
+    height: 59px;
+  }
+
+  .infoChat{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    min-width: 290px;
+    
+  }
+  
+  .imgPerfilChat{
+   
+  }
+  
+  .infoChat .info{
+   min-width:200px;
+  
+  }
+  
+  .infoChat .info h1{
+    font-size: 100%;
+    color: var(--letter);
+    font-weight: 700;
+  }
+  
+  .infoChat .info .span{
+    font-size: 0.8em;
+    color: #a1abb4;
+    font-weight: 500;
+   
+  
+  }
+
+  
+
+.iconsChat{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 13%;
+  }
