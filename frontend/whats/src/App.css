@@ -15,7 +15,7 @@
                        "aside    main"
                         "aside   typeArea";
   grid-template-columns: 30% 1fr;                      
-  grid-template-rows:59px 82% 9.5% ;
+  grid-template-rows:59px 81.1% 59px ;
 }
 
 .header{
@@ -52,11 +52,13 @@
   display: flex;
   background-color: var(--chat);;
   align-items: center;
+  justify-content: space-evenly;
 }
 
-.input{
-  width: 90% ;
-  padding: 12px 20px;
+.typeArea .input{
+  width: 82% ;
+  height: 70%;
+  padding-left: 20px;
   border: none;
   border-radius: 30px;
   background-color: var(--input);
