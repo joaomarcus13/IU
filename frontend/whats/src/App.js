@@ -8,17 +8,12 @@ import Main from './components/Main'
 import TypeArea from './components/TypeArea'
 
 function App() {
-
-
-
   return (
     <div className='container'>
 
       <Head></Head>
       <Aside></Aside>
-      
       <Main></Main>
-
       <TypeArea></TypeArea>
 
     </div>
