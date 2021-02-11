@@ -52,7 +52,9 @@
   display: flex;
   background-color: var(--chat);;
   align-items: center;
+  justify-content: space-evenly;
 }
+
 
 .input{
   width: 90% ;
