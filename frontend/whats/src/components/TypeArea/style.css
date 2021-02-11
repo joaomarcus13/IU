@@ -1,0 +1,42 @@
+.typeArea{
+    display: flex;
+    background-color: var(--chat);;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  
+  .typeArea .input{
+    width: 90% ;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--input);
+    color: var(--letter);
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 500;
+  }
+  
+  .typeAreaIcons{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 10%;
+      margin: 9px;  
+  }
+  
+  .Icon-microfone{
+      display: flex;
+      width: 7%;
+      justify-content: center;
+  
+  }
+  
+
+  
+  .iconsAside{ 
+    width: 35%; 
+    display: flex; 
+    align-self: center; 
+    justify-content: space-around; } 
