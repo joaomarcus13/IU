@@ -1,4 +1,4 @@
-.typeArea{
+.type-area{
     display: flex;
     background-color: var(--chat);;
     align-items: center;
@@ -6,7 +6,7 @@
   }
   
   
-  .typeArea .input{
+  .type-area .input{
     width: 90% ;
     padding: 11px 20px;
     border: none;
@@ -18,7 +18,7 @@
     font-weight: 500;
   }
   
-  .typeAreaIcons{
+  .type-area-icons{
       display: flex;
       align-items: center;
       justify-content: space-around;
@@ -26,16 +26,14 @@
       margin: 9px;  
   }
   
-  .Icon-microfone{
+  .icon-microfone{
       display: flex;
       width: 7%;
       justify-content: center;
   
   }
   
-
-  
-  .iconsAside{ 
+  .icons-aside{ 
     width: 35%; 
     display: flex; 
     align-self: center; 

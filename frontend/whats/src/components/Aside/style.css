@@ -5,7 +5,7 @@
   }
   
   
-  .aside .headAside{
+  .aside .head-aside{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -14,21 +14,21 @@
     
   }
 
-  .imgPerfil{
+  .img-perfil{
     margin: 10px;
     margin-left: 20px;
     width: 50%;
   }
 
   
-  .imgPerfil img, .imgPerfilChat img{
+  .img-perfil img{
     height: 42px;
     width: 42px;
     border-radius: 50%;
   }
 
 
-  .iconsAside{ 
+  .icons-aside{ 
     width: 35%; 
     display: flex; 
     align-self: center; 
@@ -77,12 +77,23 @@
     justify-content: space-between;
     color: var(--letter);
     padding: 10px;
+    cursor: pointer;
+ 
+  }
+
+  .chat-msgs ul li:select{
+     background-color: #fff;
+  }
+
+  .chat-msgs ul li.active{
+    background-color: rgba(146, 146, 148, 0.212);
+  }
+
+  .chat-msgs ul li:hover{
+    background-color: rgba(146, 146, 148, 0.212);
   }
 
   
-  li:first-child{
-    background-color: rgba(146, 146, 148, 0.212);
-  }
 
   .perfil-chat{
     display: flex;
@@ -118,6 +129,10 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
+  }
+
+  .icon-options-whats{
+    cursor: pointer;
   }
 
   /* ajustar depois */

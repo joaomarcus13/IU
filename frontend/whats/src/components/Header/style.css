@@ -6,7 +6,7 @@
     height: 59px;
   }
 
-  .infoChat{
+  .info-chat{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -14,22 +14,24 @@
     
   }
   
-  .imgPerfilChat{
-   
+  .img-perfil-chat img{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
   }
   
-  .infoChat .info{
+  .info-chat .info{
    min-width:200px;
   
   }
   
-  .infoChat .info h1{
+  .info-chat .info h1{
     font-size: 100%;
     color: var(--letter);
     font-weight: 700;
   }
   
-  .infoChat .info .span{
+  .info-chat .info .span{
     font-size: 0.8em;
     color: #a1abb4;
     font-weight: 500;
@@ -39,7 +41,7 @@
 
   
 
-.iconsChat{
+.icons-chat{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
