@@ -10,6 +10,7 @@
   .main .message-r{
     display: flex;
     justify-content: flex-end;
+ 
   }
   
   .main .message-l{
@@ -45,7 +46,7 @@
   
   .message-l .msg-l{
     background-color: var(--input);
-    width: 1fr;
+    max-width: 40%;
     font-family:  Helvetica;
     font-size: 14px;
     margin: 5px;
@@ -56,6 +57,7 @@
     padding-right: 80px;
     padding-bottom: 10px;
     padding-left: 7px;
+    
   }
   
   .message-r .triangulo-r{
@@ -82,4 +84,8 @@
     border-right: 12px solid transparent;
     border-top: 12px solid var(--input);
   }
+  
+
+
+
   

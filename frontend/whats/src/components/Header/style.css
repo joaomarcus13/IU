@@ -6,7 +6,7 @@
     height: 59px;
   }
 
-  .infoChat{
+  .info-chat{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -14,22 +14,24 @@
     
   }
   
-  .imgPerfilChat{
-   
+  .img-perfil-chat img{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
   }
   
-  .infoChat .info{
+  .info-chat .info{
    min-width:200px;
   
   }
   
-  .infoChat .info h1{
+  .info-chat .info h1{
     font-size: 100%;
     color: var(--letter);
     font-weight: 700;
   }
   
-  .infoChat .info .span{
+  .info-chat .info .span{
     font-size: 0.8em;
     color: #a1abb4;
     font-weight: 500;
@@ -39,9 +41,57 @@
 
   
 
-.iconsChat{
+.icons-chat{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     width: 13%;
+  }
+
+
+  
+  .options-chat{
+   
+    position: absolute;
+    z-index: 10;
+    top: 52px;
+    right: 20px;
+    /* visibility: hidden; */
+    display: none;
+    border-radius: 3px;
+    animation: animate 300ms normal both;
+    transform-origin: 100% 0;
+   
+  }
+
+  .options-chat ul{
+    list-style: none;
+    /* height: 220px; */
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+ 
+    background-color: var(--head);
+    padding: 8px 0;
+    color: var(--letter);
+    font-size: 15px;
+    border-radius: inherit;
+    box-shadow: 0px 0px 5px 0px #1a1919;
+  }
+
+  .options-chat ul li{
+    width: 100%;
+    padding: 10px 22px;
+    background-color: inherit;
+    cursor: pointer;
+  }
+
+  .options-chat ul li:hover{
+    background-color: rgb(36, 36, 36);
+  }
+
+  .icon-options-chat{
+    cursor: pointer;
   }
