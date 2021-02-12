@@ -1,6 +1,7 @@
 
 import './style.css'
 import imgtest from '../../assets/images/imgtest.webp'
+import Perfil from '../Perfil'
 
 
 function Aside() {
@@ -27,10 +28,13 @@ function Aside() {
     }
 
     function handlePerfilInfo(){
-        console.log('perfil info')
+        const perfil = document.querySelector('.tela-perfil')
+        perfil.style.display = 'block'
+
     }
 
     return (
+        <>
         <aside className='aside'>
             <div className='head-aside'>
                 <div className='img-perfil' onClick={handlePerfilInfo}>
@@ -162,6 +166,8 @@ function Aside() {
             </div>
 
         </aside>
+        <Perfil></Perfil>
+        </>
     )
 
 }
