@@ -1,6 +1,6 @@
 .type-area{
     display: flex;
-    background-color: var(--chat);;
+    background-color: var(--type-area);;
     align-items: center;
     justify-content: space-evenly;
   }
@@ -26,12 +26,17 @@
       margin: 9px;  
   }
   
-  .icon-microfone{
+  .type-area .icon-microfone{
       display: flex;
       width: 7%;
       justify-content: center;
-  
   }
+
+  .type-area .icon-enviar{
+    display: none;
+    width: 7%;
+    justify-content: center;
+}
   
   .icons-aside{ 
     width: 35%; 
