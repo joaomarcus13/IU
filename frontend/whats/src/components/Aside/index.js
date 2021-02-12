@@ -13,11 +13,12 @@ function Aside() {
     }
 
     function handleActiveChat(e) {
-        console.log(e)
-        console.log('li')
         const li = document.querySelectorAll('.chat-msgs ul li')
-        console.log(li)
+        for (let i of li) {
+            i.classList.remove('active')
+        }
 
+        e.target.classList.add('active')
     }
 
     return (
@@ -80,64 +81,72 @@ function Aside() {
 
             <div className='chat-msgs'>
                 <ul>
-                    <li className='active' onClick={(e)=>{handleActiveChat(e)}}>
+                    <li className='active' onClick={(e) => { handleActiveChat(e) }}>
+                        <div className='img-chat'>
+                                <img src={imgtest} alt="" />
+                            </div>
                         <div className='perfil-chat' >
-                            <div className='img-chat'>
-                                <img src={imgtest} alt="" />
-                            </div>
+                            
                             <div className='nome-chat'>
                                 <h1>Goncalo</h1>
                                 <span>beleza</span>
-                            </div>
+                            </div> 
+                            <span className='hora-chat'>
+                            23:40</span>
                         </div>
-                        <span className='hora-chat'>
-                            Ontem
-              </span>
+                       
+
                     </li>
 
-                    <li onClick={(e)=>{handleActiveChat(e)}}>
-                        <div className='perfil-chat'>
-                            <div className='img-chat'>
+                    <li  onClick={(e) => { handleActiveChat(e) }}>
+                        <div className='img-chat'>
                                 <img src={imgtest} alt="" />
                             </div>
+                        <div className='perfil-chat' >
+                            
                             <div className='nome-chat'>
                                 <h1>Goncalo</h1>
                                 <span>beleza</span>
-                            </div>
+                            </div> 
+                            <span className='hora-chat'>
+                            23:40</span>
                         </div>
-                        <span className='hora-chat'>
-                            Ontem
-              </span>
+                       
+
                     </li>
 
-                    <li onClick={(e)=>{handleActiveChat(e)}}>
-                        <div className='perfil-chat'>
-                            <div className='img-chat'>
+                    <li  onClick={(e) => { handleActiveChat(e) }}>
+                        <div className='img-chat'>
                                 <img src={imgtest} alt="" />
                             </div>
+                        <div className='perfil-chat' >
+                            
                             <div className='nome-chat'>
                                 <h1>Goncalo</h1>
                                 <span>beleza</span>
-                            </div>
+                            </div> 
+                            <span className='hora-chat'>
+                            23:40</span>
                         </div>
-                        <span className='hora-chat'>
-                            Ontem
-              </span>
+                       
+
                     </li>
 
-                    <li onClick={(e)=>{handleActiveChat(e)}}>
-                        <div className='perfil-chat'>
-                            <div className='img-chat'>
+                    <li  onClick={(e) => { handleActiveChat(e) }}>
+                        <div className='img-chat'>
                                 <img src={imgtest} alt="" />
                             </div>
+                        <div className='perfil-chat' >
+                            
                             <div className='nome-chat'>
                                 <h1>Goncalo</h1>
                                 <span>beleza</span>
-                            </div>
+                            </div> 
+                            <span className='hora-chat'>
+                            23:40</span>
                         </div>
-                        <span className='hora-chat'>
-                            Ontem
-              </span>
+                       
+
                     </li>
 
                 </ul>

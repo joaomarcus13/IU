@@ -76,15 +76,13 @@
     align-items: center;
     justify-content: space-between;
     color: var(--letter);
-    padding: 10px;
+    height: 73px;
+    padding: 0 10px;
     cursor: pointer;
  
   }
 
-  .chat-msgs ul li:select{
-     background-color: #fff;
-  }
-
+  
   .chat-msgs ul li.active{
     background-color: rgba(146, 146, 148, 0.212);
   }
@@ -93,25 +91,34 @@
     background-color: rgba(146, 146, 148, 0.212);
   }
 
+  .img-chat, .perfil-chat, .nome-chat{
+    pointer-events: none;
+  }
   
+  .img-chat{
+    margin-right: 15px;
+  }
 
   .perfil-chat{
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    width: 130px;
+    justify-content: space-between;
+    width: 85%;
+    border-bottom: 1px solid var(--border);
     
   }
 
 
-  .perfil-chat .img-chat{
+  /* .perfil-chat .img-chat{
     margin-right: 10px;
-  } 
+  }  */
   .perfil-chat .nome-chat{
     
   }
   .hora-chat{
   }
+
   .perfil-chat .nome-chat h1{
     font-size: 1.1em;
     font-weight: 400;
@@ -123,6 +130,8 @@
   
   li .hora-chat{
     font-size: 0.8em;
+    font-weight: 300;
+    
   }
   
   .chat-msgs .img-chat img{
@@ -162,21 +171,27 @@
   
 .options-whats ul{
     list-style: none;
-    height: 300px;
+    /* height: 300px; */
     width: 170px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    padding: 20px;
     background-color: var(--head);
     color: var(--letter);
     font-size: 15px;
+    padding: 8px 0;
     border-radius: inherit;
     box-shadow: 0px 0px 5px 0px #1a1919;
   }
   
   .options-whats ul li{
+    width: 100%;
+    padding: 10px 20px;
+    cursor: pointer;
     background-color: inherit;
   }
   
+  .options-whats ul li:hover {
+    background-color: rgb(36, 36, 36);
+  }
