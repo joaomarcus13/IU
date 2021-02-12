@@ -26,10 +26,14 @@ function Aside() {
         e.target.classList.add('active')
     }
 
+    function handlePerfilInfo(){
+        console.log('perfil info')
+    }
+
     return (
         <aside className='aside'>
             <div className='head-aside'>
-                <div className='img-perfil'>
+                <div className='img-perfil' onClick={handlePerfilInfo}>
                     <img src={imgtest} alt="" />
                 </div>
 
