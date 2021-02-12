@@ -59,6 +59,8 @@
     /* visibility: hidden; */
     display: none;
     border-radius: 3px;
+    animation: animate 300ms normal both;
+    transform-origin: 100% 0;
    
   }
 

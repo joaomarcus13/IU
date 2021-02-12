@@ -8,8 +8,13 @@ function Aside() {
     function handleOptions() {
         console.log('option')
         const options = document.querySelector('.options-whats')
+        const optChat = document.querySelector('.options-chat')
         options.style.display =
             options.style.display === 'block' ? 'none' : 'block'
+        
+        if(optChat.style.display === 'block'){
+            optChat.style.display = 'none'
+        }
     }
 
     function handleActiveChat(e) {
