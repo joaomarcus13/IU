@@ -16,13 +16,17 @@ function Header() {
   }
 
   function handleSearchMsg(){
-    var container = document.querySelector('.container')
-    var search = document.querySelector('.grid-search-msg')
-    container.style.display = 'none'
-    search.style.display = 'grid' 
+    const container = document.querySelector('.container')
+    const areaMsg = document.querySelector('.search-msg') 
+
+    areaMsg.style.display = 'block'
+
+    container.style.gridTemplateAreas = '"aside  header search" "aside main search" "aside typeArea search"';
+    container.style.gridTemplateColumns =  '30% 1fr 0.75fr'; 
   }
 
   return (
+
     <nav className='header'>
 
       <div className='info-chat'>
@@ -70,6 +74,8 @@ function Header() {
       </div>
 
     </nav>
+
+ 
   )
 }
 

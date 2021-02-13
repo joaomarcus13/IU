@@ -1,4 +1,5 @@
   .main{
+    grid-area: main;
     display: flex;
     flex-direction: column;
     background-image: url("../../assets/images/bg-chat.png");
@@ -6,8 +7,8 @@
     justify-content: flex-end;
     padding-bottom: 20px;
   }
-  
-  .main .message-r{
+
+   .main .message-r{
     display: flex;
     justify-content: flex-end;
  
@@ -84,8 +85,5 @@
     border-right: 12px solid transparent;
     border-top: 12px solid var(--input);
   }
-  
-
-
 
   
