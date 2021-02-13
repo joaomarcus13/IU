@@ -12,25 +12,17 @@ import Pesquisar from './components/Search/search'
 function App() {
 
   return (
-    <div className = 'div'>
+   
     <div className='container'>
- 
+  
       <Head></Head>
       <Aside></Aside>
       <Main></Main>
-      <TypeArea></TypeArea>
-        
-    </div>
-
-    <div className='grid-search-msg'>
-      <Pesquisar></Pesquisar>    
-      <Head></Head>
-      <Aside></Aside>
-      <Main></Main>
+      <Pesquisar></Pesquisar>
       <TypeArea></TypeArea>
 
     </div>
-    </div>
+  
   );
 }
 
