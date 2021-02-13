@@ -1,9 +1,10 @@
 .search-msg{
 
-   grid-area: a;
+   grid-area: search;
    background-color:rgb(19,28,33);
    border-left: thin solid var(--border);
-   height: 200%;
+   height: 100%;
+   display: none;
   
 }
 
@@ -54,7 +55,7 @@
 }
 
 .search-aside input::placeholder{
-   /* text-align: center; */
+   
    font: inherit;
    font-weight: bolder;
    letter-spacing:-0.5px;
@@ -77,4 +78,4 @@
    color: #a1abb4;
    font-weight: 500;
   
-}
+} 
