@@ -19,7 +19,7 @@
     margin: 10px;
     margin-left: 20px;
     width: 50%;
-    cursor: pointer;
+    
   }
 
   
@@ -27,6 +27,7 @@
     height: 42px;
     width: 42px;
     border-radius: 50%;
+    cursor: pointer;
   }
 
 
@@ -36,9 +37,11 @@
     align-self: center; 
     justify-content: space-around; } 
   
-  div svg{
+  div svg, span svg{
     color: var(--icons);
   }
+
+
 
   
   .search-aside{
@@ -46,6 +49,16 @@
     align-items: center;
     height: 46px;
     position: relative;
+  }
+
+  .search-aside-icon{
+    animation: lupa 80ms linear;
+  }
+
+
+  .search-aside .search-aside-back{
+    display: none;
+    animation: lupa 80ms ease-in-out;
   }
   
   .search-aside input{
@@ -99,6 +112,7 @@
   
   .img-chat{
     margin-right: 15px;
+    
   }
 
   .perfil-chat{
