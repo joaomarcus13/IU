@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import './global.css'
 
-import Head from './components/Header'
-import Aside from './components/Aside'
-import Main from './components/Main'
-import TypeArea from './components/TypeArea'
-import Pesquisar from './components/Search'
+import Head from './components/Header/header'
+import Aside from './components/Aside/aside'
+import Main from './components/Main/main'
+import TypeArea from './components/TypeArea/typeArea'
+import Pesquisar from './components/Search/search'
 
 
 function App() {

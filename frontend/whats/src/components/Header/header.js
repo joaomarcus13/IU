@@ -1,4 +1,4 @@
-import './style.css'
+import './header.css'
 import imgtest from '../../assets/images/imgtest.webp'
 
 function Header() {

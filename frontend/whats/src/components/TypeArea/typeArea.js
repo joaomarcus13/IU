@@ -1,4 +1,4 @@
-import './style.css'
+import './typeArea.css'
 function TypeArea() {
 
     function handleChange(){

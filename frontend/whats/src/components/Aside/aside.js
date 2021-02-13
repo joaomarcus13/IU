@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './style.css'
+import './aside.css'
 import imgtest from '../../assets/images/imgtest.webp'
-import Perfil from '../Perfil'
+import Perfil from '../Perfil/perfil'
 
 
 function Aside() {
