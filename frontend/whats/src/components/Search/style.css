@@ -16,7 +16,8 @@
 }
 
 .header .close{
-   width: 18%;
+   margin: 6%;
+   cursor: pointer;
 }
 
 .header .pesq-msg{
