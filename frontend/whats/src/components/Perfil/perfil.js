@@ -1,5 +1,5 @@
 
-import './style.css'
+import './perfil.css'
 import imgtest from '../../assets/images/imgtest.webp'
 
 function Perfil() {

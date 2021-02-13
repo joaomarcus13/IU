@@ -1,6 +1,6 @@
 
 
-import './style.css'
+import './main.css'
 
 function Main() {
     return (
