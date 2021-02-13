@@ -9,6 +9,8 @@ function Header() {
   function handleOptions() {
     const options = document.querySelector('.options-chat')
     const optWhats = document.querySelector('.options-whats')
+    const divoption = document.querySelector('.icon-options-whats')
+    divoption.classList.toggle('bg-icon-click')
     options.style.display =
       options.style.display === 'block' ? 'none' : 'block'
     if (optWhats.style.display === 'block') {
