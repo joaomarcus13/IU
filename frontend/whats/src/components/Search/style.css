@@ -1,0 +1,79 @@
+.search-msg{
+
+   grid-area: a;
+   background-color:rgb(19,28,33);
+   border-left: thin solid var(--border);
+   height: 200%;
+  
+}
+
+.search-msg .header{
+   display: flex;
+   height: 59px;
+   background-color: var(--head);
+   align-items: center;
+   justify-content: flex-start;
+}
+
+.header .close{
+   width: 18%;
+}
+
+.header .pesq-msg{
+   color: var(--letter);
+   font-size: 16px;
+}
+
+.div-search-input{
+   display: flex;
+   height: 50px;
+   align-items: center;
+   justify-content: center;
+   background-color: rgb(30,36,41);
+   
+
+}
+
+.div-search-input .search-input{
+   display: flex;
+   padding: 3px 15px;
+   border-radius: 20px;
+   background-color: var(--input);
+   width: 95%;
+   justify-content: flex-start;
+}
+
+.search-input input{
+   margin-left: 10%;
+   border: 0px;
+   background-color: var(--input);
+   width: 100%;
+   color: #a1abb4;
+   font-weight: 700;
+}
+
+.search-aside input::placeholder{
+   /* text-align: center; */
+   font: inherit;
+   font-weight: bolder;
+   letter-spacing:-0.5px;
+   
+ }
+
+.search-msg .result-search{
+   display: flex;
+   justify-content: center;
+   border-top: thin solid var(--border);
+   background-color: rgb(19,28,33);
+   height: 3fr;
+  
+}
+
+.result-search .label{
+   margin-top: 70px;
+   color: var(--letter);
+   font-size: 14px;
+   color: #a1abb4;
+   font-weight: 500;
+  
+}
