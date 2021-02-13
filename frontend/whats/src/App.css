@@ -13,15 +13,31 @@
     
 }
 
+.div{
+  height: 100%;
+}
+
 .container{
   height: 100%;
   display: grid;
-  grid-template-areas: "aside header"
-                       "aside    main"
-                        "aside   typeArea";
-  grid-template-columns: 30% 1fr;                      
+  grid-template-areas: "aside   header   "
+                       "aside   main     "
+                       "aside   typeArea ";
+  grid-template-columns: 30% 1fr ;                      
   grid-template-rows:59px 1fr 60px ;
 }
+
+.grid-search-msg{
+  height: 100%;
+  display: none;
+  grid-template-areas: "aside   header   a"
+                       "aside   main     a"
+                       "aside   typeArea a";
+  grid-template-columns: 30% 1fr 30%;                      
+  grid-template-rows:59px 1fr 60px ;                     
+
+}
+
 
 div svg{
   color: var(--icons);
