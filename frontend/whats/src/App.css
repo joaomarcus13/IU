@@ -8,6 +8,9 @@
     --letter:#cdd1d4;
     --msgR: rgb(5,97,98);
     --type-area: rgb(30,36,40);
+    --perfil-head:rgb(49, 56, 59);
+    --verde:rgb(0,150,136);
+    
 }
 
 .container{
@@ -24,6 +27,69 @@ div svg{
   color: var(--icons);
 }
 
+
+
+@keyframes animate {
+  0% {
+     transform: scale(0)
+ }
+ 100% {
+     transform: scale(1)
+ }
+}
+
+
+@keyframes perfilAnimation{
+  0% {
+    left: -300px;
+}
+100% {
+    left: 0;
+}
+}
+
+@keyframes imgAnimation{
+  0% {
+    transform:scale(0) ;
+}
+100% {
+    transform:scale(1);
+}
+}
+
+@keyframes nomeAnimation{
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+}
+100% {
+    transform:scaleY(1);
+    opacity: 1;
+}
+}
+
+
+@keyframes lupa{
+  0% {
+    transform: rotate(-90deg);
+   
+}
+100% {
+    transform:rotate(0);
+   
+}
+}
+
+@keyframes lupa2{
+  0% {
+    transform: rotate(90deg);
+   
+}
+100% {
+    transform:rotate(0);
+   
+}
+}
 
 
 

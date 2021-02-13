@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import './global.css'
 
@@ -6,12 +7,16 @@ import Aside from './components/Aside'
 import Main from './components/Main'
 import TypeArea from './components/TypeArea'
 
+
 function App() {
+
+
   return (
     <div className='container'>
 
       <Head></Head>
       <Aside></Aside>
+
       <Main></Main>
       <TypeArea></TypeArea>
 
