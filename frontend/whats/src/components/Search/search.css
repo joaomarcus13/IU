@@ -5,6 +5,10 @@
    border-left: thin solid var(--border);
    height: 100%;
    display: none;
+
+   animation: search-ani 2s linear both;
+   transform-origin: 300px;
+
   
 }
 

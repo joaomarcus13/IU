@@ -1,0 +1,16 @@
+.icons-clip{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 70px;
+    left: 33%;
+
+}
+
+.icons-clip .icon{   
+    margin: 7px;
+    animation: iconAni 700ms normal both;
+    transform-origin: 25px 70px;
+    cursor: pointer;
+
+}
