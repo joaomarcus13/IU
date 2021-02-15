@@ -26,7 +26,19 @@ function TypeArea() {
     }
     function handleIconsClip(){
         const icons = document.querySelector('.icons-clip')
-        icons.style.display = icons.style.display === 'flex' ? 'none' : 'flex'
+        const icon = document.querySelectorAll('.icon')
+
+        if (icons.style.visibility == 'visible'){
+            for (let i of icon){
+                i.style.animation = 'close-icons-clip 300ms'
+            }
+           icons.style.visibility = 'hidden'      
+        }else{
+            for (let i of icon){
+                i.style.animation = 'iconAni 700ms'
+            }
+            icons.style.visibility = 'visible'
+        }
     }
     
 
