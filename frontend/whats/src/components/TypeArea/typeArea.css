@@ -21,6 +21,7 @@
   
   .type-area-icons{
       display: flex;
+      min-width: 70px;
       align-items: center;
       justify-content: space-around;
       width: 10%;
@@ -31,7 +32,8 @@
   .type-area .icon-microfone{
       cursor: pointer;
       display: flex;
-      margin: 3%;
+      min-width: 30px;
+      margin: 2%;
       justify-content: center;
       
   }
@@ -39,6 +41,7 @@
   .type-area .icon-enviar{
     display: none;
     margin: 3%;
+    min-width: 30px;
     justify-content: center;
     cursor: pointer;
 }

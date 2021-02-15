@@ -36,6 +36,7 @@
     font-family:  Helvetica;
     font-size: 14px;
     width: 1fr;
+    max-width: 52%;
     margin: 5px;
     border-radius: 8px;
     padding: 6px 20px;
@@ -43,11 +44,12 @@
     padding-right: 80px;
     padding-bottom: 10px;
     padding-left: 7px;
+    word-wrap: break-word;
   }
   
   .message-l .msg-l{
     background-color: var(--input);
-    max-width: 40%;
+    max-width: 52%;
     font-family:  Helvetica;
     font-size: 14px;
     margin: 5px;
@@ -58,6 +60,7 @@
     padding-right: 80px;
     padding-bottom: 10px;
     padding-left: 7px;
+    word-wrap: break-word;
     
   }
   
