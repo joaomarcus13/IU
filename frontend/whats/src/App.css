@@ -53,6 +53,7 @@ div svg{
 }
 }
 
+
 @keyframes imgAnimation{
   0% {
     transform:scale(0) ;

@@ -12,9 +12,20 @@
 
     animation-name: perfilAnimation;
     animation-duration: 0.2s;
-    animation-timing-function: ease;  
-    animation-direction: alternate;
+    animation-timing-function: ease; 
+    
+    transition-property: background-color;
+    transition-duration: 2s;
+    
+
 }
+
+
+
+.icon-voltar:active  .tela-perfil{
+    background-color: #fff;
+}
+
 
 .tela-perfil-head{
     height: 108px;
