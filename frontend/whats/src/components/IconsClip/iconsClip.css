@@ -1,0 +1,17 @@
+.type-area-icons .icons-clip{
+    position: absolute;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    bottom: 60px;
+    margin-left: 3%;
+    transition: visibility 300ms
+}
+
+.icons-clip .icon{   
+    margin: 7px;
+   
+    transform-origin: 25px 90px;
+    cursor: pointer;
+
+}

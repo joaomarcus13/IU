@@ -1,11 +1,15 @@
 .search-msg{
-
-   grid-area: search;
-   background-color:rgb(19,28,33);
-   border-left: thin solid var(--border);
+   position: absolute;
+   top: 0;
+   width: 30%;
    height: 100%;
-   display: none;
-  
+   display: block;
+   background-color: var(--chat);
+   border-left: 1px solid var(--border);
+   right: 0px;
+   overflow: hidden;
+   visibility: hidden;
+   transition: visibility 100ms;
 }
 
 .search-msg .header{
@@ -38,7 +42,7 @@
 
 .div-search-input .search-input{
    display: flex;
-   padding: 3px 15px;
+   padding: 6px 15px;
    border-radius: 20px;
    background-color: var(--input);
    width: 95%;
@@ -67,11 +71,12 @@
    justify-content: center;
    border-top: thin solid var(--border);
    background-color: rgb(19,28,33);
-   height: 3fr;
+   height: 100%;
   
 }
 
 .result-search .label{
+  
    margin-top: 70px;
    color: var(--letter);
    font-size: 14px;
@@ -79,3 +84,13 @@
    font-weight: 500;
   
 } 
+
+.search-input .icon-search-input{
+   animation:  lupa2 200ms linear;
+}
+.search-input .icon-back{
+   display: none;
+   animation: lupa 200ms linear;
+   cursor: pointer
+
+}

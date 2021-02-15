@@ -12,15 +12,18 @@ import Pesquisar from './components/Search/search'
 function App() {
 
   return (
+    <div className='cont'>
    
-    <div className='container'>
-  
-      <Head></Head>
-      <Aside></Aside>
-      <Main></Main>
-      <Pesquisar></Pesquisar>
-      <TypeArea></TypeArea>
+      <div className='container'>
+    
+        <Head></Head>
+        <Aside></Aside>
+        <Main></Main>
+        <TypeArea></TypeArea>
 
+      </div>
+      <Pesquisar></Pesquisar>
+    
     </div>
   
   );
