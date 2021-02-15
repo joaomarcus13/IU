@@ -12,7 +12,7 @@ function Pesquisar() {
     container.style.animation = 'close-search 100ms'
     
     container.style.width = '100%'
-    areaMsg.style.display = 'none'
+    areaMsg.style.visibility = 'hidden'
 
   }
 

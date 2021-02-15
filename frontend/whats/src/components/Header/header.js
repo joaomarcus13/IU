@@ -19,7 +19,7 @@ function Header() {
     const container = document.querySelector('.container')
     const areaMsg = document.querySelector('.search-msg') 
 
-    areaMsg.style.display = 'block'
+    areaMsg.style.visibility = 'visible'
     areaMsg.style.animation = 'search-ani 100ms'
     
     container.style.animation = 'open-search 100ms'

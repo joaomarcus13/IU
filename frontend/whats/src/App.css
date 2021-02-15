@@ -162,10 +162,10 @@ div svg{
 
 @keyframes close-search-msg{
   0%{
-    width: 30%;
+    right: 0;
 
   }100%{
-    width: 0%;
+    right: -30%;
   }
 }
 

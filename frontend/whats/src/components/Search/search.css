@@ -3,11 +3,13 @@
    top: 0;
    width: 30%;
    height: 100%;
-   display: none;
+   display: block;
    background-color: var(--chat);
    border-left: 1px solid var(--border);
    right: 0px;
    overflow: hidden;
+   visibility: hidden;
+   transition: visibility 100ms;
 }
 
 .search-msg .header{
