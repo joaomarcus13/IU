@@ -9,13 +9,12 @@ function Pesquisar() {
     const areaMsg = document.querySelector('.search-msg')
 
     
-    areaMsg.style.animation = 'close-search-msg 300ms'
-    container.style.animation = 'close-search 300ms'
+    areaMsg.style.animation = 'close-search-msg 100ms'
+    container.style.animation = 'close-search 100ms'
     
     
     container.style.width = '100%'
     areaMsg.style.display = 'none'
-
 
   }
 

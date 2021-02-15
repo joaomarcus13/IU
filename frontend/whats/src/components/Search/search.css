@@ -5,9 +5,9 @@
    height: 100%;
    display: none;
    background-color: var(--chat);
-   border-right: 1px solid var(--border);
+   border-left: 1px solid var(--border);
    right: 0px;
-
+   overflow: hidden;
 }
 
 .search-msg .header{
@@ -69,11 +69,12 @@
    justify-content: center;
    border-top: thin solid var(--border);
    background-color: rgb(19,28,33);
-   height: 3fr;
+   height: 100%;
   
 }
 
 .result-search .label{
+  
    margin-top: 70px;
    color: var(--letter);
    font-size: 14px;

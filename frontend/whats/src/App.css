@@ -15,17 +15,22 @@
 
 .cont{
   background-color:var(--chat);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+ 
 }
 
 .div{
   height: 100%;
-
+  
 }
 
 .container{
-  position: absolute;
+
   width: 100%;
   height: 100%;
+  
   display: grid;
   grid-template-areas: "aside  header"
                        "aside main"
@@ -33,7 +38,7 @@
   grid-template-columns: 30% 1fr 0fr;                      
   grid-template-rows:59px 1fr 60px ;
   background-color: var(--chat);
-
+  
 }
 
 
@@ -108,12 +113,12 @@ div svg{
 @keyframes search-ani{
 
   0%{
-    width: 0%;
-          
+    right: -30%;
+    opacity: 0;
   }
   100%{
-    width: 30%;
-  
+    right: 0px;
+    opacity: 1;  
   }
 
 }

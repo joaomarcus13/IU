@@ -20,10 +20,9 @@ function Header() {
     const areaMsg = document.querySelector('.search-msg') 
 
     areaMsg.style.display = 'block'
-    areaMsg.style.animation = 'search-ani 300ms'
+    areaMsg.style.animation = 'search-ani 100ms'
     
-
-    container.style.animation = 'open-search 300ms'
+    container.style.animation = 'open-search 100ms'
     container.style.width = '70%'; 
   }
 
