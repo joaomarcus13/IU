@@ -1,10 +1,9 @@
-.icons-clip{
+.type-area-icons .icons-clip{
     position: absolute;
     display: none;
     flex-direction: column;
     bottom: 60px;
-    left: 33%;
-
+    margin-left: 3%;
 }
 
 .icons-clip .icon{   

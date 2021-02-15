@@ -40,7 +40,7 @@
 
 .div-search-input .search-input{
    display: flex;
-   padding: 3px 15px;
+   padding: 6px 15px;
    border-radius: 20px;
    background-color: var(--input);
    width: 95%;
@@ -82,3 +82,13 @@
    font-weight: 500;
   
 } 
+
+.search-input .icon-search-input{
+   animation:  lupa2 200ms linear;
+}
+.search-input .icon-back{
+   display: none;
+   animation: lupa 200ms linear;
+   cursor: pointer
+
+}

@@ -17,7 +17,7 @@ function Main() {
 
       <div className='message-l'>
         <div className='triangulo-l'></div>
-        <div className='msg-l'>kkkkkkkkkkkkkk</div>
+        <div className='msg-l'>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
         <div className='hora'> 10:32 </div>
       </div>
 
