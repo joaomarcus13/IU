@@ -8,10 +8,14 @@ function Pesquisar() {
     const container = document.querySelector('.container')
     const areaMsg = document.querySelector('.search-msg')
 
+    
+    areaMsg.style.animation = 'close-search-msg 300ms'
+    container.style.animation = 'close-search 300ms'
+    
+    
+    container.style.width = '100%'
     areaMsg.style.display = 'none'
 
-    container.style.gridTemplateAreas = '"aside  header" "aside main" "aside typeArea"';
-    container.style.gridTemplateColumns = '30% 1fr';
 
   }
 

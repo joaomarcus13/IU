@@ -1,15 +1,13 @@
 .search-msg{
-
-   grid-area: search;
-   background-color:rgb(19,28,33);
-   border-left: thin solid var(--border);
+   position: absolute;
+   top: 0;
+   width: 30%;
    height: 100%;
    display: none;
+   background-color: var(--chat);
+   border-right: 1px solid var(--border);
+   right: 0px;
 
-   animation: search-ani 2s linear both;
-   transform-origin: 300px;
-
-  
 }
 
 .search-msg .header{

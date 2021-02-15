@@ -20,9 +20,11 @@ function Header() {
     const areaMsg = document.querySelector('.search-msg') 
 
     areaMsg.style.display = 'block'
+    areaMsg.style.animation = 'search-ani 300ms'
+    
 
-    container.style.gridTemplateAreas = '"aside  header search" "aside main search" "aside typeArea search"';
-    container.style.gridTemplateColumns =  '30% 1fr 0.75fr'; 
+    container.style.animation = 'open-search 300ms'
+    container.style.width = '70%'; 
   }
 
   return (
