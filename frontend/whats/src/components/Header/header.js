@@ -22,7 +22,7 @@ function Header() {
     areaMsg.style.display = 'block'
 
     container.style.gridTemplateAreas = '"aside  header search" "aside main search" "aside typeArea search"';
-    container.style.gridTemplateColumns =  '30% 1fr 0.75fr'; 
+    container.style.gridTemplateColumns =  '0.75fr 1fr 0.75fr'; 
   }
 
   return (

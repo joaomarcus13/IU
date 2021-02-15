@@ -4,8 +4,10 @@
    background-color:rgb(19,28,33);
    border-left: thin solid var(--border);
    height: 100%;
+
    display: none;
-  
+
+   
 }
 
 .search-msg .header{
