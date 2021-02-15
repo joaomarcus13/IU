@@ -1,4 +1,5 @@
 import './header.css'
+import '../ContactDetails/contactDetails.css'
 import imgtest from '../../assets/images/imgtest.webp'
 
 function Header() {
@@ -26,11 +27,25 @@ function Header() {
     container.style.width = '70%'; 
   }
 
+  function handleContactDetails(){
+    const container = document.querySelector('.container')
+    const contactDetail = document.querySelector('.contact-details') 
+
+    console.log(contactDetail)
+
+    contactDetail.style.visibility = 'visible'
+    contactDetail.style.animation = 'search-ani 100ms'
+    
+    container.style.animation = 'open-search 100ms'
+    container.style.width = '70%';
+
+  }
+
   return (
 
     <nav className='header'>
 
-      <div className='info-chat'>
+      <div className='info-chat' onClick={handleContactDetails}>
         <div className='img-perfil-chat'>
           <img src={imgtest} alt="" />
 

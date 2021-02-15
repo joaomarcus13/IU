@@ -1,0 +1,60 @@
+.contact-details{
+    position: absolute;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    display: block;
+    background-color: var(--chat);
+    border-left: 1px solid var(--border);
+    right: 0px;
+  
+    visibility: visible;
+    transition: visibility 100ms;
+}
+
+.contact-details .header{
+    display: flex;
+    height: 59px;
+    background-color: var(--head);
+    align-items: center;
+    justify-content: flex-start;
+ }
+ 
+ .header .close{
+    margin: 6%;
+    cursor: pointer;
+ }
+ 
+ .header .label{
+    color: var(--letter);
+    font-size: 16px;
+    
+ }
+
+ .scroll{
+     overflow-y:visible;
+ }
+ .contact-details .imgPerfil{
+     display: flex;
+     margin-bottom: 10px;
+     height: 300px;
+     flex-direction: column;
+     width: 100%;
+     align-items: center;
+     justify-content: center;
+
+
+ }
+ .imgPerfil .img{
+    
+      border-radius: 50%;
+      height: 200px;
+      width: 200px;
+  }
+
+  .telefone{
+      justify-content: flex-start;
+      color: var(--input);
+      margin-top: 20px;
+      margin-left: 20px;
+  }
