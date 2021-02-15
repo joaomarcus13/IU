@@ -32,6 +32,7 @@
   height: 100%;
   
   display: grid;
+
   grid-template-areas: "aside  header"
                        "aside main"
                        "aside typeArea";
@@ -40,6 +41,8 @@
   background-color: var(--chat);
   
 }
+
+
 
 
 div svg{
@@ -66,6 +69,7 @@ div svg{
     left: 0;
 }
 }
+
 
 @keyframes imgAnimation{
   0% {

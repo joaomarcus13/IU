@@ -12,6 +12,8 @@ import ContactDetails from'./components/ContactDetails/contactDetails'
 
 function App() {
 
+  
+
   return (
     <div className='cont'>
    
