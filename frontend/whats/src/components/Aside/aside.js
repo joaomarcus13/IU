@@ -8,22 +8,6 @@ import ItemConversa from '../itemconversa/itemconversa'
 
 function Aside() {
 
-    function toggleIc() {
-        document.querySelectorAll('.search-aside-icon').forEach(e => { e.style.display = 'block' })
-        document.querySelectorAll('.search-aside-back').forEach(e => { e.style.display = 'none' })
-
-    }
-
-    function handle(e) {
-        if (e.target.id !== 'input-aside') {
-            toggleIc()
-        }
-
-    }
-
-    useEffect(() => {
-        document.addEventListener('click', handle)
-    }, [])
 
 
 
@@ -54,6 +38,10 @@ function Aside() {
 
     function handleInfo(classe) {
         const element = document.querySelector(classe)
+        const input = document.querySelectorAll('#input-aside')
+        input.forEach(e=>{
+            console.log(e.placeholder)
+        })
         element.style.display = 'block'
 
     }
@@ -99,7 +87,7 @@ function Aside() {
 
                 </div>
 
-                <Input placeholder='Pesquisar ou começar uma nova conversa'></Input>
+                <Input index={0} placeholder='Pesquisar ou começar uma nova conversa'></Input>
 
                 <div className='chat-msgs'>
                     <ul>
