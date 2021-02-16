@@ -28,18 +28,27 @@ function NovaConversa() {
 
             <div className="tela-novaconversa-body">
                 <Input placeholder='pesquisar contatos'></Input>
-                <ItemConversa img={NewGroupIcon} name='Novo Grupo' nameBottom=' '></ItemConversa>
-                <div className='contatos-frequentes' >
-                    <div className='contatos-frequentes-space'> </div>
-                    <div className='contatos-frequentes-nome' >
-                        <span>CONTATOS FREQUENTES</span>
+                <ul>
+                    <ItemConversa img={NewGroupIcon} name='Novo Grupo' nameBottom=' '></ItemConversa>
+                    <div className='contatos-frequentes' >
+                        <div className='contatos-frequentes-space'> </div>
+                        <div className='contatos-frequentes-nome' >
+                            <span>CONTATOS FREQUENTES</span>
+                        </div>
                     </div>
-                </div>
-                <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
-                <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
-                <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
-                
-                
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+                    <ItemConversa img={imgtest} name='blabla' nameBottom='status'></ItemConversa>
+
+                </ul>
             </div>
 
 

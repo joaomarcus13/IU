@@ -43,6 +43,16 @@
 }
 
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(57,65,69);
+}
+
+
 
 
 div svg{

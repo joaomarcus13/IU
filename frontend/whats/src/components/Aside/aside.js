@@ -107,6 +107,17 @@ function Aside() {
                         <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='gayssalo' nameBottom='falou'></ItemConversa>
                         <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='chico' nameBottom='ok'></ItemConversa>
                         <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
                         
 
                     </ul>
