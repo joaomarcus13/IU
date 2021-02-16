@@ -7,8 +7,12 @@ function Perfil() {
 
     function voltarPerfil() {
         const perfil = document.querySelector('.tela-perfil')
-      
-        perfil.style.display = 'none'
+        perfil.classList.add('voltar')
+        setTimeout(() => {
+            perfil.classList.remove('voltar')
+            perfil.style.display = 'none'
+        }, 1000);
+
 
     }
 

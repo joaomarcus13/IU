@@ -9,12 +9,20 @@
     background-color: var(--chat);
     z-index: 10;
     border-right: 1px solid var(--border);
-
+    left: 0;
     animation-name: perfilAnimation;
-    animation-duration: 0.2s;
+    animation-duration: 0.3s;
     animation-timing-function: ease; 
 
 }
+
+.voltar{
+    animation: back;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.61,.03,.21,1.01);
+    animation-fill-mode: forwards;
+}
+
 
 
 
