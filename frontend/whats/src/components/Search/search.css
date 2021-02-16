@@ -10,6 +10,7 @@
    overflow: hidden;
    visibility: hidden;
    transition: visibility 100ms;
+   min-width: 400px;
 }
 
 .search-msg .header{
