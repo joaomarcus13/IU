@@ -10,6 +10,7 @@
    overflow: hidden;
    visibility: hidden;
    transition: visibility 100ms;
+   min-width: 400px;
 }
 
 .search-msg .header{
@@ -30,33 +31,6 @@
    font-size: 16px;
 }
 
-.div-search-input{
-   display: flex;
-   height: 50px;
-   align-items: center;
-   justify-content: center;
-   background-color: rgb(30,36,41);
-   
-
-}
-
-.div-search-input .search-input{
-   display: flex;
-   padding: 6px 15px;
-   border-radius: 20px;
-   background-color: var(--input);
-   width: 95%;
-   justify-content: flex-start;
-}
-
-.search-input input{
-   margin-left: 10%;
-   border: 0px;
-   background-color: var(--input);
-   width: 100%;
-   color: #a1abb4;
-   font-weight: 700;
-}
 
 .search-aside input::placeholder{
    
@@ -69,7 +43,6 @@
 .search-msg .result-search{
    display: flex;
    justify-content: center;
-   border-top: thin solid var(--border);
    background-color: rgb(19,28,33);
    height: 100%;
   
@@ -85,12 +58,3 @@
   
 } 
 
-.search-input .icon-search-input{
-   animation:  lupa2 200ms linear;
-}
-.search-input .icon-back{
-   display: none;
-   animation: lupa 200ms linear;
-   cursor: pointer
-
-}
