@@ -30,11 +30,11 @@ function Header() {
   function handleContactDetails(){
     const container = document.querySelector('.container')
     const contactDetail = document.querySelector('.contact-details') 
-
-    console.log(contactDetail)
+    const scroll = document.querySelector('.scroll')
 
     contactDetail.style.visibility = 'visible'
     contactDetail.style.animation = 'search-ani 100ms'
+    scroll.style.animation = 'details-scroll 700ms'
     
     container.style.animation = 'open-search 100ms'
     container.style.width = '70%';
