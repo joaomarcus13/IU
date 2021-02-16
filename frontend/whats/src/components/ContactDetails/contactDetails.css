@@ -85,7 +85,7 @@
      font-weight: 600;
    }
 
-   .midia{
+   .scroll .midia{
        
        height: 167px;
        width: 100%;
@@ -113,10 +113,31 @@
         
    }
 
-   img{
+   .scroll img{
        height: 100px;
        cursor: pointer;
    }
+
+   .scroll .grupos{
+    margin-top: 10px;
+    background-color: var(--chat);
+    height: 100px;
+
+    }
+    .scroll .grupos h1{
+        display: flex;
+        align-items: center;
+        width: 90%;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--verde);
+        padding-top: 10px;
+        margin-left: 30px;
+        padding-bottom: 40px;
+        padding-right: 20px;
+        border-bottom: thin solid var(--border);
+        justify-content: space-between;
+    }
 
    .scroll .options{
        position: absolute;
@@ -135,7 +156,7 @@
        animation-delay: 100ms;
         
    }
-   .options h1{
+   .scroll .options h1{
        display: flex;
        font-size: 17px;
        border-bottom: thin solid var(--border) ;
@@ -153,10 +174,11 @@
         padding-bottom: 2px;
     }
        
-    .options input{
+    .scroll .options input{
        height: 20px;
     }
-    .options span{
+    
+    .scroll .options span{
         width: 91%;
         font-size: 14px;
         color:rgb(111,116,119);
@@ -171,7 +193,7 @@
         margin-top: 10px;
     }
 
-    .recados h1{
+    .scroll .recados h1{
         width: 90%;
         font-size: 14px;
         font-weight: 400;
@@ -181,33 +203,14 @@
         padding-bottom: 40px;
         border-bottom: thin solid var(--border);
     }
-    .recados span{
+    .scroll .recados span{
         margin-left: 20px;
         padding: 15px 10px;
         color: var(--letter);
     }
 
 
-    .scroll .grupos{
-        margin-top: 10px;
-        background-color: var(--chat);
-        height: 100px;
-
-    }
-    .grupos h1{
-        display: flex;
-        align-items: center;
-        width: 90%;
-        font-size: 14px;
-        font-weight: 400;
-        color: var(--verde);
-        padding-top: 10px;
-        margin-left: 30px;
-        padding-bottom: 40px;
-        padding-right: 20px;
-        border-bottom: thin solid var(--border);
-        justify-content: space-between;
-    }
+   
 
     .scroll .ops{
         margin-top: 10px;
