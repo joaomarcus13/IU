@@ -70,6 +70,13 @@ div svg{
 }
 }
 
+@keyframes back{
+  to{
+      left:-600px
+  }
+}
+
+
 
 @keyframes imgAnimation{
   0% {

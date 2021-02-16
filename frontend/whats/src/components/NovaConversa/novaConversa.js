@@ -9,9 +9,14 @@ function NovaConversa() {
 
 
     function voltarConversa() {
-        const perfil = document.querySelector('.tela-novaconversa')
+        const element = document.querySelector('.tela-novaconversa')
 
-        perfil.style.display = 'none'
+        element.classList.add('voltar')
+        setTimeout(() => {
+            element.classList.remove('voltar')
+            element.style.display = 'none'
+        }, 1000);
+
 
     }
 
