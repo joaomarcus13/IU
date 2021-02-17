@@ -1,11 +1,21 @@
-  .main{
+  
+  .area-main{
     grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .area-main .main{
+
     display: flex;
     flex-direction: column;
     background-image: url("../../assets/images/bg-chat.png");
     background-size: contain;
     justify-content: flex-end;
     padding-bottom: 20px;
+    height: 90%;
+    
   }
 
    .main .message-r{

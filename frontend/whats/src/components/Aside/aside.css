@@ -3,6 +3,7 @@
     background-color: var(--chat);
     border-right: 1px solid var(--border);
     position: relative;
+    min-width: 300px;
   }
 
  

@@ -15,6 +15,7 @@ function ContactDetails(){
         container.style.animation = 'close-search 100ms'
         
         container.style.width = '100%'
+        container.style.gridTemplateColumns = '30% 1fr 0fr'
         contactDetails.style.visibility = 'hidden'
     
       }
