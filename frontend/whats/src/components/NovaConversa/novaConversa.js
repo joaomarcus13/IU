@@ -32,7 +32,7 @@ function NovaConversa() {
             </div>
 
             <div className="tela-novaconversa-body">
-                <Input placeholder='pesquisar contatos'></Input>
+                <Input index={1} placeholder='pesquisar contatos'></Input>
                 <ul>
                     <ItemConversa img={NewGroupIcon} name='Novo Grupo' nameBottom=' '></ItemConversa>
                     <div className='contatos-frequentes' >
