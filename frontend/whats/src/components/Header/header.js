@@ -38,6 +38,7 @@ function Header() {
     
     container.style.animation = 'open-search 100ms'
     container.style.width = '70%';
+    container.style.gridTemplateColumns = '36% 1fr 0fr'
 
   }
 

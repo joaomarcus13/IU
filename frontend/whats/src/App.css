@@ -33,12 +33,14 @@
   
   display: grid;
 
-  grid-template-areas: "aside  header"
+  grid-template-areas: "aside main"
                        "aside main"
                        "aside typeArea";
   grid-template-columns: 30% 1fr 0fr;                      
   grid-template-rows:59px 1fr 60px ;
   background-color: var(--chat);
+
+  transition: grid-template-columns 1s;
   
 }
 
