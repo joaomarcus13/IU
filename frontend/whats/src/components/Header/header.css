@@ -11,8 +11,11 @@
   .info-chat{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     min-width: 290px;
+    cursor: pointer;
+    width: 100%;
+    margin-left: 15px;
     
   }
   
@@ -24,6 +27,8 @@
   
   .info-chat .info{
    min-width:200px;
+   margin-left: 10px;
+   
   
   }
   

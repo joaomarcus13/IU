@@ -7,6 +7,7 @@ import Aside from './components/Aside/aside'
 import Main from './components/Main/main'
 import TypeArea from './components/TypeArea/typeArea'
 import Pesquisar from './components/Search/search'
+import ContactDetails from'./components/ContactDetails/contactDetails'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
       </div>
       <Pesquisar></Pesquisar>
+      <ContactDetails></ContactDetails>
     
     </div>
   

@@ -1,5 +1,4 @@
 import './search.css'
-import '../../App'
 import React, { useEffect } from 'react';
 import Input from '../input/input'
 
