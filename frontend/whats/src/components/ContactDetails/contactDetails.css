@@ -194,6 +194,7 @@
         border-left: 2px solid var(--chat);
         border-bottom: 2px solid var(--chat);
         transform: rotate(-45deg);
+        pointer-events: none;
     }
 
     .options input:checked{ 
