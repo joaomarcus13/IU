@@ -2,9 +2,9 @@
 
 import './main.css'
 
-function Main() {
+function Main({stateChatactive}) {
   return (
-
+    
     <main className='main'>
 
       <div className='message-r'>
@@ -17,7 +17,7 @@ function Main() {
 
       <div className='message-l'>
         <div className='triangulo-l'></div>
-        <div className='msg-l'>kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</div>
+        <div className='msg-l'>{stateChatactive.chatactive.name}</div>
         <div className='hora'> 10:32 </div>
       </div>
 
