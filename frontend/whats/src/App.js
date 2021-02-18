@@ -26,7 +26,6 @@ function App() {
    
       <div className='container'>
     
-        <Head></Head>
         <Aside stateConversas={{conversas,setConversas}} stateChatactive={{chatactive,setChatactive}}></Aside>
         <Main stateChatactive={{chatactive,setChatactive}}></Main>
         <TypeArea></TypeArea>

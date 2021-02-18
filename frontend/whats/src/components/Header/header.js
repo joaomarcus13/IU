@@ -2,7 +2,7 @@ import './header.css'
 import '../ContactDetails/contactDetails.css'
 import imgtest from '../../assets/images/imgtest.webp'
 
-function Header() {
+function Header({stateChatactive}) {
 
   function handleOptions() {
     const options = document.querySelector('.options-chat')
@@ -38,6 +38,7 @@ function Header() {
     
     container.style.animation = 'open-search 100ms'
     container.style.width = '70%';
+    container.style.gridTemplateColumns = '36% 1fr 0fr'
 
   }
 
@@ -52,7 +53,7 @@ function Header() {
         </div>
         <div className='info'>
 
-          <h1>Gonçalo</h1>
+          <h1>{stateChatactive.chatactive.name}</h1>
           <div className='span'>visto por ultimo hoje as 15:00</div>
 
         </div>
