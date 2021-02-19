@@ -9,7 +9,8 @@
   
   .type-area .input{
     width: 90% ;
-    padding: 11px 20px;
+    height: 70%;
+    padding: 11px 15px;
     border: none;
     border-radius: 30px;
     background-color: var(--input);

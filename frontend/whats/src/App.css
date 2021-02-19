@@ -35,7 +35,7 @@
 
   grid-template-areas: "aside main"
                        "aside main"
-                       "aside typeArea";
+                       "aside main";
   grid-template-columns: 30% 1fr 0fr;                      
   grid-template-rows:59px 1fr 60px ;
   background-color: var(--chat);

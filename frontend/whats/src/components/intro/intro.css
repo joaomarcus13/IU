@@ -1,0 +1,70 @@
+
+.intro{
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content:start;
+    align-items: center;
+    background-color: var(--head);
+    border-bottom: 5px solid var(--verde);
+}
+
+.intro-card{
+    position:absolute;
+    width: 34%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+
+}
+
+.intro-card img{
+    width: 250px;
+    height: 250px;
+    margin-top: 50px;
+}
+
+.intro-card h1{
+  
+    font-weight: 350;
+    color: var(--letter);
+}
+
+.intro-card > span{
+    
+    color: rgb(175, 174, 174);
+    font-size: 0.8em;
+    font-weight: 450;
+    text-align: center;
+    margin-top: -10px;
+    padding-bottom: 30px;
+    border-bottom: 0.5px solid var(--border);
+   
+    
+}
+
+.intro-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(175, 174, 174) ;
+    margin-bottom: 60px;
+   
+ 
+}
+.intro-bottom span{
+    font-size: 0.9em;
+
+}
+
+ .intro-bottom svg{
+    margin: 5px 3px 0 0;
+} 
+
+.intro-bottom a{
+    text-decoration: none;
+    color: var(--verde);
+}

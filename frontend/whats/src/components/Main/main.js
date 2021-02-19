@@ -1,9 +1,11 @@
 
 import Head from '../Header/header'
+import TypeArea from '../TypeArea/typeArea'
 import './main.css'
 
 function Main({stateChatactive}) {
   return (
+    <>
     <main className='area-main'>
       <Head stateChatactive={stateChatactive}></Head>
       <div className='main'>
@@ -23,8 +25,9 @@ function Main({stateChatactive}) {
         </div>
 
       </div>
+      <TypeArea></TypeArea>
     </main>
- 
+ </>
   )
 }
 
