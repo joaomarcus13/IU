@@ -5,8 +5,9 @@ import Perfil from '../Perfil/perfil'
 import NovaConversa from '../NovaConversa/novaConversa'
 import Input from '../input/input'
 import ItemConversa from '../itemconversa/itemconversa'
+import Context from '../../context'
 
-function Aside() {
+function Aside({stateConversas,stateChatactive}) {
 
 
 
@@ -27,14 +28,6 @@ function Aside() {
         }
     }
 
-    function handleActiveChat(e) {
-        const li = document.querySelectorAll('.chat-msgs ul li')
-        for (let i of li) {
-            i.classList.remove('active')
-        }
-
-        e.target.classList.add('active')
-    }
 
     function handleInfo(classe) {
         const element = document.querySelector(classe)
@@ -91,23 +84,17 @@ function Aside() {
 
                 <div className='chat-msgs'>
                     <ul>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='goncalo' nameBottom='beleza'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='gayssalo' nameBottom='falou'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='chico' nameBottom='ok'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
-                        <ItemConversa handleActiveChat={handleActiveChat} img={imgtest} name='ze' nameBottom='na hra'></ItemConversa>
+                        {
+                        stateConversas.conversas.map(e=>
+                        <ItemConversa 
+                        active = {stateChatactive.chatactive.id===e.id}
+                        onClick={()=>{stateChatactive.setChatactive(e)}}
+                        id={e.id}
+                        img={e.img} 
+                        name={e.name}>
+                        </ItemConversa>)
+                        }
                         
-
                     </ul>
                 </div>
 
