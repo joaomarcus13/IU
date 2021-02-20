@@ -1,0 +1,34 @@
+.head-back{
+    height: 108px;
+    width: 100%;
+    background-color: var(--perfil-head);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.voltar{
+    animation: back;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.61,.03,.21,1.01);
+    animation-fill-mode: forwards;
+}
+
+.head-back .icon-voltar{
+    padding-left: 20px;
+    padding-bottom: 15px ;
+    
+}
+
+.head-back .icon-voltar svg{
+    color: rgb(209, 209, 209);
+}
+
+.head-back h1{
+    font-size: 1.2em;
+    font-weight: 500;
+    color: rgb(233, 233, 233);
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+

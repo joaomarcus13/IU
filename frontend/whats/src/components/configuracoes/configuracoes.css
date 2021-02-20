@@ -1,0 +1,82 @@
+.tela-configuracoes {
+    position: absolute;
+    top: 0;
+    width: 30%;
+    min-width: 300px;
+    height: 100%;
+    display: none;
+    left: 0;
+    background-color: var(--chat);
+    z-index: 10;
+    border-right: 1px solid var(--border);
+    animation-name: perfilAnimation;
+    animation-duration: 0.2s;
+    animation-timing-function: ease;
+}
+
+.tela-configuracoes-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px 0;
+}
+
+.tela-configuracoes-perfil img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+.tela-configuracoes-perfil-nome {
+    width: 60%;
+}
+
+.tela-configuracoes-perfil-nome h1 {
+    color: var(--letter);
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.tela-configuracoes-perfil-nome span {
+    color: rgb(196, 194, 194);
+}
+
+.tela-configuracoes-lista {}
+
+.tela-configuracoes-lista li {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
+    
+  
+}
+
+.tela-configuracoes-lista li:hover,  .tela-configuracoes-perfil:hover{
+    background-color: rgba(146, 146, 148, 0.212);
+    cursor:pointer;
+}
+
+.tela-configuracoes-lista li svg{
+    height: 60px;
+}
+
+.tela-configuracoes-lista li span {
+    color: var(--letter);
+    font-size: 1.1em;
+    letter-spacing: -0.5px;
+    font-weight: 400;
+    width: 80%;
+    /* padding: 20px 0;  */
+    padding-left: 10px;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: thin solid var(--border);
+}
+
+.voltar {
+    animation: back;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.61, .03, .21, 1.01);
+    animation-fill-mode: forwards;
+}

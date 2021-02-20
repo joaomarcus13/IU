@@ -21,7 +21,7 @@ function App() {
     { id: 2, name: 'xico', img: imgtest, msg: 'colé' },
     { id: 3, name: 'joao', img: imgtest, msg: 'falaa' }]
   )
-  const [user, setUser] = useState({ id: 1, img: imgUser, name: 'joao' })
+  const [user, setUser] = useState({ id: 1, img: imgUser, name: 'JM',status:'Disponivel' })
 
   return (
     <div className='cont'>

@@ -4,6 +4,7 @@
     position: absolute;
     top: 0;
     width: 30%;
+    min-width: 300px;
     height: 100%;
     display: none;
     background-color: var(--chat);
@@ -16,47 +17,6 @@
 
 }
 
-.voltar{
-    animation: back;
-    animation-duration: 0.5s;
-    animation-timing-function: cubic-bezier(.61,.03,.21,1.01);
-    animation-fill-mode: forwards;
-}
-
-
-
-
-.tela-perfil-head{
-    height: 108px;
-    width: 100%;
-    background-color: var(--perfil-head);
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-}
-
-.tela-perfil-head .icon-voltar{
-    padding-left: 20px;
-    padding-bottom: 15px ;
-    
-}
-
-.tela-perfil-head .icon-voltar svg{
-    color: rgb(209, 209, 209);
-}
-
-.tela-perfil-head h1{
-    font-size: 1.2em;
-    font-weight: 500;
-    color: rgb(233, 233, 233);
-    padding-left: 30px;
-    padding-bottom: 20px;
-}
-
-
-.tela-perfil-body{
-    
-}
 
 .div-tela-perfil{
     animation: nomeAnimation 1s cubic-bezier(0,.74,0,.96);
