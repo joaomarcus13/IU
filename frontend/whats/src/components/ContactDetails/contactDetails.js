@@ -1,7 +1,7 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 
-function ContactDetails(){
+function ContactDetails({stateChatactive}){
 
     function handleClose() {
         const container = document.querySelector('.container')
@@ -32,7 +32,7 @@ function ContactDetails(){
                 <div className='imgPerfil'>
                     <img className='img' src={imgtest}></img>
                     <div className='info'>
-                      <h1>João Marcos</h1>
+                      <h1>{stateChatactive.chatactive.name}</h1>
                       <div className='span'>visto por ultimo hoje as 15:00</div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ import Input from '../input/input'
 import ItemConversa from '../itemconversa/itemconversa'
 import Context from '../../context'
 
-function Aside({stateConversas,stateChatactive}) {
+function Aside({ stateConversas, stateChatactive, user }) {
 
 
 
@@ -32,7 +32,7 @@ function Aside({stateConversas,stateChatactive}) {
     function handleInfo(classe) {
         const element = document.querySelector(classe)
         const input = document.querySelectorAll('#input-aside')
-        input.forEach(e=>{
+        input.forEach(e => {
             console.log(e.placeholder)
         })
         element.style.display = 'block'
@@ -46,7 +46,7 @@ function Aside({stateConversas,stateChatactive}) {
             <aside className='aside'>
                 <div className='head-aside'>
                     <div className='img-perfil' >
-                        <img onClick={() => { handleInfo('.tela-perfil') }} src={imgtest} alt="" />
+                        <img onClick={() => { handleInfo('.tela-perfil') }} src={user.img} alt="" />
                     </div>
 
                     <div className='icons-aside'>
@@ -85,21 +85,22 @@ function Aside({stateConversas,stateChatactive}) {
                 <div className='chat-msgs'>
                     <ul>
                         {
-                        stateConversas.conversas.map(e=>
-                        <ItemConversa 
-                        active = {stateChatactive.chatactive.id===e.id}
-                        onClick={()=>{stateChatactive.setChatactive(e)}}
-                        id={e.id}
-                        img={e.img} 
-                        name={e.name}>
-                        </ItemConversa>)
+                            stateConversas.conversas.map(e =>
+                                <ItemConversa
+                                    active={stateChatactive.chatactive.id === e.id}
+                                    onClick={() => { stateChatactive.setChatactive(e) }}
+                                    id={e.id}
+                                    img={e.img}
+                                    name={e.name}
+                                    msgPrev={e.msg}>
+                                </ItemConversa>)
                         }
-                        
+
                     </ul>
                 </div>
 
             </aside>
-            <Perfil></Perfil>
+            <Perfil user={user}></Perfil>
             <NovaConversa></NovaConversa>
 
         </>

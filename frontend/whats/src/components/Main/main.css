@@ -4,17 +4,29 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    
   }
   
   .area-main .main{
-
     display: flex;
     flex-direction: column;
     background-image: url("../../assets/images/bg-chat.png");
     background-size: contain;
     justify-content: flex-end;
-    padding-bottom: 20px;
-    height: 90%;
+    
+    /* height: 90%; */
+    
+    overflow-y: auto;
+  
+    
+  }
+
+  .sc{
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    width:100%;
+    padding: 20px 90px;
     
   }
 

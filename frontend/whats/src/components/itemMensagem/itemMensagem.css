@@ -1,0 +1,50 @@
+.mensagem{
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.mensagem-item{
+  position: relative;
+  background-color: var(--head);
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  max-width: 65%;
+}
+
+.mensagem-text{
+ font-size: 14px;
+ margin: 5px 40px 5px 5px;
+ color: whitesmoke;
+}
+
+.mensagem-hora{
+ font-size: 11px;
+ color: var(--icons);
+ margin-right: 5px;
+ text-align: right;
+ height: 15px;
+ margin-top: -15px;
+}
+
+.triangulo-r{
+  position: absolute;
+  left:-10px;
+  top: 0;
+  border-radius: 30px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--head);
+}
+
+
+.triangulo-l{
+  position: absolute;
+  top: 0;
+  right: -10px;
+  border-radius: 30px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--verde);
+}
