@@ -1,6 +1,7 @@
 
 import './perfil.css'
 import imgtest from '../../assets/images/imgtest.webp'
+import HeadBack from '../headBack/headBack'
 
 function Perfil({user}) {
 
@@ -18,12 +19,9 @@ function Perfil({user}) {
 
     return (
         <div className='tela-perfil'>
-            <div className='tela-perfil-head'>
-                <div className='icon-voltar' onClick={voltarPerfil}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 4l1.4 1.4L7.8 11H20v2H7.8l5.6 5.6L12 20l-8-8 8-8z"></path></svg>
-                </div>
-                <h1>Perfil</h1>
-            </div>
+
+            <HeadBack classe='tela-perfil' text='Perfil'></HeadBack>
+
             <div className='tela-perfil-body'>
                 <div className='tela-perfil-img'>
                     <img src={user.img} alt="imagem perfil" />
