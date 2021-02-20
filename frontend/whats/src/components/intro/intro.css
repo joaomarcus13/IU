@@ -3,7 +3,7 @@
     grid-area: main;
     display: flex;
     flex-direction: column;
-    justify-content:start;
+
     align-items: center;
     background-color: var(--head);
     border-bottom: 5px solid var(--verde);

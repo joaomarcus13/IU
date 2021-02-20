@@ -3,7 +3,7 @@ import './itemconversa.css'
 import imgtest from '../../assets/images/imgtest.webp'
 
 
-function ItemConversa(props) {
+function ItemConversa({active,onClick,id,img,name,msgPrev}) {
 
     function handleActiveChat(e) {
         const li = document.querySelectorAll('.item-conversa')
@@ -17,15 +17,15 @@ function ItemConversa(props) {
     }
 
     return (
-        <li className={`item-conversa ${props.active?'active':''}`}  onClick={props.onClick}>
+        <li className={`item-conversa ${active?'active':''}`}  onClick={onClick}>
             <div className='img-chat'>
-                <img src={props.img} alt="" />
+                <img src={img} alt="" />
             </div>
             <div className='perfil-chat' >
 
                 <div className='nome-chat'>
-                    <h1>{props.name}</h1>
-                    <span>{props.nameBottom}</span>
+                    <h1>{name}</h1>
+                    <span>{msgPrev}</span>
                 </div>
                 <span className='hora-chat'>
                     23:40</span>
