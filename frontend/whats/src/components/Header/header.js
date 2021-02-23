@@ -17,27 +17,28 @@ function Header({stateChatactive}) {
   }
 
   function handleSearchMsg(){
-    const container = document.querySelector('.container')
+    const main = document.querySelector('.area-main')
     const areaMsg = document.querySelector('.search-msg') 
-
+    const aside = document.querySelector('.aside')
+    
+    aside.style.width = '25%'
     areaMsg.style.visibility = 'visible'
     areaMsg.style.animation = 'search-ani 100ms'
+    main.style.width = '45%'
     
-    container.style.animation = 'open-search 100ms'
-    container.style.width = '70%'; 
   }
 
   function handleContactDetails(){
     const main = document.querySelector('.area-main')
+    const aside = document.querySelector('.aside')
     const contactDetail = document.querySelector('.contact-details') 
     const scroll = document.querySelector('.scroll')
-
+    
+    aside.style.width = '25%'
     contactDetail.style.visibility = 'visible'
     contactDetail.style.animation = 'search-ani 100ms'
     scroll.style.animation = 'details-scroll 700ms'
-    
-    main.style.animation = 'open-search 100ms'
-    main.style.width = '40%'
+    main.style.width = '45%'
 
   }
 
