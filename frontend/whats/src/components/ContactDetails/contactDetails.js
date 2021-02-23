@@ -4,7 +4,7 @@ import imgtest from '../../assets/images/imgtest.png'
 function ContactDetails({stateChatactive}){
 
     function handleClose() {
-        const container = document.querySelector('.container')
+        const container = document.querySelector('.area-main')
         const contactDetails = document.querySelector('.contact-details')
         const scroll = document.querySelector('.scroll')
       
@@ -14,7 +14,7 @@ function ContactDetails({stateChatactive}){
         contactDetails.style.animation = 'close-search-msg 100ms'
         container.style.animation = 'close-search 100ms'
         
-        container.style.width = '100%'
+        container.style.width = '70%'
         container.style.gridTemplateColumns = '30% 1fr 0fr'
         contactDetails.style.visibility = 'hidden'
     

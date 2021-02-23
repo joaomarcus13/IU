@@ -28,7 +28,7 @@ function Header({stateChatactive}) {
   }
 
   function handleContactDetails(){
-    const container = document.querySelector('.container')
+    const main = document.querySelector('.area-main')
     const contactDetail = document.querySelector('.contact-details') 
     const scroll = document.querySelector('.scroll')
 
@@ -36,9 +36,8 @@ function Header({stateChatactive}) {
     contactDetail.style.animation = 'search-ani 100ms'
     scroll.style.animation = 'details-scroll 700ms'
     
-    container.style.animation = 'open-search 100ms'
-    container.style.width = '70%';
-    container.style.gridTemplateColumns = '36% 1fr 0fr'
+    main.style.animation = 'open-search 100ms'
+    main.style.width = '40%'
 
   }
 

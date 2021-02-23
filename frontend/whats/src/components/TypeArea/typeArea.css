@@ -1,9 +1,9 @@
 .type-area{
-    grid-area: typeArea;
     display: flex;
     background-color: var(--type-area);;
     align-items: center;
     justify-content: space-evenly;
+    min-height: 61px;
   }
   
   

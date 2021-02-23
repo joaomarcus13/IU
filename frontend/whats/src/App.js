@@ -33,6 +33,7 @@ function App() {
           stateChatactive={{ chatactive, setChatactive }}
           user={user}>
         </Aside>
+        
         {
           !chatactive ?
             <Intro></Intro>
@@ -40,12 +41,14 @@ function App() {
             <Main stateChatactive={{ chatactive, setChatactive }} user={user}></Main>
         }
 
+        <Pesquisar></Pesquisar>
+        <ContactDetails
+          stateChatactive={{ chatactive, setChatactive }} >
+        </ContactDetails>
+
 
       </div>
-      <Pesquisar></Pesquisar>
-      <ContactDetails
-        stateChatactive={{ chatactive, setChatactive }} >
-      </ContactDetails>
+      
 
     </div>
 
