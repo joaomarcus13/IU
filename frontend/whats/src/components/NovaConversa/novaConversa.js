@@ -8,6 +8,8 @@ import HeadBack from '../headBack/headBack'
 
 function NovaConversa() {
 
+    
+
 
     function voltarConversa() {
         const element = document.querySelector('.tela-novaconversa')

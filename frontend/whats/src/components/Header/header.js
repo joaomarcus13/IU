@@ -1,8 +1,12 @@
 import './header.css'
 import '../ContactDetails/contactDetails.css'
 import imgtest from '../../assets/images/imgtest.webp'
+import Context from '../../context'
+import { useContext } from 'react'
 
-function Header({stateChatactive}) {
+function Header() {
+
+  const {chatactive,setChatactive} = useContext(Context) 
 
   function handleOptions() {
     const options = document.querySelector('.options-chat')
@@ -53,7 +57,7 @@ function Header({stateChatactive}) {
         </div>
         <div className='info'>
 
-          <h1>{stateChatactive.chatactive.name}</h1>
+          <h1>{chatactive.name}</h1>
           <div className='span'>visto por ultimo hoje as 15:00</div>
 
         </div>

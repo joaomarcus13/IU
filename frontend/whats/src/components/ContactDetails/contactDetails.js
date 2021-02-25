@@ -1,7 +1,11 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
+import Context from '../../context'
+import { useContext } from 'react'
 
-function ContactDetails({stateChatactive}){
+function ContactDetails(){
+
+    const {chatactive,setChatactive} = useContext(Context) 
 
     function handleClose() {
         const main = document.querySelector('.area-main')
@@ -29,7 +33,7 @@ function ContactDetails({stateChatactive}){
                 <div className='imgPerfil'>
                     <img className='img' src={imgtest}></img>
                     <div className='info'>
-                      <h1>{stateChatactive.chatactive.name}</h1>
+                      <h1>{chatactive.name}</h1>
                       <div className='span'>visto por ultimo hoje as 15:00</div>
                     </div>
                 </div>

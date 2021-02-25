@@ -13,7 +13,7 @@
     
 }
 
-.cont{
+#root{
   display: flex;
   background-color:rgb(9,14,17);
   width: 100%;
@@ -28,7 +28,7 @@
   
 }
 
-.cont .container{
+#root .container{
 
   position: fixed;
   display: flex;
