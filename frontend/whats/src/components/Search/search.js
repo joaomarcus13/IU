@@ -5,13 +5,14 @@ import Input from '../input/input'
 function Pesquisar() {
 
   function handleClose() {
-    const container = document.querySelector('.container')
+
+    const main = document.querySelector('.area-main')
     const areaMsg = document.querySelector('.search-msg')
-
+    const aside = document.querySelector('.aside')
+      
+    aside.style.width = '30%'
     areaMsg.style.animation = 'close-search-msg 100ms'
-    container.style.animation = 'close-search 100ms'
-
-    container.style.width = '100%'
+    main.style.width = '70%'
     areaMsg.style.visibility = 'hidden'
 
   }

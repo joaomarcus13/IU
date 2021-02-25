@@ -1,9 +1,13 @@
 
 import './perfil.css'
-import imgtest from '../../assets/images/imgtest.webp'
-import HeadBack from '../headBack/headBack'
 
-function Perfil({user}) {
+import HeadBack from '../headBack/headBack'
+import Context from '../../context'
+import { useContext } from 'react'
+
+function Perfil() {
+
+    const {user} = useContext(Context) 
 
 
     function voltarPerfil() {

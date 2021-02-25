@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './aside.css'
-import imgtest from '../../assets/images/imgtest.webp'
+
 import Perfil from '../Perfil/perfil'
 import NovaConversa from '../NovaConversa/novaConversa'
 import Input from '../input/input'
@@ -8,8 +8,11 @@ import ItemConversa from '../itemconversa/itemconversa'
 import Context from '../../context'
 import Configuracoes from '../configuracoes/configuracoes';
 
-function Aside({ stateConversas, stateChatactive, user }) {
+function Aside() {
 
+
+
+    const {chatactive,conversas,user,setChatactive,setConversas,setUser} = useContext(Context) 
 
 
 
@@ -44,6 +47,8 @@ function Aside({ stateConversas, stateChatactive, user }) {
         }
 
     }
+
+ 
 
 
 
@@ -91,10 +96,10 @@ function Aside({ stateConversas, stateChatactive, user }) {
                 <div className='chat-msgs'>
                     <ul>
                         {
-                            stateConversas.conversas.map(e =>
+                            conversas.map(e =>
                                 <ItemConversa
-                                    active={stateChatactive.chatactive.id === e.id}
-                                    onClick={() => { stateChatactive.setChatactive(e) }}
+                                    active={chatactive.id === e.id}
+                                    onClick={() => { setChatactive(e) }}
                                     id={e.id}
                                     img={e.img}
                                     name={e.name}

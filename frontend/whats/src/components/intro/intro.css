@@ -1,12 +1,11 @@
 
 .intro{
-    grid-area: main;
     display: flex;
     flex-direction: column;
-
     align-items: center;
     background-color: var(--head);
     border-bottom: 5px solid var(--verde);
+    width: 70%;
 }
 
 .intro-card{

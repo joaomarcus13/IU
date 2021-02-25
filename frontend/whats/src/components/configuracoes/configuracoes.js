@@ -1,12 +1,13 @@
 
 import './configuracoes.css'
-import Input from '../input/input'
-import ItemConversa from '../itemconversa/itemconversa'
-import imgtest from '../../assets/images/imgtest.webp'
-import NewGroupIcon from '../../assets/images/new-group.png'
-import HeadBack from '../headBack/headBack'
 
-function Configuracoes({ user }) {
+import HeadBack from '../headBack/headBack'
+import { useContext } from 'react'
+import Context from '../../context'
+
+function Configuracoes() {
+
+    const {user} = useContext(Context) 
 
     return (
         <div className='tela-configuracoes'>

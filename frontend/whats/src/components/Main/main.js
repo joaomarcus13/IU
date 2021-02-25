@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,  useContext } from 'react';
+import Context from '../../context';
 import Head from '../Header/header'
 import ItemMensagem from '../itemMensagem/itemMensagem'
 import TypeArea from '../TypeArea/typeArea'
 import './main.css'
 
-function Main({ stateChatactive, user }) {
+function Main() {
+
+  const {chatactive,user,setChatactive} = useContext(Context) 
 
   const [msgs, setMsgs] = useState([
     { text: 'kkkkkk', emissor: 2 },
@@ -45,7 +48,7 @@ function Main({ stateChatactive, user }) {
   return (
     <>
       <main className='area-main'>
-        <Head stateChatactive={stateChatactive}></Head>
+        <Head></Head>
         <div className='main'>
 
           <div className='sc'>

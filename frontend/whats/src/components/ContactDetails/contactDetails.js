@@ -1,21 +1,22 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
+import Context from '../../context'
+import { useContext } from 'react'
 
-function ContactDetails({stateChatactive}){
+function ContactDetails(){
+
+    const {chatactive,setChatactive} = useContext(Context) 
 
     function handleClose() {
-        const container = document.querySelector('.container')
+        const main = document.querySelector('.area-main')
         const contactDetails = document.querySelector('.contact-details')
         const scroll = document.querySelector('.scroll')
+        const aside = document.querySelector('.aside')
       
-
+        aside.style.width = '30%'
         scroll.style.animation = ' close-search-msg 100ms '
-         
         contactDetails.style.animation = 'close-search-msg 100ms'
-        container.style.animation = 'close-search 100ms'
-        
-        container.style.width = '100%'
-        container.style.gridTemplateColumns = '30% 1fr 0fr'
+        main.style.width = '70%'
         contactDetails.style.visibility = 'hidden'
     
       }
@@ -32,7 +33,7 @@ function ContactDetails({stateChatactive}){
                 <div className='imgPerfil'>
                     <img className='img' src={imgtest}></img>
                     <div className='info'>
-                      <h1>{stateChatactive.chatactive.name}</h1>
+                      <h1>{chatactive.name}</h1>
                       <div className='span'>visto por ultimo hoje as 15:00</div>
                     </div>
                 </div>

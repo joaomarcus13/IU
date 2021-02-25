@@ -1,8 +1,12 @@
 import './header.css'
 import '../ContactDetails/contactDetails.css'
 import imgtest from '../../assets/images/imgtest.webp'
+import Context from '../../context'
+import { useContext } from 'react'
 
-function Header({stateChatactive}) {
+function Header() {
+
+  const {chatactive,setChatactive} = useContext(Context) 
 
   function handleOptions() {
     const options = document.querySelector('.options-chat')
@@ -17,28 +21,28 @@ function Header({stateChatactive}) {
   }
 
   function handleSearchMsg(){
-    const container = document.querySelector('.container')
+    const main = document.querySelector('.area-main')
     const areaMsg = document.querySelector('.search-msg') 
-
+    const aside = document.querySelector('.aside')
+    
+    aside.style.width = '25%'
     areaMsg.style.visibility = 'visible'
     areaMsg.style.animation = 'search-ani 100ms'
+    main.style.width = '45%'
     
-    container.style.animation = 'open-search 100ms'
-    container.style.width = '70%'; 
   }
 
   function handleContactDetails(){
-    const container = document.querySelector('.container')
+    const main = document.querySelector('.area-main')
+    const aside = document.querySelector('.aside')
     const contactDetail = document.querySelector('.contact-details') 
     const scroll = document.querySelector('.scroll')
-
+    
+    aside.style.width = '25%'
     contactDetail.style.visibility = 'visible'
     contactDetail.style.animation = 'search-ani 100ms'
     scroll.style.animation = 'details-scroll 700ms'
-    
-    container.style.animation = 'open-search 100ms'
-    container.style.width = '70%';
-    container.style.gridTemplateColumns = '36% 1fr 0fr'
+    main.style.width = '45%'
 
   }
 
@@ -53,7 +57,7 @@ function Header({stateChatactive}) {
         </div>
         <div className='info'>
 
-          <h1>{stateChatactive.chatactive.name}</h1>
+          <h1>{chatactive.name}</h1>
           <div className='span'>visto por ultimo hoje as 15:00</div>
 
         </div>
