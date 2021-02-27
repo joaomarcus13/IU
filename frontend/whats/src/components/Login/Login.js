@@ -10,23 +10,26 @@ function Login() {
     const { setUser } = useContext(Context)
 
     function setUpRecaptcha() {
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-            'size': 'invisible',
-            'callback': (response) => {
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
-                console.log('recaptcha ok')
-            }
-        });
+
 
     }
 
-    function handleLogin() {
-        setUpRecaptcha()
+    function handleLogin(e) {
+        e.preventDefault()
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+            'size': 'invisible',
+            'callback': (response) => {
+                console.log(response)
+                // reCAPTCHA solved, allow signInWithPhoneNumber.
+            }
+        });
 
-        // e.preventDefault()
-        //const phoneNumber = document.querySelector('phone').value;
+
+
+
         const phoneNumber = '+11212345678'
         const appVerifier = window.recaptchaVerifier;
+        console.log('recaptcha ok')
         firebase
             .auth()
             .signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -54,6 +57,7 @@ function Login() {
 
 
 
+
         //criar aqui conta usuario com numero do celular e usar setUser
         //fazer validacao de formulario
 
@@ -75,13 +79,13 @@ function Login() {
                 </div>
             </div>
             <div className='login-container'>
-                <form  >
+                <form onSubmit={handleLogin} >
                     <h1>LOGIN</h1>
                     numero telefone
                     <input type="text" placeholder='+99 99 99999-9999' id='phone' />
                     <input type="text" placeholder='codigo de verificacao' />
 
-                    <button type='button' id='sign-in-button' onClick={handleLogin}>Logar</button>
+                    <button type='submit' id='sign-in-button'>Logar</button>
                     <div  ></div>
                 </form>
 
