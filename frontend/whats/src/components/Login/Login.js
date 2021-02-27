@@ -14,39 +14,29 @@ function Login() {
     const [userId, setUserId] = useState('')
     const [phone, setPhone] = useState('+11212345678')
 
-
     function handleLogin(e) {
-        
 
         e.preventDefault()
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
             'size': 'invisible',
             'callback': (response) => {
-
             }
         });
 
         const phoneNumber = document.getElementById('phone')
-        
+
         //setPhone(phoneNumber.value)
         setPhone('+11212345678')
         const appVerifier = window.recaptchaVerifier;
         console.log(phone)
         phoneNumber.value = ''
         const barra = document.querySelector('.span')
-             barra.style.width = '100%'
-
+        barra.style.width = '100%'
 
         firebase.auth().signInWithPhoneNumber(phone, appVerifier).then((confirmationResult) => {
-            
             window.confirmationResult = confirmationResult;
             console.log('confirmado')
             setCodigo(true)
-           
-
-            
-            
-            //const code = window.prompt('digite o codigo')//'123456' //getCodeFromUserInput();
 
         }).catch((error) => {
             console.log(error)
@@ -54,9 +44,7 @@ function Login() {
     }
 
     function validCode() {
-
         const code = document.getElementById('codigo')
-       
         console.log(code.value)
 
         window.confirmationResult.confirm(code.value).then((result) => {
@@ -89,10 +77,8 @@ function Login() {
             name: name,
             status: 'Olá !'
         })
-
         setUser({ id: userId, img: imgUser, name: name, status: 'Olá !' })
         console.log('conta criada')
-
     }
 
     return (
@@ -115,29 +101,25 @@ function Login() {
                         <>
                             <h1>Login</h1>
                             {codigo ?
-                                <>
-                                    <div>
-                                        <p>Codigo: </p>
-                                        <input type="text" placeholder='999999' id='codigo' />
-                                    </div>
+                                <>  <div>
+                                    <p>Codigo: </p>
+                                    <input type="text" placeholder='999999' id='codigo' />
+                                </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                 </> :
-                                <>
-                                    <div>
-                                        <p>Telefone: </p>
-                                        <input type="text" placeholder='+99 99 99999-9999' id='phone' />
-                                    </div>
+                                <> <div>
+                                    <p>Telefone: </p>
+                                    <input type="text" placeholder='+99 99 99999-9999' id='phone' />
+                                </div>
                                     <button type='button' onClick={handleLogin}>Enviar codigo</button>
                                 </>
                             }
                         </>
                     }
-                
                 </form>
                 <div className='barra'><span className='span'></span> </div>
             </div>
             <div id='sign-in-button'></div>
-           
         </div>
     )
 }
