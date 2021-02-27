@@ -1,4 +1,4 @@
-/* import * as firebase from 'firebase'
+import * as firebase from 'firebase'
 
 
 const firebaseConfig = {
@@ -14,4 +14,3 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 const db = firebaseApp.firestore()
- */
