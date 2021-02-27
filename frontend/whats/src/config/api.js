@@ -1,5 +1,6 @@
-import * as firebase from 'firebase'
-
+//import * as firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDYghYuMnOabQSx2Nhz1MAwGKyhj-Ne7ew",
@@ -8,9 +9,11 @@ const firebaseConfig = {
     storageBucket: "whats-acdbe.appspot.com",
     messagingSenderId: "117760083877",
     appId: "1:117760083877:web:d293835fc37f1fa6f78a4c",
-    measurementId: "G-1V2YKVGMF3"}
+    measurementId: "G-1V2YKVGMF3"
+}
 
-
-const firebaseApp = firebase.initializeApp(firebaseConfig)
-
-const db = firebaseApp.firestore()
+if (!firebase.apps.length){
+    firebase.initializeApp(firebaseConfig);
+      
+} 
+export default firebase

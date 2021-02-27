@@ -28,7 +28,7 @@ function TypeArea() {
         const icons = document.querySelector('.icons-clip')
         const icon = document.querySelectorAll('.icon')
 
-        if (icons.style.visibility == 'visible'){
+        if (icons.style.visibility === 'visible'){
             for (let i of icon){
                 i.style.animation = 'close-icons-clip 300ms'
             }

@@ -8,6 +8,7 @@ import Pesquisar from './components/Search/search'
 import ContactDetails from './components/ContactDetails/contactDetails'
 import Intro from './components/intro/intro'
 
+
 import Context from './context'
 import Login from './components/Login/Login';
 
@@ -42,7 +43,7 @@ function App() {
     { id: 8, name: 'xico', img: imgtest, msg: 'colé' },
     { id: 9, name: 'joao', img: imgtest, msg: 'falaa' }]
   )
-  const [contatos, setContatos] = useState([
+  const [contatos] = useState([
     { id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' },
     { id: 2, name: 'jose', img: imgtest, status: 'Ocupado' },
     { id: 3, name: 'francisco', img: imgtest, status: 'Trabalhando' },
@@ -72,7 +73,7 @@ function App() {
         contatos
       }}>
 
-        {user?<Home></Home>:<Login></Login>}
+      { user?<Home></Home>:<Login></Login> } 
 
       </Context.Provider>
     </div>

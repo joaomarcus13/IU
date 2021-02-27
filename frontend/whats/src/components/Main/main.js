@@ -7,7 +7,7 @@ import './main.css'
 
 function Main() {
 
-  const {chatactive,user,setChatactive} = useContext(Context) 
+  const {user} = useContext(Context) 
 
   const [msgs, setMsgs] = useState([
     { text: 'kkkkkk', emissor: 2 },
