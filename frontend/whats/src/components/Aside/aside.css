@@ -82,8 +82,9 @@
   
   
 .options-whats ul{
+
     list-style: none;
-    /* height: 300px; */
+    height: 100%;
     width: 170px;
     display: flex;
     flex-direction: column;
