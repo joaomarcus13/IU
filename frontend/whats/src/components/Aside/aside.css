@@ -51,12 +51,6 @@
   }
 
 
-
-  .bg-icon-click{
-    background-color: rgba(22, 21, 21, 0.363);
-    
-  }
-
   .icon-options-whats, .icon-stories-whats, .icon-msgs-whats{
     cursor: pointer;
     border-radius: 50%;

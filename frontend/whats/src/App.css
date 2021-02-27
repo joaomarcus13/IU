@@ -57,6 +57,14 @@ div svg{
 }
 
 
+
+.bg-icon-click{
+  background-color: rgba(22, 21, 21, 0.363);
+  
+}
+
+
+
 @keyframes animate {
   0% {
      transform: scale(0)
