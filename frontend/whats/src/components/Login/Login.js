@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import Context from '../../context'
 import firebase from '../../config/api'
 import './Login.css'
@@ -9,68 +9,94 @@ function Login() {
 
     const { setUser } = useContext(Context)
 
-    function setUpRecaptcha() {
+    const [codigo, setCodigo] = useState(false);
+    const [cadastro, setCadastro] = useState(false)
+    const [userId, setUserId] = useState('')
+    const [phone, setPhone] = useState('+11212345678')
 
-
-    }
 
     function handleLogin(e) {
+        
+
         e.preventDefault()
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
             'size': 'invisible',
             'callback': (response) => {
-                console.log(response)
-                // reCAPTCHA solved, allow signInWithPhoneNumber.
+
             }
         });
 
-
-
-
-        const phoneNumber = '+11212345678'
+        const phoneNumber = document.getElementById('phone')
+        
+        //setPhone(phoneNumber.value)
+        setPhone('+11212345678')
         const appVerifier = window.recaptchaVerifier;
-        console.log('recaptcha ok')
-        firebase
-            .auth()
-            .signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then((confirmationResult) => {
+        console.log(phone)
+        phoneNumber.value = ''
+        const barra = document.querySelector('.span')
+             barra.style.width = '100%'
 
-                window.confirmationResult = confirmationResult;
 
-                console.log('confirmado', confirmationResult)
+        firebase.auth().signInWithPhoneNumber(phone, appVerifier).then((confirmationResult) => {
+            
+            window.confirmationResult = confirmationResult;
+            console.log('confirmado')
+            setCodigo(true)
+           
 
-                const code = '123456' //getCodeFromUserInput();
-                confirmationResult.confirm(code).then((result) => {
-                    // User signed in successfully.
-                    const user = result.user;
-                    console.log(user)
-                    // ...
-                }).catch((error) => {
-                    // User couldn't sign in (bad verification code?)
-                    // ...
-                });
+            
+            
+            //const code = window.prompt('digite o codigo')//'123456' //getCodeFromUserInput();
 
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
+
+    function validCode() {
+
+        const code = document.getElementById('codigo')
+       
+        console.log(code.value)
+
+        window.confirmationResult.confirm(code.value).then((result) => {
+            const user = result.user
+            console.log(user.uid)
+            firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+                    setUser({ id: user.uid, img: imgUser, name: doc.data().name, status: doc.data().status })
+
+                } else {
+                    setCadastro(true)
+                    setUserId(user.uid)
+                    console.log("No such document!");
+                }
             }).catch((error) => {
-                console.log(error)
-
+                console.log("Error getting document:", error);
             });
 
+        }).catch((error) => {
+            console.log(error)
+        });
+    }
 
+    function createUser() {
+        const name = document.getElementById('name').value
 
+        firebase.firestore().collection('users').doc(userId).set({
+            phone: phone,
+            name: name,
+            status: 'Olá !'
+        })
 
-        //criar aqui conta usuario com numero do celular e usar setUser
-        //fazer validacao de formulario
-
-        //setUser({ id: 1, img: imgUser, name: 'Joao Marcos', status: 'Disponivel' })
+        setUser({ id: userId, img: imgUser, name: name, status: 'Olá !' })
+        console.log('conta criada')
 
     }
 
-
-
     return (
         <div className='login'>
-
-            <div id="recaptcha-container"></div>
 
             <div className='login-header'>
                 <div className='login-header-icon'>
@@ -80,17 +106,38 @@ function Login() {
             </div>
             <div className='login-container'>
                 <form onSubmit={handleLogin} >
-                    <h1>LOGIN</h1>
-                    numero telefone
-                    <input type="text" placeholder='+99 99 99999-9999' id='phone' />
-                    <input type="text" placeholder='codigo de verificacao' />
 
-                    <button type='submit' id='sign-in-button'>Logar</button>
-                    <div  ></div>
+                    {cadastro ? <>
+                        <h1>Cadastro</h1>
+                        <input type="text" placeholder='Nome' id='name' />
+                        <button type='button' onClick={createUser}>Entrar</button>
+                    </> :
+                        <>
+                            <h1>Login</h1>
+                            {codigo ?
+                                <>
+                                    <div>
+                                        <p>Codigo: </p>
+                                        <input type="text" placeholder='999999' id='codigo' />
+                                    </div>
+                                    <button type='button' onClick={validCode} id='codigo'>Entrar</button>
+                                </> :
+                                <>
+                                    <div>
+                                        <p>Telefone: </p>
+                                        <input type="text" placeholder='+99 99 99999-9999' id='phone' />
+                                    </div>
+                                    <button type='button' onClick={handleLogin}>Enviar codigo</button>
+                                </>
+                            }
+                        </>
+                    }
+                
                 </form>
-
+                <div className='barra'><span className='span'></span> </div>
             </div>
-
+            <div id='sign-in-button'></div>
+           
         </div>
     )
 }
