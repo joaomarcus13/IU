@@ -10,16 +10,6 @@ function Perfil() {
     const {user} = useContext(Context) 
 
 
-    function voltarPerfil() {
-        const perfil = document.querySelector('.tela-perfil')
-        perfil.classList.add('voltar')
-        setTimeout(() => {
-            perfil.classList.remove('voltar')
-            perfil.style.display = 'none'
-        }, 1000);
-
-
-    }
 
     return (
         <div className='tela-perfil'>

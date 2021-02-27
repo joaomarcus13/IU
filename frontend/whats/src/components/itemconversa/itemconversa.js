@@ -1,20 +1,7 @@
 
 import './itemconversa.css'
-import imgtest from '../../assets/images/imgtest.webp'
 
-
-function ItemConversa({active,onClick,id,img,name,msgPrev}) {
-
-    function handleActiveChat(e) {
-        const li = document.querySelectorAll('.item-conversa')
-        for (let i of li) {
-            i.classList.remove('active')
-        }
-        
-        console.log(e.target)
-        e.target.classList.add('active')
-
-    }
+function ItemConversa({active,onClick,id,img,name,msgPrev,status}) {
 
     return (
         <li className={`item-conversa ${active?'active':''}`}  onClick={onClick}>
@@ -25,7 +12,7 @@ function ItemConversa({active,onClick,id,img,name,msgPrev}) {
 
                 <div className='nome-chat'>
                     <h1>{name}</h1>
-                    <span>{msgPrev}</span>
+                    <span>{msgPrev || status}</span>
                 </div>
                 <span className='hora-chat'>
                     23:40</span>

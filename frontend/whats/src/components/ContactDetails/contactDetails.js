@@ -5,7 +5,7 @@ import { useContext } from 'react'
 
 function ContactDetails(){
 
-    const {chatactive,setChatactive} = useContext(Context) 
+    const {chatactive} = useContext(Context) 
 
     function handleClose() {
         const main = document.querySelector('.area-main')
@@ -60,7 +60,7 @@ function ContactDetails(){
                 </div>
 
                 <div className='grupos'>
-                    <h1>Grupos em comum <spam>0</spam>  </h1>
+                    <h1>Grupos em comum <span>0</span>  </h1>
                     
                 </div>
 

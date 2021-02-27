@@ -12,7 +12,7 @@ function Aside() {
 
 
 
-    const {chatactive,conversas,user,setChatactive,setConversas,setUser} = useContext(Context) 
+    const {chatactive,conversas,user,setChatactive} = useContext(Context) 
 
 
 
@@ -96,8 +96,9 @@ function Aside() {
                 <div className='chat-msgs'>
                     <ul>
                         {
-                            conversas.map(e =>
+                            conversas.map((e,k) =>
                                 <ItemConversa
+                                    key={k}
                                     active={chatactive.id === e.id}
                                     onClick={() => { setChatactive(e) }}
                                     id={e.id}
