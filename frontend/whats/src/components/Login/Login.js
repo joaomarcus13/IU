@@ -10,7 +10,7 @@ function Login() {
     const { setUser } = useContext(Context)
 
     const [codigo, setCodigo] = useState(false);
-    const [cadastro, setCadastro] = useState(true)
+    const [cadastro, setCadastro] = useState(false)
     const [userId, setUserId] = useState('')
     const [phone, setPhone] = useState('+11212345678')
 
