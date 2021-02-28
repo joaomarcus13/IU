@@ -97,8 +97,16 @@ form div p{
     background-color: var(--head);
     color: #fff;
     box-shadow: 0px 0px 0.5px 0px #181717;
-    
 }
+
+form input#imgUser{
+    padding: 0px;
+    margin: 5px;
+    background-color: transparent;
+    color: black;
+}
+
+
 
 form svg{
     cursor: pointer;
