@@ -34,17 +34,21 @@ function App() {
   const [chatactive, setChatactive] = useState(false)
   const [conversas, setConversas] = useState([{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}])
   const [contatos] = useState([{ id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' }])
-  const [user, setUser] = useState({ id: 'qKKTReTunbcx9A14VMQ7qoPdeun1', img: imgtest,  name: 'João',  status:'ola'})
+  //const [user, setUser] = useState({ id: 'qKKTReTunbcx9A14VMQ7qoPdeun1', img: imgtest,  name: 'João',  status:'ola'})
+  const [user, setUser] = useState(null)
   const [msg, setMsg] = useState([])
   
-  firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) =>  {
-      if (doc.exists){
-        console.log(doc.data())
-      //   setMsg(doc.data().msg)   
-      }
+  if (user != null){
+    firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) =>  {
+        if (doc.exists){
+          console.log(doc.data())
+        //   setMsg(doc.data().msg)   
+        }
+      })
     })
-  })
+
+  }
   
   return (
 

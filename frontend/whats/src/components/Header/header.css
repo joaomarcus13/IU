@@ -67,8 +67,9 @@
     /* visibility: hidden; */
     display: none;
     border-radius: 3px;
-    animation: animate 300ms normal both;
-    transform-origin: 100% 0;
+   animation: animate 300ms normal both;
+   transform-origin: 100% 0;
+     
    
   }
 
@@ -100,12 +101,14 @@
     background-color: rgb(36, 36, 36);
   }
 
-  .icon-options-chat{
+  .icon-options-chat,.icon-search {
     cursor: pointer;
     
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-.icon-search{
-  cursor: pointer;
-    
-}

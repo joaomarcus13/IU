@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './aside.css'
 
 import Perfil from '../Perfil/perfil'
@@ -11,9 +11,11 @@ import Configuracoes from '../configuracoes/configuracoes';
 function Aside() {
 
     const {chatactive,conversas,user,setChatactive} = useContext(Context) 
+    const [isOptionsActive, setIsOptionActive] = useState(false)
 
     function handleOptions() {
-        console.log('option')
+        setIsOptionActive(!isOptionsActive)
+        /* console.log('option')
         const divoption = document.querySelector('.icon-options-whats')
         const options = document.querySelector('.options-whats')
         const optChat = document.querySelector('.options-chat')
@@ -25,7 +27,7 @@ function Aside() {
 
         if (optChat != null && optChat.style.display === 'block') {
             optChat.style.display = 'none'
-        }
+        } */
     }
 
 
@@ -38,7 +40,6 @@ function Aside() {
             options.style.display='none'
         }
         if(iconOptions.classList.contains('bg-icon-click')){
-            console.log('tem')
             iconOptions.classList.remove('bg-icon-click')
         }
 
@@ -61,13 +62,13 @@ function Aside() {
                         <div className="icon-msgs-whats" onClick={() => { handleDrawer('.tela-novaconversa') }}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"></path></svg></div>
 
-                        <div className="icon-options-whats" id='opt-w' onClick={handleOptions}>
+                        <div className={`icon-options-whats ${isOptionsActive?'bg-icon-click':''}`} id='opt-w' onClick={handleOptions}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg>
                         </div>
                     </div>
 
 
-                    <div className="options-whats" >
+                    <div className="options-whats" style={{display:isOptionsActive?'block':'none'}} >
                         <ul>
                             <li>Novo grupo</li>
                             <li>Criar uma sala</li>
@@ -105,9 +106,9 @@ function Aside() {
                 </div>
 
             </aside>
-            <Perfil user={user}></Perfil>
+            <Perfil></Perfil>
             <NovaConversa></NovaConversa>
-            <Configuracoes user={user}></Configuracoes>
+            <Configuracoes></Configuracoes>
 
         </>
     )
