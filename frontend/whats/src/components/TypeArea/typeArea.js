@@ -1,7 +1,14 @@
 import './typeArea.css'
 import IconsClip from '../IconsClip/iconsClip'
+import firebase from '../../config/api'
+import { useContext } from 'react'
+import Context from '../../context'
 
 function TypeArea() {
+
+    const {user,chatactive} = useContext(Context)
+    const {conversas, setConversas} = useContext(Context)
+    const {msg,setMsg} = useContext(Context)
 
     function handleChange(){
         const icon_m = document.querySelector('.type-area .icon-microfone')
@@ -17,7 +24,15 @@ function TypeArea() {
 
     function enviar(){
         var campo = document.getElementById('campo')
-        console.log(campo.value)
+             
+        const mensage = msg.push({text: campo.value, emissor: user.id})
+        setMsg(mensage)
+        console.log(msg)
+
+        firebase.firestore().collection('users').doc(user.id).collection('conversas').doc(chatactive.id).set({
+            msg: msg
+        })
+
         campo.value = ''
         handleChange()
     }

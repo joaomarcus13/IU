@@ -10,11 +10,7 @@ import Configuracoes from '../configuracoes/configuracoes';
 
 function Aside() {
 
-
-
     const {chatactive,conversas,user,setChatactive} = useContext(Context) 
-
-
 
     function handleOptions() {
         console.log('option')
@@ -47,9 +43,6 @@ function Aside() {
         }
 
     }
-
- 
-
 
 
     return (

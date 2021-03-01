@@ -8,9 +8,9 @@ import Pesquisar from './components/Search/search'
 import ContactDetails from './components/ContactDetails/contactDetails'
 import Intro from './components/intro/intro'
 
-
 import Context from './context'
 import Login from './components/Login/Login';
+import firebase from './config/api'
 
 function Home() {
   const {chatactive} = useContext(Context)
@@ -32,34 +32,20 @@ function Home() {
 function App() {
 
   const [chatactive, setChatactive] = useState(false)
-  const [conversas, setConversas] = useState([
-    { id: 1, name: 'goncalo', img: imgtest, msg: 'iaiiii' },
-    { id: 2, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 3, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 4, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 5, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 6, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 7, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 8, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 9, name: 'joao', img: imgtest, msg: 'falaa' }]
-  )
-  const [contatos] = useState([
-    { id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' },
-    { id: 2, name: 'jose', img: imgtest, status: 'Ocupado' },
-    { id: 3, name: 'francisco', img: imgtest, status: 'Trabalhando' },
-    { id: 4, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 5, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 6, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 7, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 8, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 9, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 10, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 111, name: 'joao', img: imgtest, status: 'Ocupado' }]
-  )
-  const [user, setUser] = useState(null)
-  //{ id: 1, img: imgUser, name: 'JM', status: 'Disponivel' }
-
-
+  const [conversas, setConversas] = useState([{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}])
+  const [contatos] = useState([{ id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' }])
+  const [user, setUser] = useState({ id: 'qKKTReTunbcx9A14VMQ7qoPdeun1', img: imgtest,  name: 'João',  status:'ola'})
+  const [msg, setMsg] = useState([])
+  
+  firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) =>  {
+      if (doc.exists){
+        console.log(doc.data())
+      //   setMsg(doc.data().msg)   
+      }
+    })
+  })
+  
   return (
 
     <div className='container'>
@@ -70,16 +56,15 @@ function App() {
         setConversas,
         user,
         setUser,
-        contatos
+        contatos,
+        setMsg,
+        msg
       }}>
 
       { user?<Home></Home>:<Login></Login> } 
 
       </Context.Provider>
     </div>
-
-
-
   );
 }
 

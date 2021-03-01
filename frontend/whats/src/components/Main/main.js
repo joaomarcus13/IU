@@ -8,42 +8,8 @@ import './main.css'
 function Main() {
 
   const {user} = useContext(Context) 
-
-  const [msgs, setMsgs] = useState([
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-  ])
+  const {msg} = useContext(Context)
+  const {chatactive} = useContext(Context)
 
   return (
     <>
@@ -52,7 +18,7 @@ function Main() {
         <div className='main'>
 
           <div className='sc'>
-            {msgs.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>)}
+            {msg.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>) }
           </div>
         </div>
         <TypeArea></TypeArea>

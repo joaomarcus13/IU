@@ -63,7 +63,12 @@ function Login() {
             firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
-                    setUser({ id: user.uid, img: imgUser, name: doc.data().name, status: doc.data().status })
+                    setUser({ id: user.uid, 
+                        img: imgUser, 
+                        name: doc.data().name, 
+                        status: doc.data().status,
+                        conversas: doc.data().conversas,
+                        contados:doc.data().contatos})
 
                 } else {
                     setCadastro(true)
