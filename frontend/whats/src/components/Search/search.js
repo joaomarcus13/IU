@@ -1,5 +1,5 @@
 import './search.css'
-import React, { useEffect } from 'react';
+import React from 'react';
 import Input from '../input/input'
 
 function Pesquisar() {
@@ -16,15 +16,6 @@ function Pesquisar() {
     areaMsg.style.visibility = 'hidden'
 
   }
-
-  function toggleIcon() {
-    const iconSearch = document.querySelector('.icon-search-input')
-    const iconBack = document.querySelector('.icon-back')
-
-    iconSearch.style.display = 'none'
-    iconBack.style.display = 'flex'
-  }
-
 
 
   return (
