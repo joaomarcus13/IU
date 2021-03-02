@@ -1,4 +1,4 @@
-import React, { useState,  useContext } from 'react';
+import React, { useState,  useContext, useEffect } from 'react';
 import Context from '../../context';
 import Head from '../Header/header'
 import ItemMensagem from '../itemMensagem/itemMensagem'
@@ -10,6 +10,11 @@ function Main() {
   const {user} = useContext(Context) 
   const {msg} = useContext(Context)
   const {chatactive} = useContext(Context)
+
+  useEffect(() => {
+
+   
+  },[])
 
   return (
     <>

@@ -29,9 +29,9 @@ function TypeArea() {
         setMsg(mensage)
         console.log(msg)
 
-        firebase.firestore().collection('users').doc(user.id).collection('conversas').doc(chatactive.id).set({
-            msg: msg
-        })
+       // firebase.firestore().collection('users').doc(user.id).collection('conversas').doc(chatactive.id).set({
+       //     msg: msg
+       // })
 
         campo.value = ''
         handleChange()

@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './aside.css'
+import firebase from '../../config/api'
 
 import Perfil from '../Perfil/perfil'
 import NovaConversa from '../NovaConversa/novaConversa'
@@ -12,6 +13,22 @@ function Aside() {
 
     const {chatactive,conversas,user,setChatactive} = useContext(Context) 
     const [isOptionsActive, setIsOptionActive] = useState(false)
+    const {msg,setMsg} = useContext(Context)
+
+
+    useEffect(()=> {
+        firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) =>  {
+            if (doc.exists){
+               // console.log(doc.data())
+                // setMsg(doc.data().msg)
+                const mensage = {msg:doc.data().msg, emissor:doc.data().emissor}
+                setMsg(msg.push(mensage))
+                console.log(msg)
+            }
+            })
+        })
+    },[])
 
     function handleOptions() {
         setIsOptionActive(!isOptionsActive)

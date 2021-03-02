@@ -148,8 +148,8 @@ function Login() {
                                     <div>
                                         <p>O whats enviará um SMS para verificar o seu numero de telefone </p>
                                         <div className="input-phone">
-                                            <input type="text" disabled value='+55'  />
-                                            <input type="text" placeholder='Seu número' id='phone' ></input>
+                                            <input type="text" disabled value='+55' />
+                                            <input type="text" placeholder='Seu número' id='phone'  value={'1212345678'}></input>
                                         </div>
 
                                     </div>
