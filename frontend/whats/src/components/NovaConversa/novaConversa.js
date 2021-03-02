@@ -2,17 +2,48 @@
 import './novaConversa.css'
 import Input from '../input/input'
 import ItemConversa from '../itemconversa/itemconversa'
-
+import imgtest from '../../assets/images/imgtest.png'
 import NewGroupIcon from '../../assets/images/new-group.png'
 import HeadBack from '../headBack/headBack'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Context from '../../context'
+import firebase from '../../config/api'
+import userEvent from '@testing-library/user-event'
 
 function NovaConversa() {
 
-    const {contatos} = useContext(Context)
+    const { contatos, setContatos, user } = useContext(Context)
 
 
+    function adicionarConversa(
+        
+    ) {
+        
+    }
+
+
+    useEffect(() => {
+        let contacts = []
+        async function getContacts() {
+            const res = await firebase.firestore().collection('users').get()
+            console.log(res)
+            res.forEach(e => {
+                if(e.id !== user.id){
+                    contacts.push({
+                        id:e.id,
+                        img:imgtest,
+                        name:e.data().name,
+                        status:e.data().status
+                    })
+                }
+            })
+            setContatos(contacts)
+        }
+        
+       getContacts()
+
+
+    }, [])
 
     return (
         <div className='tela-novaconversa'>
@@ -30,8 +61,8 @@ function NovaConversa() {
                         </div>
                     </div>
                     {
-                        contatos.map((e, k) => <ItemConversa
-                            key={k}
+                        Object.values(contatos).map((e) => <ItemConversa
+                            onClick={adicionarConversa}
                             img={e.img}
                             name={e.name}
                             status={e.status}>

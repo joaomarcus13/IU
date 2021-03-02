@@ -23,7 +23,7 @@ function Main() {
         <div className='main'>
 
           <div className='sc'>
-            {msg.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>) }
+            {msg.msg.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>) }
           </div>
         </div>
         <TypeArea></TypeArea>

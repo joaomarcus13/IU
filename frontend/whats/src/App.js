@@ -33,7 +33,7 @@ function App() {
 
   const [chatactive, setChatactive] = useState(false)
   const [conversas, setConversas] = useState([{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}])
-  const [contatos] = useState([{ id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' }])
+  const [contatos,setContatos] = useState([])
   const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest,  name: 'Teste',  status:'ola'})
   //const [user, setUser] = useState(null)
   const [msg, setMsg] = useState([])
@@ -50,6 +50,7 @@ function App() {
         user,
         setUser,
         contatos,
+        setContatos,
         setMsg,
         msg
       }}>

@@ -23,8 +23,10 @@ function Aside() {
                // console.log(doc.data())
                 // setMsg(doc.data().msg)
                 const mensage = {msg:doc.data().msg, emissor:doc.data().emissor}
-                setMsg(msg.push(mensage))
                 console.log(msg)
+                const obj = msg.push(mensage)
+                setMsg(obj)
+                console.log(typeof(msg))
             }
             })
         })
