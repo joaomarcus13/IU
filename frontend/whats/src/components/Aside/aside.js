@@ -16,7 +16,7 @@ function Aside() {
     const {msg,setMsg} = useContext(Context)
 
 
-    useEffect(()=> {
+    /* useEffect(()=> {
         firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) =>  {
             if (doc.exists){
@@ -30,23 +30,19 @@ function Aside() {
             }
             })
         })
-    },[])
+    },[]) */
+
+
 
     function handleOptions() {
         setIsOptionActive(!isOptionsActive)
-        /* console.log('option')
-        const divoption = document.querySelector('.icon-options-whats')
-        const options = document.querySelector('.options-whats')
-        const optChat = document.querySelector('.options-chat')
+        
+    }
 
-        options.style.display =
-            options.style.display === 'block' ? 'none' : 'block'
-
-        divoption.classList.toggle('bg-icon-click')
-
-        if (optChat != null && optChat.style.display === 'block') {
-            optChat.style.display = 'none'
-        } */
+    function  handleChatActive(e) {
+        console.log('chat ativo',e)
+        setChatactive(e)
+        console.log(chatactive)
     }
 
 
@@ -109,15 +105,15 @@ function Aside() {
                 <div className='chat-msgs'>
                     <ul>
                         {
-                            conversas.map((e,k) =>
+                            Object.values(conversas).map(e =>
                                 <ItemConversa
-                                    key={k}
-                                    active={chatactive.id === e.id}
-                                    onClick={() => { setChatactive(e) }}
-                                    id={e.id}
+                                    key={e.idChat}
+                                    active={chatactive.id === e.idChat}
+                                    onClick={() => { handleChatActive(e) }}
+                                    id={e.idChat}
                                     img={e.img}
                                     name={e.name}
-                                    msgPrev={e.msg}>
+                                    msgPrev='iaii'>
                                 </ItemConversa>)
                         }
 

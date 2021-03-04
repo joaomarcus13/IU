@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import './global.css'
 import imgtest from './assets/images/imgtest.png'
@@ -13,7 +13,7 @@ import Login from './components/Login/Login';
 import firebase from './config/api'
 
 function Home() {
-  const {chatactive} = useContext(Context)
+  const { chatactive } = useContext(Context)
   return (
     <>
       <Aside>
@@ -32,12 +32,46 @@ function Home() {
 function App() {
 
   const [chatactive, setChatactive] = useState(false)
-  const [conversas, setConversas] = useState([{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}])
-  const [contatos,setContatos] = useState([])
-  const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest,  name: 'Teste',  status:'ola'})
+  const [conversas, setConversas] = useState([])
+  //{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}
+  const [contatos, setContatos] = useState([])
+  const [user, setUser] = useState(null)
+  //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
   //const [user, setUser] = useState(null)
   const [msg, setMsg] = useState([])
+
+  function handleSetConversas() {
+                                                //lembrar de trocar
+    firebase.firestore().collection('users').doc('IWZYQoIL45cBdX4uCLz1QNFSEk12').onSnapshot(doc => {
+      console.log(doc.data().chats)
+      setConversas(doc.data().chats)
+    })
+
+  } 
   
+  useEffect(()=>{
+    //por enquanto buscar o usuario 
+    firebase.firestore().collection('users').doc('IWZYQoIL45cBdX4uCLz1QNFSEk12').onSnapshot(doc=>{
+      console.log(doc.data())
+      console.log(doc.id)
+      setUser({
+        id:doc.id,
+        img:imgtest,
+        name:doc.data().name,
+        status:doc.data().status,
+        chats:doc.data().chats
+      }) 
+      setConversas(doc.data().chats)
+    })
+
+
+  },[])
+
+ /*  useEffect(() => {
+     handleSetConversas()
+  }, [user]) */
+
+ 
 
   return (
 
@@ -55,7 +89,7 @@ function App() {
         msg
       }}>
 
-      { user?<Home></Home>:<Login></Login> } 
+        {user ? <Home></Home> : <Login></Login>}
 
       </Context.Provider>
     </div>

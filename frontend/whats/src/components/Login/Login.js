@@ -114,7 +114,7 @@ function Login() {
                 </div>
             </div>
             <div className='login-container'>
-                <form onSubmit={handleLogin} >
+                <form onSubmit={handleLogin} className='login-form' >
 
                     {cadastro ? <>
                         <h1>Cadastro</h1>
