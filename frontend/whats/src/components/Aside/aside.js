@@ -108,12 +108,13 @@ function Aside() {
                             Object.values(conversas).map(e =>
                                 <ItemConversa
                                     key={e.idChat}
-                                    active={chatactive.id === e.idChat}
+                                    active={chatactive.idChat === e.idChat}
                                     onClick={() => { handleChatActive(e) }}
                                     id={e.idChat}
                                     img={e.img}
                                     name={e.name}
-                                    msgPrev='iaii'>
+                                    msgPrev={e.msg}
+                                    hora={e.hora}>
                                 </ItemConversa>)
                         }
 

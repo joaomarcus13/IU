@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import Context from '../../context';
 import Head from '../Header/header'
 import ItemMensagem from '../itemMensagem/itemMensagem'
@@ -10,6 +10,8 @@ function Main() {
 
   const { user, chatactive } = useContext(Context)
   const [ msgs, setMsgs ] = useState([])
+  const [usersInChat,setUsersInChat] = useState([])
+  const scrollRef = useRef()
 
   function handleSetMsgs(data) {
     setMsgs(data)
@@ -17,15 +19,25 @@ function Main() {
 
   useEffect(() => {
 
+    if(scrollRef.current.scrollHeight > scrollRef.current.offsetHeight){
+      scrollRef.current.scrollTop =  scrollRef.current.scrollHeight - scrollRef.current.offsetHeight 
+    }
+
     if (chatactive !== false) {
       firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
         if (docs.exists) {
     
           handleSetMsgs(docs.data().mensagens)
+          setUsersInChat(docs.data().users)
           
         }
       })
     }
+
+   
+
+
+
   }, [chatactive])
 
   return (
@@ -33,12 +45,12 @@ function Main() {
       <main className='area-main'>
         <Head></Head>
         <div className='main'>
-
-          <div className='sc'>
-            {msgs.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>) }
+ 
+          <div ref={scrollRef} className='sc'>
+            {msgs.map(e => <ItemMensagem text={e.text} emissor={e.emissor} hora={e.hora} user={user}></ItemMensagem>) }
           </div>
         </div>
-        <TypeArea></TypeArea>
+        <TypeArea users={usersInChat} scrollRef = {scrollRef}></TypeArea>
       </main>
     </>
   )

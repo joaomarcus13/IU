@@ -28,8 +28,8 @@
   
   .info-chat .info{
    min-width:200px;
-   margin-left: 10px;
-   
+   margin-left: 15px;
+  line-height: 1.4;
   
   }
   
@@ -54,6 +54,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 13%;
+    
   }
 
 

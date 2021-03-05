@@ -41,7 +41,7 @@ function NovaConversa() {
             console.log(e.chats) */
             boo = conversasUserIds.filter(x => conversasOutroIds.includes(x))
         }
-         console.log(boo)
+        
         if (boo.length==0 || boo == false) {
         
             chat = await firebase.firestore().collection('conversas').add({
@@ -57,7 +57,9 @@ function NovaConversa() {
                     idChat: chat.id,
                     name: e.name,
                     img: imgtest,
-                    idUserChat: e.id
+                    idUserChat: e.id,
+                    msg:'',
+                    hora:Date.now()
                 })
             })
 
@@ -67,7 +69,9 @@ function NovaConversa() {
                     idChat: chat.id,
                     name: user.name,
                     img: imgUser,
-                    idUserChat: user.id
+                    idUserChat: user.id,
+                    msg:'',
+                    hora:Date.now()
                 })
             })
 
@@ -144,11 +148,6 @@ function NovaConversa() {
 
                 </ul>
             </div>
-
-
-
-
-
         </div>
     )
 }

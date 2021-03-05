@@ -6,7 +6,7 @@ import Context from '../../context'
 import IconEmoji from '../../assets/icons/iconEmoji'
 import IconAnexar from '../../assets/icons/iconAnexar'
 
-function TypeArea() {
+function TypeArea({ users, scrollRef }) {
 
     const { user, chatactive } = useContext(Context)
     const { conversas, setConversas } = useContext(Context)
@@ -22,22 +22,43 @@ function TypeArea() {
 
     async function enviar() {
 
-        firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
-            mensagens: firebase.firestore.FieldValue.arrayUnion({
-                emissor: user.id,
-                text: msg,
-                hora: Date.now()
+
+        if (msg) {
+
+
+
+            firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
+                mensagens: firebase.firestore.FieldValue.arrayUnion({
+                    emissor: user.id,
+                    text: msg,
+                    hora: Date.now()
+                })
             })
-        })
 
-        setMsg('')
-        inputRef.current.focus()
+            setMsg('')
+            inputRef.current.focus()
 
+            for (let i of users) {
+                let cts = await firebase.firestore().collection('users').doc(i).get()
+                let chats = [...cts.data().chats]
+                for (let j of chats) {
+                    if (j.idChat === chatactive.idChat) {
+                        j.msg = msg
+                        j.hora = Date.now()
+
+                    }
+                }
+                await firebase.firestore().collection('users').doc(i).update({
+                    chats
+                })
+            }
+
+        }
     }
 
-    function gravar() {
+   /*  function gravar() {
         console.log('gravando')
-    }
+    } */
 
     function handleIconsClip() {
         const icons = document.querySelector('.icons-clip')
