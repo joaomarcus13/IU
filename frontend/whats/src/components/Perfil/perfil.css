@@ -6,29 +6,51 @@
     width: 30%;
     min-width: 300px;
     height: 100%;
-    display: none;
+
+    transform: translateX(-600px);
+    transition: all 0.5s cubic-bezier(.61,.03,.21,1.01);
+    
     background-color: var(--chat);
     z-index: 10;
     border-right: 1px solid var(--border);
-    left: 0;
-    animation-name: perfilAnimation;
+  
+    /* animation-name: perfilAnimation;
     animation-duration: 0.3s;
-    animation-timing-function: ease; 
+    animation-timing-function: ease;  */
 
 }
 
+.open{
+    transform: translateX(0px);
+    transition: all 0.2s ease;
+  }
+  
 
 .div-tela-perfil{
-    animation: nomeAnimation 1s cubic-bezier(0,.74,0,.96);
-
-    transform-origin: top center;
+    /* animation: nomeAnimation 1s cubic-bezier(0,.74,0,.96);
+    transform-origin: top center; */
+    /* transform: scaleY(0); */
+    transform: translateY(-80px);
+    opacity: 0;
+}
+.open-perfil{
+    transition: transform 1s, opacity 0.1s cubic-bezier(0,.74,0,.96) 0.3s;
+    transform:translateY(0);
+    opacity: 1;
+    /* transform-origin: top center; */
 }
 
 .tela-perfil-img{
     width: 200px;
     margin: auto;
     padding-top: 25px;
-    animation: imgAnimation 0.7s cubic-bezier(.25,-0.05,0,.96);
+    transform: scale(0);
+   
+    /* animation: imgAnimation 0.7s cubic-bezier(.25,-0.05,0,.96); */
+}
+.open-img{
+    transition: all 0.7s cubic-bezier(.25,-0.05,0,.96) 0.1s;
+   transform: scale(1);
 }
 
 .tela-perfil-img img{

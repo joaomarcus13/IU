@@ -51,7 +51,8 @@ function App() {
   
   useEffect(()=>{
     //por enquanto buscar o usuario 
-    firebase.firestore().collection('users').doc('IWZYQoIL45cBdX4uCLz1QNFSEk12').onSnapshot(doc=>{
+    if(user){
+    firebase.firestore().collection('users').doc(user.id).onSnapshot(doc=>{
       console.log(doc.data())
       console.log(doc.id)
       setUser({
@@ -63,6 +64,7 @@ function App() {
       }) 
       setConversas(doc.data().chats)
     })
+  }
 
 
   },[])

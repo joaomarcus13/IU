@@ -9,10 +9,9 @@ import HeadBack from '../headBack/headBack'
 import { useContext, useEffect } from 'react'
 import Context from '../../context'
 import firebase from '../../config/api'
-import userEvent from '@testing-library/user-event'
 
 
-function NovaConversa() {
+function NovaConversa({open,close}) {
 
     const { contatos, setContatos, user, conversas, setConversas, chatactive, setChatactive } = useContext(Context)
 
@@ -121,9 +120,9 @@ function NovaConversa() {
     }, [chatactive])
 
     return (
-        <div className='tela-novaconversa'>
+        <div className={`tela-novaconversa ${open.novaconversa?'open':''}`}>
 
-            <HeadBack classe='tela-novaconversa' text='Nova Conversa'></HeadBack>
+            <HeadBack classe='novaconversa' text='Nova Conversa' open={open} close={close}></HeadBack>
 
             <div className="tela-novaconversa-body">
                 <Input index={1} placeholder='pesquisar contatos'></Input>

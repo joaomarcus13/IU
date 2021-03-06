@@ -78,7 +78,7 @@ function Header() {
         </div>
       </div>
 
-      <div className='options-chat' style={{ display: isOptionsActive ? 'block' : 'none' }}>
+      <div className={`options-chat ${isOptionsActive?'options-chat-open':''}`} >
         <ul>
           <li>
             Dados do contato

@@ -5,23 +5,23 @@ import HeadBack from '../headBack/headBack'
 import Context from '../../context'
 import { useContext } from 'react'
 
-function Perfil() {
+function Perfil({open,close}) {
 
     const {user} = useContext(Context) 
 
 
 
     return (
-        <div className='tela-perfil'>
+        <div className={`tela-perfil ${open.perfil?'open':''}`}>
 
-            <HeadBack classe='tela-perfil' text='Perfil'></HeadBack>
+            <HeadBack classe='perfil' text='Perfil' open={open} close={close}></HeadBack>
 
             <div className='tela-perfil-body'>
-                <div className='tela-perfil-img'>
+                <div className={`tela-perfil-img ${open.perfil?'open-img':''}`}>
                     <img src={user.img} alt="imagem perfil" />
                 </div>
                 
-                <div className='div-tela-perfil'>
+                <div className={`div-tela-perfil ${open.perfil?'open-perfil':''}`}>
 
                     <div className='tela-perfil-nome'>
                         <div className='nome-green'>Nome</div>

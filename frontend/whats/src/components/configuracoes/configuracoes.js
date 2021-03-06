@@ -5,14 +5,14 @@ import HeadBack from '../headBack/headBack'
 import { useContext } from 'react'
 import Context from '../../context'
 
-function Configuracoes() {
+function Configuracoes({open,close}) {
 
     const {user} = useContext(Context) 
 
     return (
-        <div className='tela-configuracoes'>
+        <div className={`tela-configuracoes ${open.configuracoes?'open':''}`}>
 
-            <HeadBack classe='tela-configuracoes' text='Configurações'></HeadBack>
+            <HeadBack classe='configuracoes' text='Configurações' close={close}></HeadBack>
 
             <div className="tela-configuracoes-body">
                 <div className='tela-configuracoes-perfil'>

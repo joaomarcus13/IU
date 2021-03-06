@@ -94,7 +94,7 @@ function Login() {
         firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
             name: name,
-            status: status ?? 'Olá !'
+            status: status ?? 'Disponivel'
         })
         setUser({ id: userId, img: imgUser, name: name, status: status ?? 'Disponível' })
         console.log('conta criada')
@@ -149,7 +149,7 @@ function Login() {
                                         <p>O whats enviará um SMS para verificar o seu numero de telefone </p>
                                         <div className="input-phone">
                                             <input type="text" disabled value='+55' />
-                                            <input type="text" placeholder='Seu número' id='phone'  value={'1212345678'}></input>
+                                            <input type="text" placeholder='Seu número' id='phone' ></input>
                                         </div>
 
                                     </div>
