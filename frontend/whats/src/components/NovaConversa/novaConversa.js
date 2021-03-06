@@ -72,7 +72,12 @@ function NovaConversa({open,close}) {
        
         back('novaconversa')
         setChatactive(e)
-
+       
+        firebase.firestore().collection('users').doc(user.id).onSnapshot(doc => {
+            console.log(doc.data().chats)
+            setConversas(doc.data().chats)
+          })
+      
 
   
         
