@@ -16,14 +16,7 @@ function NovaConversa({open,close}) {
     const { contatos, setContatos, user, conversas, setConversas, chatactive, setChatactive } = useContext(Context)
 
 
-    function back(classe) {
-        const element = document.querySelector(`.${classe}`)
-        element.classList.add('voltar')
-        setTimeout(() => {
-            element.classList.remove('voltar')
-            element.style.display = 'none'
-        }, 1000);
-    }
+    
 
     async function adicionarConversa(e) {
         /* console.log(user.chats[0].idChat)
@@ -77,21 +70,24 @@ function NovaConversa({open,close}) {
         }
 
        
-        back('tela-novaconversa')
+        back('novaconversa')
         setChatactive(e)
 
 
-        handleSetConversas() 
-
+  
         
     }
 
-    function handleSetConversas() {
-         firebase.firestore().collection('users').doc(user.id).onSnapshot(doc=>{
-             /* console.log(doc.data().chats) */
-             setConversas(doc.data().chats)
-         })
+
+    function back(classe) {
+        /* const element = document.querySelector('.tela-novaconversa')
+        element.classList.remove('open') */
+        let obj = { ...open }
+        obj[classe] = false
+        close(obj)
+
     }
+    
 
 
     useEffect(() => {
