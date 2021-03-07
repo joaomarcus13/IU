@@ -1,12 +1,14 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 import Context from '../../context'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import firebase from '../../config/api'
 
 function ContactDetails(){
 
     const {chatactive,user,conversas,setChatactive} = useContext(Context) 
+    const [isDeleteActive, setIsDeleteActive] = useState(false)
+ 
 
     function deleteChat(){
 
@@ -35,7 +37,16 @@ function ContactDetails(){
                 }
             }
         })
+        
+        setIsDeleteActive(false)
         setChatactive(false)
+
+        const contactDetails = document.querySelector('.contact-details')
+        const aside = document.querySelector('.aside')
+        aside.style.width = '30%'
+        contactDetails.style.animation = 'close-search-msg 100ms'
+        contactDetails.style.visibility = 'hidden'
+       
     }
 
     function handleClose() {
@@ -53,21 +64,26 @@ function ContactDetails(){
       }
 
     return(
+        <>
+        <div className={`container-opacity  ${isDeleteActive? 'container-opacity-open': ''}`}>
+            <div className={`delete-chat  ${isDeleteActive? 'delete-chat-open': ''}`}>
+                <h1>Apagar conversa com "{chatactive.name}"?</h1>
+                <span>
+                    <button id='cancelar' onClick={() => setIsDeleteActive(false)}>CACELAR</button>
+                    <button id='apagar-chat' onClick={deleteChat}>APAGAR</button>
+                </span>
+            </div>
+        </div>
+
         <div className='contact-details'>
             <div className='header'>
                 <svg onClick={handleClose} className='close' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.1 17.2l-5.3-5.3 5.3-5.3-1.8-1.8-5.3 5.4-5.3-5.3-1.8 1.7 5.3 5.3-5.3 5.3L6.7 19l5.3-5.3 5.3 5.3 1.8-1.8z"></path></svg>
                 <div className='label'>Dados do contato</div>
             </div>
 
-            <div className='container-delete'> 
-                <div className='delete-chat'>
-                    <h1>Apagar conversa com "{chatactive.name}"?</h1>
-                    <span>
-                        <button id='cancelar' >CACELAR</button>
-                        <button id='apagar' onClick={deleteChat}>APAGAR</button>
-                    </span>
-                </div>
-            </div>
+          
+               
+           
 
             
             <div className='scroll'>
@@ -116,7 +132,7 @@ function ContactDetails(){
                     <h1> Denunciar contato</h1>
                 </div>
 
-                <div className='ops' id='apagar' onClick={deleteChat}>
+                <div className='ops' id='apagar' onClick={()=>setIsDeleteActive(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6 18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6H6v12zM19 3h-3.5l-1-1h-5l-1 1H5v2h14V3z"></path></svg>
                     <h1>Apagar conversa</h1>
                 </div>
@@ -125,7 +141,7 @@ function ContactDetails(){
 
             
         </div>
-
+        </>
     )
 }
 
