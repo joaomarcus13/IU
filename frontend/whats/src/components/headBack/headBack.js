@@ -1,23 +1,9 @@
 
 import './headBack.css'
 
-
-
 function HeadBack({ classe, text, open, close }) {
 
-    function back() {
-        const element = document.querySelector(`.${classe}`)
-        element.classList.add('voltar')
-        setTimeout(() => {
-            element.classList.remove('voltar')
-            element.style.display = 'none'
-        }, 1000);
-    }
-
-
     function handleBack() {
-        /* const element = document.querySelector('.tela-novaconversa')
-        element.classList.remove('open') */
         let obj = { ...open }
         obj[classe] = false
         close(obj)

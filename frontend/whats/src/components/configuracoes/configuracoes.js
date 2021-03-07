@@ -47,11 +47,6 @@ function Configuracoes({open,close}) {
                 </ul>
 
             </div>
-
-
-
-
-
         </div>
     )
 }

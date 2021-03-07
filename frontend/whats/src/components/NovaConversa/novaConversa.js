@@ -13,11 +13,11 @@ import firebase from '../../config/api'
 
 function NovaConversa({ open, close }) {
 
-    const { contatos, setContatos, user, conversas, setConversas, chatactive, setChatactive } = useContext(Context)
+    const { contatos, setContatos, user, conversas, chatactive, setChatactive } = useContext(Context)
 
     function seExiste(id) {
         for (var i in conversas) {
-            if (conversas[i].idUserChat == id) {
+            if (conversas[i].idUserChat === id) {
                 console.log('ja existe')
                 return true
             }
@@ -27,29 +27,10 @@ function NovaConversa({ open, close }) {
 
 
     async function adicionarConversa(e) {
-        /* console.log(user.chats[0].idChat)
-        console.log(e.chats[0].idChat)
-        console.log(typeof e.chats) */
-
+        
         if (!seExiste(e.id)) {
              let chat = null
-           /* let conversasUserIds = null
-            let conversasOutroIds = null
-            let boo = false
- */
-
-
-            /* if (user.chats && e.chats) {
-                conversasUserIds = user.chats.map(x => x.idChat)
-                conversasOutroIds = e.chats.map(x => x.idChat)
-                console.log(user.chats)
-                console.log(e.chats) 
-                boo = conversasUserIds.filter(x => conversasOutroIds.includes(x))
-            
-            } */
-
-            /*  if (boo.length==0 || boo == false) { */
-
+           
             chat = await firebase.firestore().collection('conversas').add({
                 mensagens: [],
                 users: [user.id, e.id]
@@ -96,7 +77,6 @@ function NovaConversa({ open, close }) {
                 })
             })
 
-            /*  } */
         } else {
             setChatactive(e)
         }
@@ -106,8 +86,7 @@ function NovaConversa({ open, close }) {
 
 
     function back(classe) {
-        /* const element = document.querySelector('.tela-novaconversa')
-        element.classList.remove('open') */
+
         let obj = { ...open }
         obj[classe] = false
         close(obj)
@@ -119,7 +98,6 @@ function NovaConversa({ open, close }) {
     useEffect(() => {
         let contacts = []
         async function getContacts() {
-            /* console.log('getcontacts') */
             const res = await firebase.firestore().collection('users').get()
 
             res.forEach(e => {

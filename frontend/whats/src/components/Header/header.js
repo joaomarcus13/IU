@@ -6,23 +6,11 @@ import { useContext, useState } from 'react'
 
 function Header() {
 
-  const { chatactive, setChatactive } = useContext(Context)
+  const { chatactive} = useContext(Context)
   const [isOptionsActive, setIsOptionActive] = useState(false)
 
   function handleOptions() {
     setIsOptionActive(!isOptionsActive)
-    /* const options = document.querySelector('.options-chat')
-    const optWhats = document.querySelector('.options-whats')
-    const divoption = document.querySelector('.icon-options-whats')
-    const divoptionChat = document.querySelector('.icon-options-chat')
-
-
-    //
-    options.style.display = options.style.display === 'block' ? 'none' : 'block'
-    if (optWhats.style.display === 'block') {
-      optWhats.style.display = 'none'
-      divoption.classList.toggle('bg-icon-click')
-    } */
   }
 
   function handleSearchMsg() {
@@ -97,7 +85,6 @@ function Header() {
             </li>
 
         </ul>
-
 
       </div>
 
