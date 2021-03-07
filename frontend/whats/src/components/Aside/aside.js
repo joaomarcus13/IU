@@ -27,6 +27,7 @@ function Aside() {
         }
 
         getConversas()
+
     },[user, setConversas])
 
 

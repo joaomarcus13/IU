@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 
 function Home() {
   const { chatactive } = useContext(Context)
+
   return (
     <>
       <Aside>
@@ -34,9 +35,9 @@ function App() {
   const [conversas, setConversas] = useState([])
   //{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}
   const [contatos, setContatos] = useState([])
-  const [user, setUser] = useState(null)
-  //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
   //const [user, setUser] = useState(null)
+  //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
+  const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] })
   const [msg, setMsg] = useState([])
 
   /*
@@ -53,6 +54,8 @@ function App() {
  /*  useEffect(() => {
      handleSetConversas()
   }, [user]) */
+
+  
 
  
 

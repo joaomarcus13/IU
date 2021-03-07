@@ -117,7 +117,7 @@ function NovaConversa({ open, close }) {
         getContacts()
 
 
-    }, [chatactive])
+    }, [chatactive,setContatos,user.id])
 
     return (
         <div className={`tela-novaconversa ${open.novaconversa ? 'open' : ''}`}>

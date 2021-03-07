@@ -13,7 +13,7 @@ function Input(props) {
 
     function handle(e) {
       
-        if (e.target.id !== 'input-aside') {
+        if (e.target.name !== 'input-aside') {
             toggleIc()
         }
 
@@ -44,7 +44,7 @@ function Input(props) {
             <input
                 type='text'
                 onFocus={(e) => { toggleIcon(props.index, e) }}
-                id='input-aside'
+                name='input-aside'
                 placeholder={props.placeholder}>
 
             </input>
