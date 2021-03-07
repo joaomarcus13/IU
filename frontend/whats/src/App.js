@@ -49,25 +49,7 @@ function App() {
 
   } 
   
-  useEffect(()=>{
-    //por enquanto buscar o usuario 
-    if(user){
-    firebase.firestore().collection('users').doc(user.id).onSnapshot(doc=>{
-      console.log(doc.data())
-      console.log(doc.id)
-      setUser({
-        id:doc.id,
-        img:imgtest,
-        name:doc.data().name,
-        status:doc.data().status,
-        chats:doc.data().chats
-      }) 
-      setConversas(doc.data().chats)
-    })
-  }
-
-
-  },[])
+  
 
  /*  useEffect(() => {
      handleSetConversas()

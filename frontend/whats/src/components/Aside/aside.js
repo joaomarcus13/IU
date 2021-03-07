@@ -11,7 +11,7 @@ import Configuracoes from '../configuracoes/configuracoes';
 
 function Aside() {
 
-    const {chatactive,conversas,user,setChatactive} = useContext(Context) 
+    const {chatactive,conversas,user,setChatactive,setConversas} = useContext(Context) 
     const [isOptionsActive, setIsOptionActive] = useState(false)
     const [openDrawer, setOpenDrawer] = useState({novaconversa:false,perfil:false,configuracoes:false})
 
@@ -32,6 +32,18 @@ function Aside() {
         })
     },[]) */
 
+    function getConversas(){
+        firebase.firestore().collection('users').doc(user.id).onSnapshot((doc) => {
+            if (doc.exists) {
+                if (doc.data().chats != null){
+                    setConversas(doc.data().chats)
+
+                }
+            }
+        })
+    }
+
+    useEffect(getConversas,[])
 
 
     function handleOptions() {
@@ -42,7 +54,6 @@ function Aside() {
     function  handleChatActive(e) {
         console.log('chat ativo',e)
         setChatactive(e)
-        console.log(chatactive)
     }
 
 

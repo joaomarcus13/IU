@@ -11,37 +11,66 @@ import Context from '../../context'
 import firebase from '../../config/api'
 
 
-function NovaConversa({open,close}) {
+function NovaConversa({ open, close }) {
 
     const { contatos, setContatos, user, conversas, setConversas, chatactive, setChatactive } = useContext(Context)
 
+    function seExiste(id) {
+        for (var i in conversas) {
+            if (conversas[i].idUserChat == id) {
+                console.log('ja existe')
+                return true
+            }
+        }
+        return false
+    }
 
-    
 
     async function adicionarConversa(e) {
         /* console.log(user.chats[0].idChat)
         console.log(e.chats[0].idChat)
         console.log(typeof e.chats) */
-        let chat = null
-        let conversasUserIds = null
-        let conversasOutroIds = null
-        let boo = false
-        if (user.chats && e.chats) {
-            conversasUserIds = user.chats.map(x => x.idChat)
-            conversasOutroIds = e.chats.map(x => x.idChat)
-            /* console.log(user.chats)
-            console.log(e.chats) */
-            boo = conversasUserIds.filter(x => conversasOutroIds.includes(x))
-        }
-        
-        if (boo.length==0 || boo == false) {
-        
+
+        if (!seExiste(e.id)) {
+             let chat = null
+           /* let conversasUserIds = null
+            let conversasOutroIds = null
+            let boo = false
+ */
+
+
+            /* if (user.chats && e.chats) {
+                conversasUserIds = user.chats.map(x => x.idChat)
+                conversasOutroIds = e.chats.map(x => x.idChat)
+                console.log(user.chats)
+                console.log(e.chats) 
+                boo = conversasUserIds.filter(x => conversasOutroIds.includes(x))
+            
+            } */
+
+            /*  if (boo.length==0 || boo == false) { */
+
             chat = await firebase.firestore().collection('conversas').add({
                 mensagens: [],
                 users: [user.id, e.id]
             })
 
+            seExiste(e.id)
+
             console.log('chat criado', chat.id)
+            console.log(chat)
+
+            const conversa = {
+                idChat: chat.id,
+                name: e.name,
+                img: imgtest,
+                idUserChat: e.id,
+                msg: '',
+                hora: Date.now()
+            }
+            conversas.push(conversa)
+            console.log(chat.id)
+            setChatactive(conversa)
 
 
             firebase.firestore().collection('users').doc(user.id).update({
@@ -50,8 +79,8 @@ function NovaConversa({open,close}) {
                     name: e.name,
                     img: imgtest,
                     idUserChat: e.id,
-                    msg:'',
-                    hora:Date.now()
+                    msg: '',
+                    hora: Date.now()
                 })
             })
 
@@ -62,25 +91,17 @@ function NovaConversa({open,close}) {
                     name: user.name,
                     img: imgUser,
                     idUserChat: user.id,
-                    msg:'',
-                    hora:Date.now()
+                    msg: '',
+                    hora: Date.now()
                 })
             })
 
+            /*  } */
+        } else {
+            setChatactive(e)
         }
-
-       
         back('novaconversa')
-        setChatactive(e)
-       
-        firebase.firestore().collection('users').doc(user.id).onSnapshot(doc => {
-            console.log(doc.data().chats)
-            setConversas(doc.data().chats)
-          })
-      
 
-  
-        
     }
 
 
@@ -92,7 +113,7 @@ function NovaConversa({open,close}) {
         close(obj)
 
     }
-    
+
 
 
     useEffect(() => {
@@ -121,7 +142,7 @@ function NovaConversa({open,close}) {
     }, [chatactive])
 
     return (
-        <div className={`tela-novaconversa ${open.novaconversa?'open':''}`}>
+        <div className={`tela-novaconversa ${open.novaconversa ? 'open' : ''}`}>
 
             <HeadBack classe='novaconversa' text='Nova Conversa' open={open} close={close}></HeadBack>
 

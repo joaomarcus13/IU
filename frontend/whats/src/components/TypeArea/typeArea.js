@@ -25,8 +25,6 @@ function TypeArea({ users, scrollRef }) {
 
         if (msg) {
 
-
-
             firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
                 mensagens: firebase.firestore.FieldValue.arrayUnion({
                     emissor: user.id,
@@ -34,6 +32,9 @@ function TypeArea({ users, scrollRef }) {
                     hora: Date.now()
                 })
             })
+            console.log(chatactive)
+
+            console.log(msg)
 
             setMsg('')
             inputRef.current.focus()
