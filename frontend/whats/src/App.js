@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
 import './global.css'
-import imgtest from './assets/images/imgtest.png'
 import Aside from './components/Aside/aside'
 import Main from './components/Main/main'
 import Pesquisar from './components/Search/search'
@@ -10,7 +9,7 @@ import Intro from './components/intro/intro'
 
 import Context from './context'
 import Login from './components/Login/Login';
-import firebase from './config/api'
+
 
 function Home() {
   const { chatactive } = useContext(Context)
@@ -40,6 +39,7 @@ function App() {
   //const [user, setUser] = useState(null)
   const [msg, setMsg] = useState([])
 
+  /*
   function handleSetConversas() {
                                                 //lembrar de trocar
     firebase.firestore().collection('users').doc('IWZYQoIL45cBdX4uCLz1QNFSEk12').onSnapshot(doc => {
@@ -48,26 +48,7 @@ function App() {
     })
 
   } 
-  
-  useEffect(()=>{
-    //por enquanto buscar o usuario 
-    if(user){
-    firebase.firestore().collection('users').doc(user.id).onSnapshot(doc=>{
-      console.log(doc.data())
-      console.log(doc.id)
-      setUser({
-        id:doc.id,
-        img:imgtest,
-        name:doc.data().name,
-        status:doc.data().status,
-        chats:doc.data().chats
-      }) 
-      setConversas(doc.data().chats)
-    })
-  }
-
-
-  },[])
+  */  
 
  /*  useEffect(() => {
      handleSetConversas()

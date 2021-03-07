@@ -14,36 +14,21 @@ function Aside() {
     const {chatactive,conversas,user,setChatactive,setConversas} = useContext(Context) 
     const [isOptionsActive, setIsOptionActive] = useState(false)
     const [openDrawer, setOpenDrawer] = useState({novaconversa:false,perfil:false,configuracoes:false})
+    
+    useEffect(() => {
+        function getConversas(){
+            firebase.firestore().collection('users').doc(user.id).onSnapshot((doc) => {
+                if (doc.exists) {
+                    if (doc.data().chats != null){
+                        setConversas(doc.data().chats)
 
-
-    /* useEffect(()=> {
-        firebase.firestore().collection('users').doc(user.id).collection('conversas').get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) =>  {
-            if (doc.exists){
-               // console.log(doc.data())
-                // setMsg(doc.data().msg)
-                const mensage = {msg:doc.data().msg, emissor:doc.data().emissor}
-                console.log(msg)
-                const obj = msg.push(mensage)
-                setMsg(obj)
-                console.log(typeof(msg))
-            }
-            })
-        })
-    },[]) */
-
-    function getConversas(){
-        firebase.firestore().collection('users').doc(user.id).onSnapshot((doc) => {
-            if (doc.exists) {
-                if (doc.data().chats != null){
-                    setConversas(doc.data().chats)
-
+                    }
                 }
-            }
-        })
-    }
+            })
+        }
 
-    useEffect(getConversas,[])
+        getConversas()
+    },[user, setConversas])
 
 
     function handleOptions() {
@@ -59,28 +44,11 @@ function Aside() {
 
     function handleDrawer(classe) {
         
-
        let obj = {...openDrawer}
        obj[classe] = true 
       
        setOpenDrawer(obj)
-       !isOptionsActive || setIsOptionActive(false)
-       
-
-        /* const element = document.querySelector(classe)
-        const options = document.querySelector('.options-whats')
-        const iconOptions = document.querySelector('.icon-options-whats')
-
-        //element.style.display = 'block'
-        element.classList.add('open') //
-
-
-        if(options.style.display==='block'){
-            options.style.display='none'
-        }
-        if(iconOptions.classList.contains('bg-icon-click')){
-            iconOptions.classList.remove('bg-icon-click')
-        } */
+       !isOptionsActive || setIsOptionActive(false)   
 
     }
 

@@ -16,7 +16,7 @@ function Login() {
     const [cadastro, setCadastro] = useState(false)
     const [userId, setUserId] = useState('')
     const [phone, setPhone] = useState('+11212345678')
-    const {conversas,setConversas} = useContext(Context)
+    const {setConversas} = useContext(Context)
 
     function handleLogin(e) {
         const env = document.querySelector('.login .enviando')
@@ -105,9 +105,6 @@ function Login() {
         console.log('conta criada')
     }
 
-    function openImage() {
-
-    }
 
     return (
         <div className='login'>

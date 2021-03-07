@@ -6,7 +6,7 @@ import { useContext, useState } from 'react'
 
 function Header() {
 
-  const { chatactive, setChatactive } = useContext(Context)
+  const { chatactive} = useContext(Context)
   const [isOptionsActive, setIsOptionActive] = useState(false)
 
   function handleOptions() {

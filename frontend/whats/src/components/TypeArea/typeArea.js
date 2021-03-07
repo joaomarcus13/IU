@@ -1,7 +1,7 @@
 import './typeArea.css'
 import IconsClip from '../IconsClip/iconsClip'
 import firebase from '../../config/api'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Context from '../../context'
 import IconEmoji from '../../assets/icons/iconEmoji'
 import IconAnexar from '../../assets/icons/iconAnexar'
@@ -9,7 +9,6 @@ import IconAnexar from '../../assets/icons/iconAnexar'
 function TypeArea({ users, scrollRef }) {
 
     const { user, chatactive } = useContext(Context)
-    const { conversas, setConversas } = useContext(Context)
     //const {msg,setMsg} = useContext(Context)
     const [isSend, setIsSend] = useState(false)
     const [msg, setMsg] = useState('')

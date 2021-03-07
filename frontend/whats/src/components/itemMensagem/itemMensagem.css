@@ -20,6 +20,7 @@
  margin: 5px 40px 5px 5px;
  color: whitesmoke;
  max-width: 100%;
+ word-wrap: break-word;
 }
 
 .mensagem-hora{

@@ -19,24 +19,25 @@ function Main() {
 
   useEffect(() => {
 
-    if(scrollRef.current.scrollHeight > scrollRef.current.offsetHeight){
-      scrollRef.current.scrollTop =  scrollRef.current.scrollHeight - scrollRef.current.offsetHeight 
-    }
+    
 
     if (chatactive !== false) {
       firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
         if (docs.exists) {
-    
+          
           handleSetMsgs(docs.data().mensagens)
           setUsersInChat(docs.data().users)
+
+          if(scrollRef.current.scrollHeight > scrollRef.current.offsetHeight){
+            scrollRef.current.scrollTop =  scrollRef.current.scrollHeight - scrollRef.current.offsetHeight 
+          }
           
         }
       })
+
+
+
     }
-
-   
-
-
 
   }, [chatactive])
 

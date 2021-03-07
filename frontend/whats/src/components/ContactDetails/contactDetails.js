@@ -31,7 +31,7 @@ function ContactDetails(){
             <div className='scroll'>
 
                 <div className='imgPerfil'>
-                    <img className='img' src={imgtest}></img>
+                    <img className='img' alt=" " src={imgtest}></img>
                     <div className='info'>
                       <h1>{chatactive.name}</h1>
                       <div className='span'>visto por ultimo hoje as 15:00</div>
@@ -42,7 +42,7 @@ function ContactDetails(){
                     <div className='label'>Mídia, links e docs <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 21" width="10" height="21"><path fill="currentColor" d="M1 15.75l5.2-5.2L1 5.35l1.5-1.5 6.5 6.7-6.6 6.6-1.4-1.4z"></path></svg>
                     </div>
                     <div className='img-midia'>
-                        <img src={imgtest}></img>
+                        <img src={imgtest}  alt=" " ></img>
                     </div>
                 </div>
 

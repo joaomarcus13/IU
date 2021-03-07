@@ -22,7 +22,7 @@ function Input(props) {
 
     useEffect(() => {
         document.addEventListener('click', handle)
-    }, [])
+    })
 
 
     function toggleIcon(index, e) {
