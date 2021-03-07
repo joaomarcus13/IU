@@ -1,49 +1,42 @@
-import React, { useState,  useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import Context from '../../context';
 import Head from '../Header/header'
 import ItemMensagem from '../itemMensagem/itemMensagem'
 import TypeArea from '../TypeArea/typeArea'
+import firebase from '../../config/api'
 import './main.css'
 
 function Main() {
 
-  const {user} = useContext(Context) 
+  const { user, chatactive } = useContext(Context)
+  const [msgs, setMsgs] = useState([])
+  const [usersInChat, setUsersInChat] = useState([])
+  const scrollRef = useRef()
 
-  const [msgs, setMsgs] = useState([
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-    { text: 'kkkkkk', emissor: 2 },
-    { text: 'blabla', emissor: 1 },
-    { text: 'mfkdlmgkt', emissor: 2 },
-  ])
+  function handleSetMsgs(data) {
+    setMsgs(data)
+  }
+
+  useEffect(() => {
+
+
+
+    if (chatactive !== false) {
+      firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
+        if (docs.exists) {
+
+          handleSetMsgs(docs.data().mensagens)
+          setUsersInChat(docs.data().users)
+
+          if (scrollRef.current.scrollHeight > scrollRef.current.offsetHeight) {
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.offsetHeight
+          }
+        }
+      })
+
+    }
+
+  }, [chatactive])
 
   return (
     <>
@@ -51,11 +44,11 @@ function Main() {
         <Head></Head>
         <div className='main'>
 
-          <div className='sc'>
-            {msgs.map(e => <ItemMensagem text={e.text} emissor={e.emissor} user={user}></ItemMensagem>)}
+          <div ref={scrollRef} className='sc'>
+            {msgs.map(e => <ItemMensagem key={e.hora} text={e.text} emissor={e.emissor} hora={e.hora} user={user}></ItemMensagem>)}
           </div>
         </div>
-        <TypeArea></TypeArea>
+        <TypeArea users={usersInChat} scrollRef={scrollRef}></TypeArea>
       </main>
     </>
   )

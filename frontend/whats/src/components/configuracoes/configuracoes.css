@@ -4,14 +4,24 @@
     width: 30%;
     min-width: 300px;
     height: 100%;
-    display: none;
-    left: 0;
+
+    /* display: none;
+    left: 0; */
+    transform: translateX(-600px);
+    transition: all 0.5s cubic-bezier(.61, .03, .21, 1.01);
+
     background-color: var(--chat);
     z-index: 10;
     border-right: 1px solid var(--border);
-    animation-name: perfilAnimation;
+
+    /* animation-name: perfilAnimation;
     animation-duration: 0.2s;
-    animation-timing-function: ease;
+    animation-timing-function: ease; */
+}
+
+.open {
+    transform: translateX(0px);
+    transition: all 0.2s ease;
 }
 
 .tela-configuracoes-perfil {

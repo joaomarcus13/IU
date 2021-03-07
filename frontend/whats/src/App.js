@@ -1,19 +1,18 @@
 import React, { useContext, useState } from 'react';
 import './App.css';
 import './global.css'
-import imgtest from './assets/images/imgtest.png'
 import Aside from './components/Aside/aside'
 import Main from './components/Main/main'
 import Pesquisar from './components/Search/search'
 import ContactDetails from './components/ContactDetails/contactDetails'
 import Intro from './components/intro/intro'
 
-
 import Context from './context'
 import Login from './components/Login/Login';
 
+
 function Home() {
-  const {chatactive} = useContext(Context)
+  const { chatactive } = useContext(Context)
   return (
     <>
       <Aside>
@@ -32,33 +31,30 @@ function Home() {
 function App() {
 
   const [chatactive, setChatactive] = useState(false)
-  const [conversas, setConversas] = useState([
-    { id: 1, name: 'goncalo', img: imgtest, msg: 'iaiiii' },
-    { id: 2, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 3, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 4, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 5, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 6, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 7, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 8, name: 'xico', img: imgtest, msg: 'colé' },
-    { id: 9, name: 'joao', img: imgtest, msg: 'falaa' }]
-  )
-  const [contatos] = useState([
-    { id: 1, name: 'goncalo', img: imgtest, status: 'Disponivel' },
-    { id: 2, name: 'jose', img: imgtest, status: 'Ocupado' },
-    { id: 3, name: 'francisco', img: imgtest, status: 'Trabalhando' },
-    { id: 4, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 5, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 6, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 7, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 8, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 9, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 10, name: 'marcos', img: imgtest, status: 'Disponivel' },
-    { id: 111, name: 'joao', img: imgtest, status: 'Ocupado' }]
-  )
+  const [conversas, setConversas] = useState([])
+  //{ id: 'ZHbGuA91WTgCHouCHhkMlESdwyI3', name: 'goncalo', img: imgtest, msg: 'ola '},{ id: 'Olh40aHB0eOFppgXPeDHKfjwtPF3', name: 'jr', img: imgtest, msg: 'ola '}
+  const [contatos, setContatos] = useState([])
   const [user, setUser] = useState(null)
-  //{ id: 1, img: imgUser, name: 'JM', status: 'Disponivel' }
+  //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
+  //const [user, setUser] = useState(null)
+  const [msg, setMsg] = useState([])
 
+  /*
+  function handleSetConversas() {
+                                                //lembrar de trocar
+    firebase.firestore().collection('users').doc('IWZYQoIL45cBdX4uCLz1QNFSEk12').onSnapshot(doc => {
+      console.log(doc.data().chats)
+      setConversas(doc.data().chats)
+    })
+
+  } 
+  */  
+
+ /*  useEffect(() => {
+     handleSetConversas()
+  }, [user]) */
+
+ 
 
   return (
 
@@ -70,16 +66,16 @@ function App() {
         setConversas,
         user,
         setUser,
-        contatos
+        contatos,
+        setContatos,
+        setMsg,
+        msg
       }}>
 
-      { user?<Home></Home>:<Login></Login> } 
+        {user ? <Home></Home> : <Login></Login>}
 
       </Context.Provider>
     </div>
-
-
-
   );
 }
 

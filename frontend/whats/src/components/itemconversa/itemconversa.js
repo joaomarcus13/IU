@@ -1,10 +1,15 @@
 
 import './itemconversa.css'
 
-function ItemConversa({active,onClick,id,img,name,msgPrev,status}) {
+function ItemConversa({ active, onClick, id, img, name, msgPrev, hora, status }) {
+
+
+    let horaChat = new Date(hora).getHours()
+    let minutoChat = String(new Date(hora).getMinutes()).padStart(2, '0')
+
 
     return (
-        <li className={`item-conversa ${active?'active':''}`}  onClick={onClick}>
+        <li className={`item-conversa ${active ? 'active' : ''}`} onClick={onClick}>
             <div className='img-chat'>
                 <img src={img} alt="" />
             </div>
@@ -15,7 +20,8 @@ function ItemConversa({active,onClick,id,img,name,msgPrev,status}) {
                     <span>{msgPrev || status}</span>
                 </div>
                 <span className='hora-chat'>
-                    23:40</span>
+                    {horaChat ? horaChat + ':' + minutoChat : ''}
+                </span>
             </div>
 
 

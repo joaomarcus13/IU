@@ -41,7 +41,7 @@
     justify-content: center;
 }
 
-.login-container form {
+.login-container form.login-form {
     width: 80%;
     height: 100%;
     display: flex;
@@ -51,14 +51,14 @@
   
 }
 
-form div {
+form.login-form div {
     display: flex;
     flex-direction: column;
     width: 90%;
     align-items: center;
 }
 
-form div p {
+form.login-form div p {
     width: 70%;
     float: left;
     text-align: start;
@@ -87,7 +87,7 @@ form div p {
     visibility: hidden;
 }
 
-.login-container form .input-phone {
+.login-container form.login-form .input-phone {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -95,7 +95,7 @@ form div p {
     width: 80%;
 }
 
-.login-container form input:first-child {
+.login-container form.login-form input:first-child {
     width: 15%;
     border: none;
     padding: 10px 5px;
@@ -104,12 +104,12 @@ form div p {
     text-align: left;
 }
 
-.login-container form input:first-child:-moz-placeholder {
+.login-container form.login-form input:first-child:-moz-placeholder {
     color: black;
 
 }
 
-.login-container form input#phone {
+.login-container form.login-form input#phone {
     width: 100%;
     margin-left: 10px;
     border: none;
@@ -119,14 +119,14 @@ form div p {
     border-bottom: 2px solid var(--verde);
 }
 
-.login-container form input#codigo{
+.login-container form.login-form input#codigo{
     width: 80%;
     padding: 10px 15px;
     border: none;
     background-color: transparent;
     border-bottom: 2px solid var(--verde);
 }
-.login-container form input#codigo::-webkit-input-placeholder  {
+.login-container form.login-form input#codigo::-webkit-input-placeholder  {
     text-align: center;
     width: 100%;
     font-size: 2em;
@@ -134,7 +134,7 @@ form div p {
 
 }
 
-form .adft {
+form.login-form .adft {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -143,7 +143,7 @@ form .adft {
     position: relative;
 
 }
-form .adft > img{
+form.login-form .adft > img{
     width: 70px;
     height: 70px;
     cursor: pointer;
@@ -156,7 +156,7 @@ form .adft > img{
     font-weight: 500;
 }
 
-.login-container form input#name, #status{
+.login-container form.login-form input#name, #status{
     width: 80%;
     background-color: transparent;
     border: none;
@@ -164,12 +164,12 @@ form .adft > img{
     padding: 15px 10px;
 }
 
-form input#imgUser {
+form.login-form input#imgUser {
     display: none;
 }
 
 
-form label{
+form.login-form label{
     position: absolute;
     background-color: rgba(97, 97, 97, 0.63);
     width: 65px;
@@ -185,15 +185,15 @@ form label{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
 }
-form label > img{
+form.login-form label > img{
   height: 25px;
   width: 25px;
   margin-top: 13px;
   opacity: 0.6;
 }
-form label > span{
+form.login-form label > span{
     height: 10px;
     width:100%;
     margin-top: -20px;
@@ -202,11 +202,11 @@ form label > span{
     font-weight: 400;
     opacity: 0.8;
 }
-form label:hover{
+form.login-form label:hover{
     opacity:1;
 }
 
-form svg {
+form.login-form svg {
     cursor: pointer;
     width: 80px;
     

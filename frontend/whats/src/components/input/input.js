@@ -22,14 +22,13 @@ function Input(props) {
 
     useEffect(() => {
         document.addEventListener('click', handle)
-    }, [])
+    })
 
 
     function toggleIcon(index, e) {
-        //e.target.placeholder=''
         document.querySelectorAll('.search-aside-icon')[index].style.display = 'none'
         document.querySelectorAll('.search-aside-back')[index].style.display = 'block'
-        //document.querySelectorAll('#input-aside')[index].placeholder = ''
+    
 
     }
 
@@ -45,7 +44,6 @@ function Input(props) {
             <input
                 type='text'
                 onFocus={(e) => { toggleIcon(props.index, e) }}
-                //onBlur={this.placeholder=props.placeholder }
                 id='input-aside'
                 placeholder={props.placeholder}>
 

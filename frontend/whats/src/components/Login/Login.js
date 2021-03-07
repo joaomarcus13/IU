@@ -16,6 +16,7 @@ function Login() {
     const [cadastro, setCadastro] = useState(false)
     const [userId, setUserId] = useState('')
     const [phone, setPhone] = useState('+11212345678')
+    const {setConversas} = useContext(Context)
 
     function handleLogin(e) {
         const env = document.querySelector('.login .enviando')
@@ -66,7 +67,16 @@ function Login() {
             firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
-                    setUser({ id: user.uid, img: imgUser, name: doc.data().name, status: doc.data().status })
+                    setUser({ id: user.uid, 
+                        img: imgUser, 
+                        name: doc.data().name, 
+                        status: doc.data().status,
+                        conversas: doc.data().conversas,
+                        contados:doc.data().contatos})
+                    
+                    if (doc.data().chats != null){
+                        setConversas(doc.data().chats)   
+                    } 
 
                 } else {
                     setCadastro(true)
@@ -89,15 +99,12 @@ function Login() {
         firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
             name: name,
-            status: status ?? 'Olá !'
+            status: status ?? 'Disponivel'
         })
         setUser({ id: userId, img: imgUser, name: name, status: status ?? 'Disponível' })
         console.log('conta criada')
     }
 
-    function openImage() {
-
-    }
 
     return (
         <div className='login'>
@@ -109,7 +116,7 @@ function Login() {
                 </div>
             </div>
             <div className='login-container'>
-                <form onSubmit={handleLogin} >
+                <form onSubmit={handleLogin} className='login-form' >
 
                     {cadastro ? <>
                         <h1>Cadastro</h1>
@@ -143,7 +150,7 @@ function Login() {
                                     <div>
                                         <p>O whats enviará um SMS para verificar o seu numero de telefone </p>
                                         <div className="input-phone">
-                                            <input type="text" disabled value='+55'  />
+                                            <input type="text" disabled value='+55' />
                                             <input type="text" placeholder='Seu número' id='phone' ></input>
                                         </div>
 
