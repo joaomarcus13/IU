@@ -11,6 +11,17 @@
    visibility: hidden;
    transition: visibility 100ms;
    min-width: 400px;
+
+   transition: .1s;
+   transform-origin: 0 -30%;
+   transform: translateX(100%)
+}
+
+.search-msg-open{
+   visibility: visible;
+   transition: .2s;
+   transform-origin: 0 -100%;
+   transform: translateX(0px)
 }
 
 .search-msg .header{

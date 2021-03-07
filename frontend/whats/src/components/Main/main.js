@@ -6,12 +6,13 @@ import TypeArea from '../TypeArea/typeArea'
 import firebase from '../../config/api'
 import './main.css'
 
-function Main() {
+function Main  () {
 
-  const { user, chatactive } = useContext(Context)
+  const { user, chatactive, isRightOpen } = useContext(Context)
   const [msgs, setMsgs] = useState([])
   const [usersInChat, setUsersInChat] = useState([])
   const scrollRef = useRef()
+
 
   function handleSetMsgs(data) {
     setMsgs(data)
@@ -41,7 +42,7 @@ function Main() {
 
   return (
     <>
-      <main className='area-main'>
+      <main className={`area-main ${isRightOpen? 'area-main-min':''}`}>
         <Head></Head>
         <div className='main'>
 

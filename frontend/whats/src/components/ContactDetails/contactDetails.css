@@ -1,4 +1,4 @@
-.container .contact-details{
+.contact-details{
     position: absolute;
     top: 0;
     width: 30%;
@@ -9,12 +9,20 @@
     right: 0px;
     min-width: 300px;
 
+
     visibility: hidden;
     transition: visibility 100ms;
+
+    transition: .1s;
+    transform-origin: 0 -30%;
+    transform: translateX(100%)
 }
 
 .contact-details-open{
     visibility: visible;
+    transition: .2s;
+    transform-origin: 0 -100%;
+    transform: translateX(0px)
 }
 
 .contact-details .header{
@@ -43,11 +51,19 @@
      width: 100%;
      height: 100%;
      overflow: auto;
-     top: 59;
+     top: -50px;
      z-index: 0px;
-
-   
+     transition: 1s;
+     visibility: visible;
  }
+
+ .scroll-open{
+    visibility: hidden;
+    transition: 1s;
+    transform: translateY(109px);
+
+ }
+
  .contact-details .imgPerfil{
      background-color: var(--chat);
      display: flex;
@@ -290,14 +306,12 @@
        width: 100%;;
        height: 100%;
        visibility: hidden;
+       left: 0;
    }
 
    .container-opacity-open{
        visibility: visible;
    }
-
-
-
 
     .delete-chat{
         position:absolute;

@@ -5,6 +5,10 @@
   width: 30%;
 }
 
+.aside-min{
+  width: 25%;
+}
+
 .aside .head-aside {
   display: flex;
   align-items: center;
