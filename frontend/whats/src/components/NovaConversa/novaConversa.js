@@ -47,22 +47,16 @@ function NovaConversa({ open, close }) {
                 img: imgtest,
                 idUserChat: e.id,
                 msg: '',
-                hora: Date.now()
+                hora: Date.now(),
+                phone: e.phone
             }
             conversas.push(conversa)
-            console.log(chat.id)
+            console.log(e)
             setChatactive(conversa)
 
 
             firebase.firestore().collection('users').doc(user.id).update({
-                chats: firebase.firestore.FieldValue.arrayUnion({
-                    idChat: chat.id,
-                    name: e.name,
-                    img: imgtest,
-                    idUserChat: e.id,
-                    msg: '',
-                    hora: Date.now()
-                })
+                chats: firebase.firestore.FieldValue.arrayUnion(conversa)
             })
 
 
@@ -73,7 +67,8 @@ function NovaConversa({ open, close }) {
                     img: imgUser,
                     idUserChat: user.id,
                     msg: '',
-                    hora: Date.now()
+                    hora: Date.now(),
+                    phone: user.phone
                 })
             })
 
@@ -107,7 +102,9 @@ function NovaConversa({ open, close }) {
                         img: imgtest,
                         name: e.data().name,
                         status: e.data().status,
-                        chats: e.data().chats
+                        chats: e.data().chats,
+                        phone: e.data().phone
+
                     })
                 }
             })
@@ -140,7 +137,8 @@ function NovaConversa({ open, close }) {
                             onClick={() => { adicionarConversa(e) }}
                             img={e.img}
                             name={e.name}
-                            status={e.status}>
+                            status={e.status}
+                            >
                         </ItemConversa>)
                     }
 

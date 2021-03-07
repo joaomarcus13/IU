@@ -81,11 +81,7 @@ function ContactDetails(){
                 <div className='label'>Dados do contato</div>
             </div>
 
-          
-               
-           
 
-            
             <div className='scroll'>
 
                 <div className='imgPerfil'>
@@ -114,7 +110,7 @@ function ContactDetails(){
 
                 <div className='recados'>
                     <h1>Recado e número de telefone</h1>
-                    <span>+55 86 3222-0400</span>
+                    <span>{chatactive.phone}</span>
                 </div>
 
                 <div className='grupos'>
