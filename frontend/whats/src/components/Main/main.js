@@ -45,7 +45,7 @@ function Main() {
         <div className='main'>
 
           <div ref={scrollRef} className='sc'>
-            {msgs.map(e => <ItemMensagem text={e.text} emissor={e.emissor} hora={e.hora} user={user}></ItemMensagem>)}
+            {msgs.map(e => <ItemMensagem key={e.hora} text={e.text} emissor={e.emissor} hora={e.hora} user={user}></ItemMensagem>)}
           </div>
         </div>
         <TypeArea users={usersInChat} scrollRef={scrollRef}></TypeArea>
