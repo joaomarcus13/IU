@@ -57,7 +57,8 @@ function Login() {
 
     }
 
-    function validCode() {
+    function validCode(e) {
+        e.preventDefault()
         const code = document.getElementById('codigo')
         console.log(code.value)
 
@@ -141,7 +142,7 @@ function Login() {
                                 <> <h1>Código</h1>
                                     <div>
                                         <p>digite o código de seis dígitos</p>
-                                        <input type="text" placeholder='- - -  - - -' id='codigo' ></input>
+                                        <input type="text" autoComplete='off' placeholder='- - -  - - -' id='codigo' ></input>
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                     <p>Reenviar código </p>
