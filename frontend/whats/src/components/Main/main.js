@@ -28,9 +28,10 @@ function Main() {
           handleSetMsgs(docs.data().mensagens)
           setUsersInChat(docs.data().users)
 
-          if (scrollRef.current.scrollHeight > scrollRef.current.offsetHeight) {
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.offsetHeight
-          }
+          if (scrollRef.current != null)
+            if (scrollRef.current.scrollHeight > scrollRef.current.offsetHeight) {
+              scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.offsetHeight
+            }
         }
       })
 
