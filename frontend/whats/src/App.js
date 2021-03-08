@@ -13,6 +13,7 @@ import Login from './components/Login/Login';
 
 function Home() {
   const { chatactive } = useContext(Context)
+
   return (
     <>
       <Aside>
@@ -22,8 +23,7 @@ function Home() {
       }
 
       <Pesquisar></Pesquisar>
-      <ContactDetails >
-      </ContactDetails>
+      <ContactDetails > </ContactDetails>
     </>
   )
 }
@@ -36,8 +36,9 @@ function App() {
   const [contatos, setContatos] = useState([])
   const [user, setUser] = useState(null)
   //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
-  //const [user, setUser] = useState(null)
+  //const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', name: 'Teste', status: 'ola'})
   const [msg, setMsg] = useState([])
+
 
   /*
   function handleSetConversas() {
@@ -53,6 +54,8 @@ function App() {
  /*  useEffect(() => {
      handleSetConversas()
   }, [user]) */
+
+  
 
  
 

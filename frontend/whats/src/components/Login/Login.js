@@ -73,7 +73,8 @@ function Login() {
                         name: doc.data().name, 
                         status: doc.data().status,
                         conversas: doc.data().conversas,
-                        contados:doc.data().contatos})
+                        contados:doc.data().contatos,
+                        phone: doc.data().phone})
                     
                     if (doc.data().chats != null){
                         setConversas(doc.data().chats)   
@@ -100,7 +101,8 @@ function Login() {
         firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
             name: name,
-            status: status ?? 'Disponivel'
+            status: status ?? 'Disponivel',
+            chats:[]
         })
         setUser({ id: userId, img: imgUser, name: name, status: status ?? 'Disponível' })
         console.log('conta criada')

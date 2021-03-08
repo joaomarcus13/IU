@@ -1,11 +1,53 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 import Context from '../../context'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import firebase from '../../config/api'
 
 function ContactDetails(){
 
-    const {chatactive} = useContext(Context) 
+    const {chatactive,user,conversas,setChatactive} = useContext(Context) 
+    const [isDeleteActive, setIsDeleteActive] = useState(false)
+ 
+
+    function deleteChat(){
+
+        for (var i in conversas){
+            if (conversas[i].idChat === chatactive.idChat){
+                conversas.splice(i,1)
+                firebase.firestore().collection('users').doc(user.id).update({
+                    chats: conversas                
+                })
+            }   
+        }
+        
+        firebase.firestore().collection('conversas').doc(chatactive.idChat).get().then((doc) =>{
+         
+            if (doc.exists){
+           
+                if (doc.data().users.length === 1){
+                    firebase.firestore().collection('conversas').doc(chatactive.idChat).delete().then(()=>{
+                        console.log('conversa apagada', chatactive.idChat)
+                    })    
+                }else{
+                    firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
+                        users: [chatactive.idUserChat]
+                    })     
+                    console.log('user apagado',chatactive.idChat)
+                }
+            }
+        })
+        
+        setIsDeleteActive(false)
+        setChatactive(false)
+
+        const contactDetails = document.querySelector('.contact-details')
+        const aside = document.querySelector('.aside')
+        aside.style.width = '30%'
+        contactDetails.style.animation = 'close-search-msg 100ms'
+        contactDetails.style.visibility = 'hidden'
+       
+    }
 
     function handleClose() {
         const main = document.querySelector('.area-main')
@@ -22,12 +64,24 @@ function ContactDetails(){
       }
 
     return(
+        <>
+        <div className={`container-opacity  ${isDeleteActive? 'container-opacity-open': ''}`}>
+            <div className={`delete-chat  ${isDeleteActive? 'delete-chat-open': ''}`}>
+                <h1>Apagar conversa com "{chatactive.name}"?</h1>
+                <span>
+                    <button id='cancelar' onClick={() => setIsDeleteActive(false)}>CACELAR</button>
+                    <button id='apagar-chat' onClick={deleteChat}>APAGAR</button>
+                </span>
+            </div>
+        </div>
+
         <div className='contact-details'>
             <div className='header'>
                 <svg onClick={handleClose} className='close' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.1 17.2l-5.3-5.3 5.3-5.3-1.8-1.8-5.3 5.4-5.3-5.3-1.8 1.7 5.3 5.3-5.3 5.3L6.7 19l5.3-5.3 5.3 5.3 1.8-1.8z"></path></svg>
                 <div className='label'>Dados do contato</div>
             </div>
-            
+
+
             <div className='scroll'>
 
                 <div className='imgPerfil'>
@@ -56,7 +110,7 @@ function ContactDetails(){
 
                 <div className='recados'>
                     <h1>Recado e número de telefone</h1>
-                    <span>+55 86 3222-0400</span>
+                    <span>{chatactive.phone}</span>
                 </div>
 
                 <div className='grupos'>
@@ -74,15 +128,16 @@ function ContactDetails(){
                     <h1> Denunciar contato</h1>
                 </div>
 
-                <div className='ops' id='apagar'>
+                <div className='ops' id='apagar' onClick={()=>setIsDeleteActive(true)}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6 18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6H6v12zM19 3h-3.5l-1-1h-5l-1 1H5v2h14V3z"></path></svg>
                     <h1>Apagar conversa</h1>
                 </div>
 
             </div>
 
+            
         </div>
-
+        </>
     )
 }
 
