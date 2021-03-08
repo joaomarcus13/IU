@@ -1,17 +1,28 @@
-.type-area-icons .icons-clip{
+.icons-clip{
     position: absolute;
     visibility: hidden;
     display: flex;
     flex-direction: column;
     bottom: 60px;
     margin-left: 3%;
-    transition: visibility 300ms
+
+}
+
+.icons-clip-open{
+    visibility: visible;
+ 
 }
 
 .icons-clip .icon{   
     margin: 7px;
-   
     transform-origin: 25px 90px;
     cursor: pointer;
+    animation: close-icons-clip 300ms;
+    transition: 300ms;
+    transform: scale(1);
 
+}
+
+.icons-clip .icon-open{
+    animation: iconAni 700ms;
 }

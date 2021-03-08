@@ -13,6 +13,8 @@ function Header() {
   const {setIsRightOpen} = useContext(Context)
   const [isSearchActive,setIsSearchActive] = useState(false)
   const [isDetailsActive,setIsDetailsActive] =useState(false)
+  const [isDeleteActive, setIsDeleteActive] = useState(false)
+
 
   function handleOptions() {
     setIsOptionActive(!isOptionsActive)
@@ -59,7 +61,7 @@ function Header() {
           <li>
             Limpar mensagens
             </li>
-          <li>
+          <li onClick={()=>setIsDeleteActive(true)}>
             Apagar conversa
             </li>
 
@@ -70,7 +72,12 @@ function Header() {
     </nav>
 
     <Pesquisar isSearchActive={isSearchActive} setIsSearchActive={setIsSearchActive} ></Pesquisar>
-    <ContactDetails  isDetailsActive={isDetailsActive} setIsDetailsActive= {setIsDetailsActive} > </ContactDetails>
+    <ContactDetails  
+      isDetailsActive={isDetailsActive} 
+      setIsDetailsActive= {setIsDetailsActive}  
+      isDeleteActive={isDeleteActive} 
+      setIsDeleteActive={setIsDeleteActive} /> 
+ 
      
   </>
 

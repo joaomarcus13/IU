@@ -1,14 +1,13 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 import Context from '../../context'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import firebase from '../../config/api'
 
-function ContactDetails( {isDetailsActive,setIsDetailsActive}){
+function ContactDetails( {isDetailsActive,setIsDetailsActive,isDeleteActive, setIsDeleteActive}){
 
     const {chatactive,user,conversas,setChatactive,setIsRightOpen} = useContext(Context) 
-    const [isDeleteActive, setIsDeleteActive] = useState(false)
-
+   
     function deleteChat(){
 
         for (var i in conversas){
