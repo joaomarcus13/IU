@@ -60,7 +60,6 @@ function Login() {
     }
 
     function validCode() {
-
         const code = codeRef.current.value
        
         console.log(code)
@@ -149,7 +148,9 @@ function Login() {
                                 <> <h1>Código</h1>
                                     <div>
                                         <p>digite o código de seis dígitos</p>
+
                                         <input ref={codeRef} type="text" placeholder='- - -  - - -' id='codigo' ></input>
+
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                     <p>Reenviar código </p>
