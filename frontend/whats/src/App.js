@@ -3,16 +3,14 @@ import './App.css';
 import './global.css'
 import Aside from './components/Aside/aside'
 import Main from './components/Main/main'
-import Pesquisar from './components/Search/search'
-import ContactDetails from './components/ContactDetails/contactDetails'
 import Intro from './components/intro/intro'
-
 import Context from './context'
 import Login from './components/Login/Login';
 
 
 function Home() {
   const { chatactive } = useContext(Context)
+
 
   return (
     <>
@@ -22,8 +20,6 @@ function Home() {
         !chatactive ? <Intro></Intro> : <Main ></Main>
       }
 
-      <Pesquisar></Pesquisar>
-      <ContactDetails > </ContactDetails>
     </>
   )
 }
@@ -36,8 +32,9 @@ function App() {
   const [contatos, setContatos] = useState([])
   const [user, setUser] = useState(null)
   //{ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', img: imgtest, name: 'Teste', status: 'ola', chats: [{ idChat: 'GsrYJf46HNUizig7eMtq', idUserChat: 'AfMATHGwMlZtH6tCa4yRRPD8CaN2', img: '/static/media/imgtest.d5d427e8.png', name: 'jm' }] }
-  //const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', name: 'Teste', status: 'ola'})
+  //const [user, setUser] = useState({ id: 'IWZYQoIL45cBdX4uCLz1QNFSEk12', name: 'Teste 1', status: 'ola',phone: '+551212345678'})
   const [msg, setMsg] = useState([])
+  const [isRightOpen,setIsRightOpen] = useState(false)
 
 
   /*
@@ -72,7 +69,9 @@ function App() {
         contatos,
         setContatos,
         setMsg,
-        msg
+        msg,
+        isRightOpen,
+        setIsRightOpen
       }}>
 
         {user ? <Home></Home> : <Login></Login>}

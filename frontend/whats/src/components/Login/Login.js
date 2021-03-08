@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import Context from '../../context'
 import firebase from '../../config/api'
 import './Login.css'
@@ -14,17 +14,17 @@ function Login() {
 
     const [codigo, setCodigo] = useState(false);
     const [cadastro, setCadastro] = useState(false)
-    const [userId, setUserId] = useState('')
+    const [userId, setUserId] = useState('') 
     const [phone, setPhone] = useState('+11212345678')
     const {setConversas} = useContext(Context)
+    const codeRef = useRef()
+    const inputRef = useRef()
+    const nameRef = useRef()
+    const statusRef = useRef()
+    const barraRef = useRef()
 
     function handleLogin(e) {
-        const env = document.querySelector('.login .enviando')
-        const form = document.querySelector('.login-container form')
-
-        form.style.animation = 'animation: pass 2s'
-        env.style.visibility = 'visible'
-
+  
         e.preventDefault()
         window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
             'size': 'invisible',
@@ -32,15 +32,16 @@ function Login() {
             }
         });
 
-        let phoneNumber = `+55${document.getElementById('phone').value}`
+        let phoneNumber = `+55${inputRef.current.value}`
       
         setPhone(phoneNumber)
         //setPhone('+11212345678')
         const appVerifier = window.recaptchaVerifier;
         console.log(phoneNumber)
 
-        const barra = document.querySelector('.span')
+        const barra = barraRef.current
         barra.style.width = '100%'
+        
 
         firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier).then((confirmationResult) => {
             window.confirmationResult = confirmationResult;
@@ -48,6 +49,7 @@ function Login() {
             phoneNumber = ''
 
             setCodigo(true)
+            
             barra.style.width = '0%'
             barra.style.transition = ' width 0s'
 
@@ -57,12 +59,12 @@ function Login() {
 
     }
 
-    function validCode(e) {
-        e.preventDefault()
-        const code = document.getElementById('codigo')
-        console.log(code.value)
+    function validCode() {
+        const code = codeRef.current.value
+       
+        console.log(code)
 
-        window.confirmationResult.confirm(code.value).then((result) => {
+        window.confirmationResult.confirm(code).then((result) => {
             const user = result.user
             console.log(user.uid)
             firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
@@ -95,8 +97,9 @@ function Login() {
     }
 
     function createUser() {
-        const name = document.getElementById('name').value
-        const status = document.getElementById('status').value
+
+        const name = nameRef.current.value
+        const status = statusRef.current.value
 
         firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
@@ -104,6 +107,7 @@ function Login() {
             status: status ?? 'Disponivel',
             chats:[]
         })
+
         setUser({ id: userId, img: imgUser, name: name, status: status ?? 'Disponível' })
         console.log('conta criada')
     }
@@ -133,8 +137,8 @@ function Login() {
                             <span>Forneca seu nome, foto e status para o seu perfil.</span>
 
                         </div>
-                        <input type="text" placeholder='Nome' id='name' autoComplete='off' />
-                        <input type="text" placeholder='Status' id='status' autoComplete='off' />
+                        <input type="text" ref={nameRef} placeholder='Nome' id='name' autoComplete='off' />
+                        <input type="text" ref={statusRef} placeholder='Status' id='status' autoComplete='off' />
                         <button type='button' onClick={createUser}>Entrar</button>
                     </> :
                         <>
@@ -144,7 +148,9 @@ function Login() {
                                 <> <h1>Código</h1>
                                     <div>
                                         <p>digite o código de seis dígitos</p>
-                                        <input type="text" autoComplete='off' placeholder='- - -  - - -' id='codigo' ></input>
+
+                                        <input ref={codeRef} type="text" placeholder='- - -  - - -' id='codigo' ></input>
+
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                     <p>Reenviar código </p>
@@ -154,7 +160,7 @@ function Login() {
                                         <p>O whats enviará um SMS para verificar o seu numero de telefone </p>
                                         <div className="input-phone">
                                             <input type="text" disabled value='+55' />
-                                            <input type="text" placeholder='Seu número' id='phone' ></input>
+                                            <input ref={inputRef} type="text" placeholder='Seu número' id='phone' ></input>
                                         </div>
 
                                     </div>
@@ -165,7 +171,7 @@ function Login() {
                         </>
                     }
                 </form>
-                <div className='barra'><span className='span'></span> </div>
+                <div className='barra' ><span ref={barraRef} className='span'></span> </div>
             </div>
             <div id='sign-in-button'></div>
         </div>

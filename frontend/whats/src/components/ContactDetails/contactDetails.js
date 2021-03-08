@@ -4,12 +4,10 @@ import Context from '../../context'
 import { useContext, useState } from 'react'
 import {api} from '../../config/api'
 
-function ContactDetails(){
+function ContactDetails( {isDetailsActive,setIsDetailsActive,isDeleteActive, setIsDeleteActive}){
 
-    const {chatactive,user,conversas,setChatactive} = useContext(Context) 
-    const [isDeleteActive, setIsDeleteActive] = useState(false)
- 
-
+    const {chatactive,user,conversas,setChatactive,setIsRightOpen} = useContext(Context) 
+   
     function deleteChat(){
 
         api.deleteChat(conversas,chatactive,user)
@@ -17,28 +15,9 @@ function ContactDetails(){
     
         setIsDeleteActive(false)
         setChatactive(false)
-
-        const contactDetails = document.querySelector('.contact-details')
-        const aside = document.querySelector('.aside')
-        aside.style.width = '30%'
-        contactDetails.style.animation = 'close-search-msg 100ms'
-        contactDetails.style.visibility = 'hidden'
-       
+        setIsDetailsActive(false)
+        setIsRightOpen(false)
     }
-
-    function handleClose() {
-        const main = document.querySelector('.area-main')
-        const contactDetails = document.querySelector('.contact-details')
-        const scroll = document.querySelector('.scroll')
-        const aside = document.querySelector('.aside')
-      
-        aside.style.width = '30%'
-        scroll.style.animation = ' close-search-msg 100ms '
-        contactDetails.style.animation = 'close-search-msg 100ms'
-        main.style.width = '70%'
-        contactDetails.style.visibility = 'hidden'
-    
-      }
 
     return(
         <>
@@ -52,14 +31,14 @@ function ContactDetails(){
             </div>
         </div>
 
-        <div className='contact-details'>
+        <div className={`contact-details ${isDetailsActive? 'contact-details-open' : ''}`}>
             <div className='header'>
-                <svg onClick={handleClose} className='close' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.1 17.2l-5.3-5.3 5.3-5.3-1.8-1.8-5.3 5.4-5.3-5.3-1.8 1.7 5.3 5.3-5.3 5.3L6.7 19l5.3-5.3 5.3 5.3 1.8-1.8z"></path></svg>
+                <svg onClick={() => {setIsDetailsActive(false); setIsRightOpen(false)}} className='close' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.1 17.2l-5.3-5.3 5.3-5.3-1.8-1.8-5.3 5.4-5.3-5.3-1.8 1.7 5.3 5.3-5.3 5.3L6.7 19l5.3-5.3 5.3 5.3 1.8-1.8z"></path></svg>
                 <div className='label'>Dados do contato</div>
             </div>
 
 
-            <div className='scroll'>
+            <div className={`scroll ${isDetailsActive? 'scroll-open' : ''}`}>
 
                 <div className='imgPerfil'>
                     <img className='img' alt="img perfil" src={imgtest}></img>

@@ -13,6 +13,7 @@ function TypeArea({ users, scrollRef }) {
     const [isSend, setIsSend] = useState(false)
     const [msg, setMsg] = useState('')
     const inputRef = useRef()
+    const [isInconActive,setIsIconActive] = useState(false)
 
     function handleChange(e) {
         e.target.value ? setIsSend(true) : setIsSend(false)
@@ -32,23 +33,6 @@ function TypeArea({ users, scrollRef }) {
          console.log('gravando')
      } */
 
-    function handleIconsClip() {
-        const icons = document.querySelector('.icons-clip')
-        const icon = document.querySelectorAll('.icon')
-
-        if (icons.style.visibility === 'visible') {
-            for (let i of icon) {
-                i.style.animation = 'close-icons-clip 300ms'
-            }
-            icons.style.visibility = 'hidden'
-        } else {
-            for (let i of icon) {
-                i.style.animation = 'iconAni 700ms'
-            }
-            icons.style.visibility = 'visible'
-        }
-    }
-
     function handleEnter(e) {
         if (e.key === 'Enter') {
             enviar()
@@ -61,8 +45,8 @@ function TypeArea({ users, scrollRef }) {
 
             <div className='type-area-icons'>
                 <IconEmoji></IconEmoji>
-                <IconsClip ></IconsClip>
-                <IconAnexar onclick={handleIconsClip}></IconAnexar>
+                <IconsClip isInconActive={isInconActive} ></IconsClip>
+                <IconAnexar onclick={()=>setIsIconActive(!isInconActive)}></IconAnexar>
             </div>
 
 
