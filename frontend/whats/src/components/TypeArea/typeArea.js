@@ -1,6 +1,6 @@
 import './typeArea.css'
 import IconsClip from '../IconsClip/iconsClip'
-import firebase from '../../config/api'
+import { api } from '../../config/api'
 import { useContext, useRef, useState } from 'react'
 import Context from '../../context'
 import IconEmoji from '../../assets/icons/iconEmoji'
@@ -21,44 +21,16 @@ function TypeArea({ users, scrollRef }) {
 
     async function enviar() {
 
-
         if (msg) {
 
-            firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
-                mensagens: firebase.firestore.FieldValue.arrayUnion({
-                    emissor: user.id,
-                    text: msg,
-                    hora: Date.now()
-                })
-            })
-            console.log(chatactive)
-
-            console.log(msg)
-
-            setMsg('')
-            inputRef.current.focus()
-
-            for (let i of users) {
-                let cts = await firebase.firestore().collection('users').doc(i).get()
-                let chats = [...cts.data().chats]
-                for (let j of chats) {
-                    if (j.idChat === chatactive.idChat) {
-                        j.msg = msg
-                        j.hora = Date.now()
-
-                    }
-                }
-                await firebase.firestore().collection('users').doc(i).update({
-                    chats
-                })
-            }
+            api.sendMessage(user, users, chatactive, msg, inputRef, setMsg)
 
         }
     }
 
-   /*  function gravar() {
-        console.log('gravando')
-    } */
+    /*  function gravar() {
+         console.log('gravando')
+     } */
 
     function handleIconsClip() {
         const icons = document.querySelector('.icons-clip')

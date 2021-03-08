@@ -3,7 +3,7 @@ import Context from '../../context';
 import Head from '../Header/header'
 import ItemMensagem from '../itemMensagem/itemMensagem'
 import TypeArea from '../TypeArea/typeArea'
-import firebase from '../../config/api'
+import  { api } from '../../config/api'
 import './main.css'
 
 function Main() {
@@ -22,19 +22,9 @@ function Main() {
 
 
     if (chatactive !== false) {
-      firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
-        if (docs.exists) {
 
-          handleSetMsgs(docs.data().mensagens)
-          setUsersInChat(docs.data().users)
-
-          if (scrollRef.current != null)
-            if (scrollRef.current.scrollHeight > scrollRef.current.offsetHeight) {
-              scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.offsetHeight
-            }
-        }
-      })
-
+      api.getMessages(chatactive,scrollRef,handleSetMsgs,setUsersInChat)
+      
     }
 
   }, [chatactive])

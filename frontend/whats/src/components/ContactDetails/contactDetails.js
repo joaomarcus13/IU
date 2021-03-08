@@ -2,7 +2,7 @@ import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 import Context from '../../context'
 import { useContext, useState } from 'react'
-import firebase from '../../config/api'
+import {api} from '../../config/api'
 
 function ContactDetails(){
 
@@ -12,32 +12,9 @@ function ContactDetails(){
 
     function deleteChat(){
 
-        for (var i in conversas){
-            if (conversas[i].idChat === chatactive.idChat){
-                conversas.splice(i,1)
-                firebase.firestore().collection('users').doc(user.id).update({
-                    chats: conversas                
-                })
-            }   
-        }
-        
-        firebase.firestore().collection('conversas').doc(chatactive.idChat).get().then((doc) =>{
-         
-            if (doc.exists){
-           
-                if (doc.data().users.length === 1){
-                    firebase.firestore().collection('conversas').doc(chatactive.idChat).delete().then(()=>{
-                        console.log('conversa apagada', chatactive.idChat)
-                    })    
-                }else{
-                    firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
-                        users: [chatactive.idUserChat]
-                    })     
-                    console.log('user apagado',chatactive.idChat)
-                }
-            }
-        })
-        
+        api.deleteChat(conversas,chatactive,user)
+
+    
         setIsDeleteActive(false)
         setChatactive(false)
 
