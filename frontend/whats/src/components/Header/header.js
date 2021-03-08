@@ -49,7 +49,7 @@ function Header() {
 
       <div className={`options-chat ${isOptionsActive?'options-chat-open':''}`} >
         <ul>
-          <li>
+          <li onClick={()=>{setIsDetailsActive(true);setIsOptionActive(false); setIsRightOpen(true)}}>
             Dados do contato
             </li>
           <li>
