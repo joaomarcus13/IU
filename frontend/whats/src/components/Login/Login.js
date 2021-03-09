@@ -1,6 +1,6 @@
-import { useContext, useRef, useState } from 'react'
+import { useContext, useState } from 'react'
 import Context from '../../context'
-import firebase from '../../config/api'
+import firebase, { api } from '../../config/api'
 import './Login.css'
 import imgUser from '../../assets/images/7189bwar9pdx.jpg'
 import logoWhats from '../../assets/icons/logoWhats.svg'
@@ -14,73 +14,78 @@ function Login() {
 
     const [codigo, setCodigo] = useState(false);
     const [cadastro, setCadastro] = useState(false)
-    const [userId, setUserId] = useState('') 
-    const [phone, setPhone] = useState('+11212345678')
-    const {setConversas} = useContext(Context)
-    const codeRef = useRef()
-    const inputRef = useRef()
-    const nameRef = useRef()
-    const statusRef = useRef()
-    const barraRef = useRef()
+    const [userId, setUserId] = useState('')
+    const [phone, setPhone] = useState('')
+    const [inputCode, setInputCode] = useState('')
+    const [inputName, setInputName] = useState('')
+    const [inputStatus, setInputStatus] = useState('')
+    const [progressBar, setProgressBar] = useState(false)
+    const { setConversas } = useContext(Context)
+
 
     function handleLogin(e) {
-  
-        e.preventDefault()
-        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-            'size': 'invisible',
-            'callback': (response) => {
-            }
-        });
 
-        let phoneNumber = `+55${inputRef.current.value}`
-      
-        setPhone(phoneNumber)
-        //setPhone('+11212345678')
-        const appVerifier = window.recaptchaVerifier;
-        console.log(phoneNumber)
+        if (phone) {
+            setProgressBar(true)
 
-        const barra = barraRef.current
-        barra.style.width = '100%'
-        
+            e.preventDefault()
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
+                'size': 'invisible',
+                'callback': (response) => {
+                }
+            });
 
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier).then((confirmationResult) => {
-            window.confirmationResult = confirmationResult;
-            console.log('confirmado')
-            phoneNumber = ''
+            console.log(phone)
 
-            setCodigo(true)
-            
-            barra.style.width = '0%'
-            barra.style.transition = ' width 0s'
+            const appVerifier = window.recaptchaVerifier;
 
-        }).catch((error) => {
-            console.log(error)
-        });
+            api.signIn(phone,appVerifier,setPhone,setCodigo,setProgressBar)
 
+           /*  firebase.auth().signInWithPhoneNumber(phone, appVerifier).then((confirmationResult) => {
+                window.confirmationResult = confirmationResult;
+                console.log('confirmado')
+
+                setPhone('')
+
+                setCodigo(true)
+
+                setProgressBar(false)
+
+            }).catch((error) => {
+                console.log(error)
+            }); */
+
+        }
     }
 
-    function validCode() {
-        const code = codeRef.current.value
-       
-        console.log(code)
+    function validCode(e) {
 
-        window.confirmationResult.confirm(code).then((result) => {
+        e.preventDefault()
+
+        console.log(inputCode)
+
+        window.confirmationResult.confirm(inputCode).then((result) => {
             const user = result.user
             console.log(user.uid)
-            firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
+
+            api.verifyUserToLogin(user,setUser,setConversas,setCadastro,setUserId)
+
+           /*  firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
                 if (doc.exists) {
                     console.log("Document data:", doc.data());
-                    setUser({ id: user.uid, 
-                        img: imgUser, 
-                        name: doc.data().name, 
+                    setUser({
+                        id: user.uid,
+                        img: imgUser,
+                        name: doc.data().name,
                         status: doc.data().status,
                         conversas: doc.data().conversas,
-                        contados:doc.data().contatos,
-                        phone: doc.data().phone})
-                    
-                    if (doc.data().chats != null){
-                        setConversas(doc.data().chats)   
-                    } 
+                        contados: doc.data().contatos,
+                        phone: doc.data().phone
+                    })
+
+                    if (doc.data().chats != null) {
+                        setConversas(doc.data().chats)
+                    }
 
                 } else {
                     setCadastro(true)
@@ -89,7 +94,8 @@ function Login() {
                 }
             }).catch((error) => {
                 console.log("Error getting document:", error);
-            });
+            }); */
+
 
         }).catch((error) => {
             console.log(error)
@@ -98,17 +104,16 @@ function Login() {
 
     function createUser() {
 
-        const name = nameRef.current.value
-        const status = statusRef.current.value
+        api.createAccount(userId,phone,inputName,inputStatus)
 
-        firebase.firestore().collection('users').doc(userId).set({
+        /* firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
-            name: name,
-            status: status ?? 'Disponivel',
-            chats:[]
-        })
+            name: inputName,
+            status: inputStatus ?? 'Disponivel',
+            chats: []
+        }) */
 
-        setUser({ id: userId, img: imgUser, name: name, status: status ?? 'Disponível' })
+        setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus ?? 'Disponível' })
         console.log('conta criada')
     }
 
@@ -128,17 +133,17 @@ function Login() {
                     {cadastro ? <>
                         <h1>Cadastro</h1>
                         <div className='adft'>
-                            <img src={addFoto} alt=""/>
+                            <img src={addFoto} alt="" />
                             <input type="file" id="imgUser"  ></input>
                             <label htmlFor="imgUser">
-                                <img src={camera} alt=""/>
+                                <img src={camera} alt="" />
                                 <span>add foto</span>
                             </label>
                             <span>Forneca seu nome, foto e status para o seu perfil.</span>
 
                         </div>
-                        <input type="text" ref={nameRef} placeholder='Nome' id='name' autoComplete='off' />
-                        <input type="text" ref={statusRef} placeholder='Status' id='status' autoComplete='off' />
+                        <input type="text" onChange={(e) => { setInputName(e.target.value) }} placeholder='Nome' id='name' autoComplete='off' required />
+                        <input type="text" onChange={(e) => { setInputStatus(e.target.value) }} placeholder='Status' id='status' autoComplete='off' />
                         <button type='button' onClick={createUser}>Entrar</button>
                     </> :
                         <>
@@ -149,29 +154,30 @@ function Login() {
                                     <div>
                                         <p>digite o código de seis dígitos</p>
 
-                                        <input ref={codeRef} type="text" placeholder='- - -  - - -' id='codigo' ></input>
+                                        <input onChange={e => { setInputCode(e.target.value) }} type="text" placeholder='- - -  - - -' id='codigo' required ></input>
 
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                     <p>Reenviar código </p>
                                 </> :
+
                                 <> <h1>Login</h1>
                                     <div>
                                         <p>O whats enviará um SMS para verificar o seu numero de telefone </p>
                                         <div className="input-phone">
                                             <input type="text" disabled value='+55' />
-                                            <input ref={inputRef} type="text" placeholder='Seu número' id='phone' ></input>
+                                            <input required onChange={e => { setPhone(`+55${e.target.value}`) }} type="tel" placeholder='Seu número' id='phone'  ></input>
                                         </div>
 
                                     </div>
-                                    <button type='button' onClick={handleLogin}>Enviar codigo</button>
-                                    <p className='enviando'>Enviando SMS com o código...</p>
+                                    <button type='button' onClick={handleLogin}>Enviar código</button>
+                                    <p className='enviando' style={{ visibility: progressBar ? 'visible' : 'hidden' }}>Enviando SMS com o código...</p>
                                 </>
                             }
                         </>
                     }
                 </form>
-                <div className='barra' ><span ref={barraRef} className='span'></span> </div>
+                <div className='barra' ><span className={progressBar ? 'span' : ''}></span> </div>
             </div>
             <div id='sign-in-button'></div>
         </div>

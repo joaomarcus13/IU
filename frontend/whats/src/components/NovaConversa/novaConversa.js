@@ -14,41 +14,24 @@ function NovaConversa({ open, close }) {
 
     const { contatos, setContatos, user, conversas, chatactive, setChatactive } = useContext(Context)
 
-    function ifExists(id) {
-        for (let i in conversas) {
-            if (conversas[i].idUserChat === id) {
-                console.log('ja existe')
-                return true
-            }
-        }
-        return false
-    }
-
-
     async function adicionarConversa(clickedChat) {
-
-        api.addConversa(user, conversas, setChatactive, ifExists, clickedChat)
-
+        api.addConversa(user, conversas, setChatactive, clickedChat)
         back('novaconversa')
-
     }
 
 
     function back(classe) {
-
         let obj = { ...open }
         obj[classe] = false
         close(obj)
-
     }
-
 
 
     useEffect(() => {
 
         api.getContacts(user, setContatos)
 
-    }, [chatactive, setContatos, user.id])
+    }, [chatactive, setContatos, user])
 
     return (
         <div className={`tela-novaconversa ${open.novaconversa ? 'open' : ''}`}>

@@ -1,7 +1,7 @@
 import './contactDetails.css'
 import imgtest from '../../assets/images/imgtest.png'
 import Context from '../../context'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import {api} from '../../config/api'
 
 function ContactDetails( {isDetailsActive,setIsDetailsActive,isDeleteActive, setIsDeleteActive}){

@@ -76,16 +76,19 @@ form.login-form div p {
     margin-bottom: 10px;
 }
 
-.barra > .span {
+.barra > span{
     background-color: var(--verde);
     height: 100%;
-    width: 0px;
-    transition: width 6.1s;
+    width: 0%;
+}
+.barra > .span {
+    width: 100%;
+    transition: width 6.1s; 
 }
 
-.login .enviando {
-    visibility: hidden;
-}
+/* .login .enviando {
+    visibility: visible;
+} */
 
 .login-container form.login-form .input-phone {
     display: flex;
@@ -96,7 +99,7 @@ form.login-form div p {
 }
 
 .login-container form.login-form input:first-child {
-    width: 15%;
+    width: 35px;
     border: none;
     padding: 10px 5px;
     border-bottom: 2px solid var(--verde);
@@ -221,9 +224,12 @@ form.login-form svg {
     margin-top: 20px;
     border: none;
     border-radius: 4px;
-    background-color: var(--verde);
+    background-color: rgb(0, 143, 129);
     color: #fff;
     cursor: pointer;
+}
+.login-container form button:hover{
+    background-color: var(--verde) ;
 }
 
 @keyframes pass {

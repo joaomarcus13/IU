@@ -21,12 +21,74 @@ if (!firebase.apps.length) {
 
 }
 
+function ifExists(id, conversas) {
+    for (let i in conversas) {
+        if (conversas[i].idUserChat === id) {
+            console.log('ja existe')
+            return true
+        }
+    }
+    return false
+}
+
+
 
 export const api = {
 
 
-    authentication: function () {
+    signIn: function (phone, appVerifier, setPhone, setCodigo, setProgressBar) {
+        firebase.auth().signInWithPhoneNumber(phone, appVerifier).then((confirmationResult) => {
+            window.confirmationResult = confirmationResult;
+            console.log('confirmado')
 
+            setPhone('')
+
+            setCodigo(true)
+
+            setProgressBar(false)
+
+        }).catch((error) => {
+            console.log(error)
+        });
+    },
+
+
+    verifyUserToLogin: function (user, setUser, setConversas, setCadastro, setUserId) {
+        firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
+            if (doc.exists) {
+                console.log("Document data:", doc.data());
+                setUser({
+                    id: user.uid,
+                    img: imgUser,
+                    name: doc.data().name,
+                    status: doc.data().status,
+                    conversas: doc.data().conversas,
+                    contados: doc.data().contatos,
+                    phone: doc.data().phone
+                })
+
+                if (doc.data().chats != null) {
+                    setConversas(doc.data().chats)
+                }
+
+            } else {
+                setCadastro(true)
+                setUserId(user.uid)
+                console.log("No such document!");
+            }
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
+    },
+
+
+    createAccount: function (userId, phone, inputName, inputStatus) {
+        firebase.firestore().collection('users').doc(userId).set({
+            phone: phone,
+            name: inputName,
+            status: inputStatus ?? 'Disponivel',
+            chats: []
+        })
     },
 
 
@@ -64,8 +126,8 @@ export const api = {
     },
 
 
-    addConversa: async function (user, conversas, setChatactive, ifExists,clickedChat) {
-        if (!ifExists(clickedChat.id)) {
+    addConversa: async function (user, conversas, setChatactive, clickedChat) {
+        if (!ifExists(clickedChat.id, conversas)) {
             let chat = null
 
             chat = await firebase.firestore().collection('conversas').add({
