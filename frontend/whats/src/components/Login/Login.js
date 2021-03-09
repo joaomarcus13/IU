@@ -41,20 +41,6 @@ function Login() {
 
             api.signIn(phone,appVerifier,setPhone,setCodigo,setProgressBar)
 
-           /*  firebase.auth().signInWithPhoneNumber(phone, appVerifier).then((confirmationResult) => {
-                window.confirmationResult = confirmationResult;
-                console.log('confirmado')
-
-                setPhone('')
-
-                setCodigo(true)
-
-                setProgressBar(false)
-
-            }).catch((error) => {
-                console.log(error)
-            }); */
-
         }
     }
 
@@ -70,33 +56,6 @@ function Login() {
 
             api.verifyUserToLogin(user,setUser,setConversas,setCadastro,setUserId)
 
-           /*  firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
-                if (doc.exists) {
-                    console.log("Document data:", doc.data());
-                    setUser({
-                        id: user.uid,
-                        img: imgUser,
-                        name: doc.data().name,
-                        status: doc.data().status,
-                        conversas: doc.data().conversas,
-                        contados: doc.data().contatos,
-                        phone: doc.data().phone
-                    })
-
-                    if (doc.data().chats != null) {
-                        setConversas(doc.data().chats)
-                    }
-
-                } else {
-                    setCadastro(true)
-                    setUserId(user.uid)
-                    console.log("No such document!");
-                }
-            }).catch((error) => {
-                console.log("Error getting document:", error);
-            }); */
-
-
         }).catch((error) => {
             console.log(error)
         });
@@ -105,13 +64,6 @@ function Login() {
     function createUser() {
 
         api.createAccount(userId,phone,inputName,inputStatus)
-
-        /* firebase.firestore().collection('users').doc(userId).set({
-            phone: phone,
-            name: inputName,
-            status: inputStatus ?? 'Disponivel',
-            chats: []
-        }) */
 
         setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus ?? 'Disponível' })
         console.log('conta criada')
