@@ -5,7 +5,14 @@
     flex-direction: column;
     justify-content: flex-end;
     width: 70%;
+
+    transition: .2s;
   
+  }
+  .area-main-min{
+    width: 45%;
+
+    transition: .1s;
   }
   
   .area-main .main{
@@ -21,6 +28,8 @@
   
     
   }
+
+ 
 
   .sc{
 

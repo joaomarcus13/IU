@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './aside.css'
-import firebase from '../../config/api'
+import {api} from '../../config/api'
 import Perfil from '../Perfil/perfil'
 import NovaConversa from '../NovaConversa/novaConversa'
 import Input from '../input/input'
@@ -8,25 +8,15 @@ import ItemConversa from '../itemconversa/itemconversa'
 import Context from '../../context'
 import Configuracoes from '../configuracoes/configuracoes';
 
-function Aside() {
+function Aside( ) {
 
-    const {chatactive,conversas,user,setChatactive,setConversas} = useContext(Context) 
+    const {chatactive,conversas,user,setChatactive,setConversas, isRightOpen} = useContext(Context) 
     const [isOptionsActive, setIsOptionActive] = useState(false)
     const [openDrawer, setOpenDrawer] = useState({novaconversa:false,perfil:false,configuracoes:false})
     
     useEffect(() => {
-        function getConversas(){
-            firebase.firestore().collection('users').doc(user.id).onSnapshot((doc) => {
-                if (doc.exists) {
-                    if (doc.data().chats != null){
-                        setConversas(doc.data().chats)
-
-                    }
-                }
-            })
-        }
-
-        getConversas()
+       
+        api.getConversas(user,setConversas)
 
     },[user, setConversas])
 
@@ -37,7 +27,6 @@ function Aside() {
     }
 
     function  handleChatActive(e) {
-        console.log('chat ativo',e)
         setChatactive(e)
     }
 
@@ -53,9 +42,11 @@ function Aside() {
     }
 
 
+
+
     return (
         <>
-            <aside className='aside'>
+            <aside className={`aside ${isRightOpen? 'aside-min': ''}`}>
                 <div className='head-aside'>
                     <div className='img-perfil' >
                         <img onClick={() => { handleDrawer('perfil') }} src={user.img} alt="" />
@@ -77,7 +68,7 @@ function Aside() {
 
                     <div className={`options-whats ${isOptionsActive?'options-whats-open':''}`}>
                         <ul>
-                            <li>Novo grupo</li>
+                            <li >Novo grupo</li>
                             <li>Criar uma sala</li>
                             <li>Perfil</li>
                             <li>Arquivadas</li>
