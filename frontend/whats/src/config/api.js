@@ -142,7 +142,8 @@ export const api = {
                 idUserChat: clickedChat.id,
                 msg: '',
                 hora: Date.now(),
-                phone: clickedChat.phone
+                phone: clickedChat.phone,
+                lastDelete:Date.now()
             }
             conversas.push(conversa)
 
@@ -162,7 +163,8 @@ export const api = {
                     idUserChat: user.id,
                     msg: '',
                     hora: Date.now(),
-                    phone: user.phone
+                    phone: user.phone,
+                    lastDelete:Date.now()
                 })
             })
 
@@ -172,11 +174,14 @@ export const api = {
     },
 
 
-    getMessages: function (chatactive, scrollRef, handleSetMsgs, setUsersInChat) {
+    getMessages: async function (chatactive, scrollRef, handleSetMsgs, setUsersInChat) {
+        let timeDelete = chatactive.lastDelete
+       
         firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
             if (docs.exists) {
 
-                handleSetMsgs(docs.data().mensagens)
+                let msgs = docs.data().mensagens.filter(e=>e.hora >= timeDelete)
+                handleSetMsgs(msgs)
                 setUsersInChat(docs.data().users)
 
                 if (scrollRef.current != null)
@@ -188,12 +193,13 @@ export const api = {
     },
 
 
+
     sendMessage: async function (user, users, chatactive, msg, inputRef, setMsg) {
         firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
             mensagens: firebase.firestore.FieldValue.arrayUnion({
                 emissor: user.id,
                 text: msg,
-                hora: Date.now()
+                hora: Date.now(),
             })
         })
         setMsg('')
@@ -217,32 +223,24 @@ export const api = {
 
 
 
-    deleteChat: function (conversas, chatactive, user) {
-        for (let i in conversas) {
-            if (conversas[i].idChat === chatactive.idChat) {
-                conversas.splice(i, 1)
-                firebase.firestore().collection('users').doc(user.id).update({
-                    chats: conversas
-                })
-            }
-        }
+    deleteChat: async function (conversas, chatactive, user) {
+      
+              
+                    let cts = await firebase.firestore().collection('users').doc(user.id).get()
+                  
+                    let chats = [...cts.data().chats]
+                    for (let j of chats) {
+                        if (j.idChat === chatactive.idChat) {
+                            j.msg = ''
+                            j.lastDelete = Date.now()
+        
+                        }
+                    }
 
-        firebase.firestore().collection('conversas').doc(chatactive.idChat).get().then((doc) => {
-
-            if (doc.exists) {
-
-                if (doc.data().users.length === 1) {
-                    firebase.firestore().collection('conversas').doc(chatactive.idChat).delete().then(() => {
-                        console.log('conversa apagada', chatactive.idChat)
+                    await firebase.firestore().collection('users').doc(user.id).update({
+                        chats
                     })
-                } else {
-                    firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
-                        users: [chatactive.idUserChat]
-                    })
-                    console.log('user apagado', chatactive.idChat)
-                }
-            }
-        })
+
     }
 
 

@@ -89,6 +89,7 @@ function Aside( ) {
                     <ul>
                         {
                             Object.values(conversas).map(e =>
+                                e.msg === ''?<></>:
                                 <ItemConversa
                                     key={e.idChat}
                                     active={chatactive.idChat === e.idChat}
