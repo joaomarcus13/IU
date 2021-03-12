@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './aside.css'
-import {api} from '../../config/api'
+import { api } from '../../config/api'
 import Perfil from '../Perfil/perfil'
 import NovaConversa from '../NovaConversa/novaConversa'
 import Input from '../input/input'
@@ -8,45 +8,53 @@ import ItemConversa from '../itemconversa/itemconversa'
 import Context from '../../context'
 import Configuracoes from '../configuracoes/configuracoes';
 
-function Aside( ) {
+function Aside() {
 
-    const {chatactive,conversas,user,setChatactive,setConversas, isRightOpen} = useContext(Context) 
+    const { chatactive, conversas, user,setUser, setChatactive, setConversas,setContatos, isRightOpen } = useContext(Context)
     const [isOptionsActive, setIsOptionActive] = useState(false)
-    const [openDrawer, setOpenDrawer] = useState({novaconversa:false,perfil:false,configuracoes:false})
-    
-    useEffect(() => {
-       
-        api.getConversas(user,setConversas)
+    const [openDrawer, setOpenDrawer] = useState({ novaconversa: false, perfil: false, configuracoes: false })
 
-    },[user, setConversas])
+    useEffect(() => {
+
+        api.getConversas(user, setConversas)
+
+    }, [user, setConversas])
+
 
 
     function handleOptions() {
         setIsOptionActive(!isOptionsActive)
-        
+
     }
 
-    function  handleChatActive(e) {
+    function handleChatActive(e) {
         setChatactive(e)
     }
 
 
     function handleDrawer(classe) {
-        
-       let obj = {...openDrawer}
-       obj[classe] = true 
-      
-       setOpenDrawer(obj)
-       !isOptionsActive || setIsOptionActive(false)   
+
+        let obj = { ...openDrawer }
+        obj[classe] = true
+
+        setOpenDrawer(obj)
+        !isOptionsActive || setIsOptionActive(false)
 
     }
 
 
+    function disconnect(){
+        setChatactive(false)
+        setConversas([])
+        setContatos([])
+        setUser(null)
+        
+    }
 
 
     return (
         <>
-            <aside className={`aside ${isRightOpen? 'aside-min': ''}`}>
+            <aside className={`aside ${isRightOpen ? 'aside-min' : ''}`}>
                 <div className='head-aside'>
                     <div className='img-perfil' >
                         <img onClick={() => { handleDrawer('perfil') }} src={user.img} alt="" />
@@ -60,13 +68,13 @@ function Aside( ) {
                         <div className="icon-msgs-whats" onClick={() => { handleDrawer('novaconversa') }}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M19.005 3.175H4.674C3.642 3.175 3 3.789 3 4.821V21.02l3.544-3.514h12.461c1.033 0 2.064-1.06 2.064-2.093V4.821c-.001-1.032-1.032-1.646-2.064-1.646zm-4.989 9.869H7.041V11.1h6.975v1.944zm3-4H7.041V7.1h9.975v1.944z"></path></svg></div>
 
-                        <div className={`icon-options-whats ${isOptionsActive?'bg-icon-click':''}`} id='opt-w' onFocus={handleOptions}  onClick={handleOptions} onBlur={handleOptions}>
+                        <div className={`icon-options-whats ${isOptionsActive ? 'bg-icon-click' : ''}`} id='opt-w' onFocus={handleOptions} onClick={handleOptions} onBlur={handleOptions}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 7a2 2 0 1 0-.001-4.001A2 2 0 0 0 12 7zm0 2a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 9zm0 6a2 2 0 1 0-.001 3.999A2 2 0 0 0 12 15z"></path></svg>
                         </div>
                     </div>
 
 
-                    <div className={`options-whats ${isOptionsActive?'options-whats-open':''}`}>
+                    <div className={`options-whats ${isOptionsActive ? 'options-whats-open' : ''}`}>
                         <ul>
                             <li >Novo grupo</li>
                             <li>Criar uma sala</li>
@@ -74,7 +82,7 @@ function Aside( ) {
                             <li>Arquivadas</li>
                             <li> Favoritas</li>
                             <li onClick={() => { handleDrawer('configuracoes') }}>Configuracoes</li>
-                            <li>Desconectar</li>
+                            <li onClick={() => { disconnect() }}>Desconectar</li>
                         </ul>
                     </div>
 
@@ -89,17 +97,17 @@ function Aside( ) {
                     <ul>
                         {
                             Object.values(conversas).map(e =>
-                                e.msg === ''?<></>:
-                                <ItemConversa
-                                    key={e.idChat}
-                                    active={chatactive.idChat === e.idChat}
-                                    onClick={() => { handleChatActive(e) }}
-                                    id={e.idChat}
-                                    img={e.img}
-                                    name={e.name}
-                                    msgPrev={e.msg}
-                                    hora={e.hora}>
-                                </ItemConversa>)
+                                e.msg === '' ? <></> :
+                                    <ItemConversa
+                                        key={e.idChat}
+                                        active={chatactive.idChat === e.idChat}
+                                        onClick={() => { handleChatActive(e) }}
+                                        id={e.idChat}
+                                        img={e.img}
+                                        name={e.name}
+                                        msgPrev={e.msg}
+                                        hora={e.hora}>
+                                    </ItemConversa>)
                         }
 
                     </ul>

@@ -41,7 +41,7 @@ export const api = {
             window.confirmationResult = confirmationResult;
             console.log('confirmado')
 
-            setPhone('')
+            //setPhone('')
 
             setCodigo(true)
 
@@ -53,24 +53,21 @@ export const api = {
     },
 
 
-    verifyUserToLogin: function (user, setUser, setConversas, setCadastro, setUserId,setSpinner) {
+    verifyUserToLogin: function (user, setUser, setConversas, setCadastro, setUserId, setSpinner, lastSeen) {
         firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
             if (doc.exists) {
+                firebase.firestore().collection('users').doc(user.uid).update({
+                    lastSeen:'online'
+                })
                 console.log("Document data:", doc.data());
                 setUser({
                     id: user.uid,
                     img: imgUser,
                     name: doc.data().name,
                     status: doc.data().status,
-                    conversas: doc.data().conversas,
-                    contados: doc.data().contatos,
-                    phone: doc.data().phone
+                    phone: doc.data().phone,
                 })
-
-                if (doc.data().chats != null) {
-                    setConversas(doc.data().chats)
-                }
-
+                setConversas(doc.data().chats)
             } else {
                 setCadastro(true)
                 setSpinner(false)
@@ -80,14 +77,17 @@ export const api = {
         }).catch((error) => {
             console.log("Error getting document:", error);
         });
+
+        
     },
 
 
-    createAccount: function (userId, phone, inputName, inputStatus) {
+    createAccount: function (userId, phone, inputName, inputStatus, lastSeen) {
         firebase.firestore().collection('users').doc(userId).set({
             phone: phone,
             name: inputName,
-            status: inputStatus ?? 'Disponivel',
+            status: inputStatus,
+            lastSeen,
             chats: []
         })
     },
@@ -105,7 +105,8 @@ export const api = {
                     name: e.data().name,
                     status: e.data().status,
                     chats: e.data().chats,
-                    phone: e.data().phone
+                    phone: e.data().phone,
+                    lastSeen: e.data().lastSeen
 
                 })
             }
@@ -128,6 +129,8 @@ export const api = {
 
 
     addConversa: async function (user, conversas, setChatactive, clickedChat) {
+        //console.log('user',user)
+        //console.log('other',clickedChat)
         if (!ifExists(clickedChat.id, conversas)) {
             let chat = null
 
@@ -143,9 +146,10 @@ export const api = {
                 msg: '',
                 hora: Date.now(),
                 phone: clickedChat.phone,
-                lastDelete:Date.now()
+                lastDelete: Date.now()
             }
             conversas.push(conversa)
+            console.log(conversa)
 
             setChatactive(conversa)
 
@@ -164,7 +168,7 @@ export const api = {
                     msg: '',
                     hora: Date.now(),
                     phone: user.phone,
-                    lastDelete:Date.now()
+                    lastDelete: Date.now()
                 })
             })
 
@@ -176,11 +180,11 @@ export const api = {
 
     getMessages: async function (chatactive, scrollRef, handleSetMsgs, setUsersInChat) {
         let timeDelete = chatactive.lastDelete
-       
+
         firebase.firestore().collection('conversas').doc(chatactive.idChat).onSnapshot(docs => {
             if (docs.exists) {
 
-                let msgs = docs.data().mensagens.filter(e=>e.hora >= timeDelete)
+                let msgs = docs.data().mensagens.filter(e => e.hora >= timeDelete)
                 handleSetMsgs(msgs)
                 setUsersInChat(docs.data().users)
 
@@ -195,6 +199,7 @@ export const api = {
 
 
     sendMessage: async function (user, users, chatactive, msg, inputRef, setMsg) {
+        //console.log(chatactive)
         firebase.firestore().collection('conversas').doc(chatactive.idChat).update({
             mensagens: firebase.firestore.FieldValue.arrayUnion({
                 emissor: user.id,
@@ -224,26 +229,43 @@ export const api = {
 
 
     deleteChat: async function (conversas, chatactive, user) {
-      
-              
-                    let cts = await firebase.firestore().collection('users').doc(user.id).get()
-                  
-                    let chats = [...cts.data().chats]
-                    for (let j of chats) {
-                        if (j.idChat === chatactive.idChat) {
-                            j.msg = ''
-                            j.lastDelete = Date.now()
+
+
+        let cts = await firebase.firestore().collection('users').doc(user.id).get()
+
+        let chats = [...cts.data().chats]
+        for (let j of chats) {
+            if (j.idChat === chatactive.idChat) {
+                j.msg = ''
+                j.lastDelete = Date.now()
+
+            }
+        }
+
+        await firebase.firestore().collection('users').doc(user.id).update({
+            chats
+        })
+
+    },
+
+    getChatActiveUser: async function (chatactive, setChatactiveUser) {
+        //console.log('chatativo',chatactive)
+        //let doc = await 
+        firebase.firestore().collection('users').doc(chatactive.idUserChat).onSnapshot(doc=>{
+            //console.log('doc',doc.data())
+            setChatactiveUser(doc.data().lastSeen)
+        })
+
         
-                        }
-                    }
 
-                    await firebase.firestore().collection('users').doc(user.id).update({
-                        chats
-                    })
+    } ,
 
+
+    closeApp:function(user){
+        firebase.firestore().collection('users').doc(user.id).update({
+            lastSeen:Date.now()
+        })
     }
-
-
 
 }
 
