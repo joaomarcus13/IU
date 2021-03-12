@@ -53,7 +53,7 @@ export const api = {
     },
 
 
-    verifyUserToLogin: function (user, setUser, setConversas, setCadastro, setUserId) {
+    verifyUserToLogin: function (user, setUser, setConversas, setCadastro, setUserId,setSpinner) {
         firebase.firestore().collection('users').doc(user.uid).get().then((doc) => {
             if (doc.exists) {
                 console.log("Document data:", doc.data());
@@ -73,6 +73,7 @@ export const api = {
 
             } else {
                 setCadastro(true)
+                setSpinner(false)
                 setUserId(user.uid)
                 console.log("No such document!");
             }

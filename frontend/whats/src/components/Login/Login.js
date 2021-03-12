@@ -20,6 +20,8 @@ function Login() {
     const [inputName, setInputName] = useState('')
     const [inputStatus, setInputStatus] = useState('')
     const [progressBar, setProgressBar] = useState(false)
+    const [spinner, setSpinner] = useState(false)
+    const [errorCode, setErrorCode] = useState(false)
     const { setConversas } = useContext(Context)
 
 
@@ -39,31 +41,40 @@ function Login() {
 
             const appVerifier = window.recaptchaVerifier;
 
-            api.signIn(phone,appVerifier,setPhone,setCodigo,setProgressBar)
+            api.signIn(phone, appVerifier, setPhone, setCodigo, setProgressBar)
 
         }
     }
 
     function validCode(e) {
 
-        e.preventDefault()
+        if (inputCode) {
 
-        console.log(inputCode)
+            e.preventDefault()
+            setSpinner(true)
+            setErrorCode(false)
 
-        window.confirmationResult.confirm(inputCode).then((result) => {
-            const user = result.user
-            console.log(user.uid)
+            console.log(inputCode)
 
-            api.verifyUserToLogin(user,setUser,setConversas,setCadastro,setUserId)
+            window.confirmationResult.confirm(inputCode).then((result) => {
+                const user = result.user
+                console.log(user.uid)
 
-        }).catch((error) => {
-            console.log(error)
-        });
+                api.verifyUserToLogin(user, setUser, setConversas, setCadastro, setUserId, setSpinner)
+
+
+            }).catch((error) => {
+                setErrorCode(true)
+                console.log(error)
+            });
+
+        }
     }
+
 
     function createUser() {
 
-        api.createAccount(userId,phone,inputName,inputStatus)
+        api.createAccount(userId, phone, inputName, inputStatus)
 
         setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus ?? 'Disponível' })
         console.log('conta criada')
@@ -110,7 +121,11 @@ function Login() {
 
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
-                                    <p>Reenviar código </p>
+                                    <p className='area-spinner'>
+                                        <span style={{ display: errorCode ? 'block' : 'none' }}>Reenviar Código</span>
+                                        <div id="spinner" style={{ display: spinner ? 'block' : 'none' }}>
+                                        </div>
+                                    </p>
                                 </> :
 
                                 <> <h1>Login</h1>

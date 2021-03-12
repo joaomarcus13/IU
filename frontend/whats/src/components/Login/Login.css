@@ -48,7 +48,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-  
 }
 
 form.login-form div {
@@ -65,7 +64,6 @@ form.login-form div p {
     margin-bottom: 15px;
     color: var(--head);
     font: inherit;
-
 }
 
 .barra {
@@ -76,14 +74,15 @@ form.login-form div p {
     margin-bottom: 10px;
 }
 
-.barra > span{
+.barra>span {
     background-color: var(--verde);
     height: 100%;
     width: 0%;
 }
-.barra > .span {
+
+.barra>.span {
     width: 100%;
-    transition: width 6.1s; 
+    transition: width 6.1s;
 }
 
 /* .login .enviando {
@@ -109,7 +108,24 @@ form.login-form div p {
 
 .login-container form.login-form input:first-child:-moz-placeholder {
     color: black;
+}
 
+p>#spinner {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 47%;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-right-color: var(--verde);
+    border-top-color: var(--verde);
+    border-radius: 50%;
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .login-container form.login-form input#phone {
@@ -118,23 +134,23 @@ form.login-form div p {
     border: none;
     padding: 10px 5px;
     /* border-radius: 4px; */
-    background-color:transparent;
+    background-color: transparent;
     border-bottom: 2px solid var(--verde);
 }
 
-.login-container form.login-form input#codigo{
+.login-container form.login-form input#codigo {
     width: 80%;
     padding: 10px 15px;
     border: none;
     background-color: transparent;
     border-bottom: 2px solid var(--verde);
 }
-.login-container form.login-form input#codigo::-webkit-input-placeholder  {
+
+.login-container form.login-form input#codigo::-webkit-input-placeholder {
     text-align: center;
     width: 100%;
     font-size: 2em;
     letter-spacing: 10px;
-
 }
 
 form.login-form .adft {
@@ -144,22 +160,22 @@ form.login-form .adft {
     align-items: center;
     justify-content: center;
     position: relative;
-
 }
-form.login-form .adft > img{
+
+form.login-form .adft>img {
     width: 70px;
     height: 70px;
     cursor: pointer;
 }
 
-.login-container .adft > span{
+.login-container .adft>span {
     margin-left: 20px;
     text-align: start;
     color: var(--head);
     font-weight: 500;
 }
 
-.login-container form.login-form input#name, #status{
+.login-container form.login-form input#name, #status {
     width: 80%;
     background-color: transparent;
     border: none;
@@ -171,8 +187,7 @@ form.login-form input#imgUser {
     display: none;
 }
 
-
-form.login-form label{
+form.login-form label {
     position: absolute;
     background-color: rgba(97, 97, 97, 0.63);
     width: 65px;
@@ -180,43 +195,41 @@ form.login-form label{
     border-radius: 50%;
     text-align: center;
     line-height: 3.5;
-    opacity:0;
+    opacity: 0;
     cursor: pointer;
     top: 4px;
     left: 3px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
-form.login-form label > img{
-  height: 25px;
-  width: 25px;
-  margin-top: 13px;
-  opacity: 0.6;
+
+form.login-form label>img {
+    height: 25px;
+    width: 25px;
+    margin-top: 13px;
+    opacity: 0.6;
 }
-form.login-form label > span{
+
+form.login-form label>span {
     height: 10px;
-    width:100%;
+    width: 100%;
     margin-top: -20px;
     font-size: 15px;
     color: white;
     font-weight: 400;
     opacity: 0.8;
 }
-form.login-form label:hover{
-    opacity:1;
+
+form.login-form label:hover {
+    opacity: 1;
 }
 
 form.login-form svg {
     cursor: pointer;
     width: 80px;
-    
-  
 }
-
-
 
 .login-container form button {
     width: 40%;
@@ -227,16 +240,17 @@ form.login-form svg {
     background-color: rgb(0, 143, 129);
     color: #fff;
     cursor: pointer;
-}
-.login-container form button:hover{
-    background-color: var(--verde) ;
+    background-position: center;
+    transition: all 0.8s;
 }
 
-@keyframes pass {
-    0% {
-        left: 0px;
-    }
-    100% {
-        left: 500px;
-    }
+.login-container form button:hover {
+    /* background-color: var(--verde); */
+    background: var(--verde) radial-gradient(circle, transparent 1%, var(--verde) 1%) center/15000%;
+}
+
+.login-container form button:active {
+    background-color: rgb(1, 156, 141);
+    background-size: 100%;
+    transition: all 0s;
 }
