@@ -14,8 +14,8 @@ function NovaConversa({ open, close }) {
 
     const { contatos, setContatos, user, conversas, chatactive, setChatactive } = useContext(Context)
 
-    async function adicionarConversa(clickedChat) {
-        api.addConversa(user, conversas, setChatactive, clickedChat)
+    async function adicionarConversa(clickedContact) {
+        api.addConversa(user, conversas, setChatactive, clickedContact)
         back('novaconversa')
     }
 

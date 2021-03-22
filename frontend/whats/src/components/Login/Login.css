@@ -110,7 +110,7 @@ form.login-form div p {
     color: black;
 }
 
-p>#spinner {
+.area-spinner>#spinner {
     height: 30px;
     width: 30px;
     position: absolute;

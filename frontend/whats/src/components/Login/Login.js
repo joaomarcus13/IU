@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Context from '../../context'
 import firebase, { api } from '../../config/api'
 import './Login.css'
@@ -18,7 +18,7 @@ function Login() {
     const [phone, setPhone] = useState('')
     const [inputCode, setInputCode] = useState('')
     const [inputName, setInputName] = useState('')
-    const [inputStatus, setInputStatus] = useState('')
+    const [inputStatus, setInputStatus] = useState('Disponível')
     const [progressBar, setProgressBar] = useState(false)
     const [spinner, setSpinner] = useState(false)
     const [errorCode, setErrorCode] = useState(false)
@@ -28,6 +28,7 @@ function Login() {
     function handleLogin(e) {
 
         if (phone) {
+           
             setProgressBar(true)
 
             e.preventDefault()
@@ -49,7 +50,7 @@ function Login() {
     function validCode(e) {
 
         if (inputCode) {
-
+            let lastSeen = 'online'
             e.preventDefault()
             setSpinner(true)
             setErrorCode(false)
@@ -60,7 +61,7 @@ function Login() {
                 const user = result.user
                 console.log(user.uid)
 
-                api.verifyUserToLogin(user, setUser, setConversas, setCadastro, setUserId, setSpinner)
+                api.verifyUserToLogin(user, setUser, setConversas, setCadastro, setUserId, setSpinner,lastSeen)
 
 
             }).catch((error) => {
@@ -73,12 +74,14 @@ function Login() {
 
 
     function createUser() {
+        const lastSeen = 'online'
+        api.createAccount(userId, phone, inputName, inputStatus,lastSeen)
 
-        api.createAccount(userId, phone, inputName, inputStatus)
-
-        setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus ?? 'Disponível' })
+        setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus, lastSeen })
         console.log('conta criada')
     }
+
+   
 
 
     return (
@@ -91,7 +94,7 @@ function Login() {
                 </div>
             </div>
             <div className='login-container'>
-                <form onSubmit={handleLogin} className='login-form' >
+                <form className='login-form' >
 
                     {cadastro ? <>
                         <h1>Cadastro</h1>
@@ -121,11 +124,11 @@ function Login() {
 
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
-                                    <p className='area-spinner'>
+                                    <div className='area-spinner'>
                                         <span style={{ display: errorCode ? 'block' : 'none' }}>Reenviar Código</span>
                                         <div id="spinner" style={{ display: spinner ? 'block' : 'none' }}>
                                         </div>
-                                    </p>
+                                    </div>
                                 </> :
 
                                 <> <h1>Login</h1>
