@@ -14,12 +14,23 @@ function Home() {
 
 
   useEffect(() => {
-    return () => {
-      if (user) {
+
+    document.addEventListener("visibilitychange", event => {
+      if (document.visibilityState == "visible") {
+      
+        api.changeLastSeenToOnline(user.id)
+      } else {
         api.closeApp(user)
-        console.log('close app')
       }
+    })
+
+    window.onbeforeunload = function (e) {
+      
+      api.closeApp(user)
+     
     }
+
+   
   }, [])
 
   return (

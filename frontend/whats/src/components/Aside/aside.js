@@ -17,6 +17,7 @@ function Aside() {
     useEffect(() => {
 
         api.getConversas(user, setConversas)
+    
 
     }, [user, setConversas])
 
@@ -44,6 +45,8 @@ function Aside() {
 
 
     function disconnect(){
+        api.closeApp(user)
+        api.logout()
         setChatactive(false)
         setConversas([])
         setContatos([])

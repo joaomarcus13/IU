@@ -9,31 +9,45 @@ import { api } from '../../config/api'
 
 function Header() {
 
-  const { chatactive,user } = useContext(Context)
+  const { chatactive, user } = useContext(Context)
   const [isOptionsActive, setIsOptionActive] = useState(false)
   const { setIsRightOpen } = useContext(Context)
   const [isSearchActive, setIsSearchActive] = useState(false)
   const [isDetailsActive, setIsDetailsActive] = useState(false)
   const [isDeleteActive, setIsDeleteActive] = useState(false)
 
-  const [chatactiveUser, setChatactiveUser] = useState(null)
+  const [chatactiveUserLastSeen, setChatactiveUserLastSeen] = useState(null)
 
 
   function handleOptions() {
     setIsOptionActive(!isOptionsActive)
   }
 
-  
-  let horaChat =  new Date(chatactiveUser).getHours()
-  let minutoChat = String(new Date(chatactiveUser).getMinutes()).padStart(2, '0')
-  let seenTime = chatactiveUser!=='online'? `visto por último hoje às ${horaChat}:${minutoChat}` : chatactiveUser
- 
+
+  let horaChat = new Date(chatactiveUserLastSeen).getHours()
+  let minutoChat = String(new Date(chatactiveUserLastSeen).getMinutes()).padStart(2, '0')
+  let seenTime = chatactiveUserLastSeen !== 'online' ? `visto por último hoje às ${horaChat}:${minutoChat}` : chatactiveUserLastSeen
+
+
+  async function getLastTime() {
+    await api.getChatActiveUserLastSeen(chatactive, setChatactiveUserLastSeen)
+
+    console.log('use ls', chatactiveUserLastSeen)
+
+    /* if((Date.now()-new Date(chatactiveUserLastSeen).getTime()) <= 86400000){
+      setDay('hoje')
+  }
+  else if((Date.now()-new Date(chatactiveUserLastSeen).getTime()) >= (86400000*2)){
+    setDay('ontem')
+  }else{
+    setDay(`${new Date(chatactiveUserLastSeen).getDate()}/${new Date(chatactiveUserLastSeen).getMonth()+1}/${new Date(chatactiveUserLastSeen).getFullYear()}`)
+  }  */
+
+  }
 
   useEffect(() => {
-    api.getChatActiveUser(chatactive, setChatactiveUser)
- 
-    
-  }, [])
+    getLastTime()
+  }, [chatactive])
 
   return (
     <>
