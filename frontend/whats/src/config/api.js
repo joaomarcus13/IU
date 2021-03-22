@@ -280,9 +280,12 @@ export const api = {
     },
 
     getChatActiveUserLastSeen: async function (chatactive, setChatactiveUser) {
-        
+        //console.log('chatativo',chatactive)
+        //let doc = await 
         firebase.firestore().collection('users').doc(chatactive.idUserChat).onSnapshot(doc => {
             if (doc.exists) {
+                console.log(chatactive.idChat)
+                console.log(chatactive.idUserChat)
                 setChatactiveUser(doc.data().lastSeen)
             }
             return

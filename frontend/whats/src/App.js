@@ -16,7 +16,7 @@ function Home() {
   useEffect(() => {
 
     document.addEventListener("visibilitychange", event => {
-      if (document.visibilityState == "visible") {
+      if (document.visibilityState === "visible") {
       
         api.changeLastSeenToOnline(user.id)
       } else {
