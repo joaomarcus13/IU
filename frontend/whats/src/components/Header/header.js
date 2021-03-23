@@ -33,21 +33,22 @@ function Header() {
     seenTime = 'online'
   } else {
 
-  
+
     let hoje = new Date()
-    let userSeen = new Date(chatactiveUserLastSeen)
+    let userSeen = new Date(Number(chatactiveUserLastSeen))
 
-    if (hoje.getDate() - userSeen.getDate() == 0) {
-     
-      seenTime = `visto por último hoje às ${horaChat}:${minutoChat}`
+    switch (hoje.getDate() - userSeen.getDate()) {
+      case 0:
+        seenTime = `visto por último hoje às ${horaChat}:${minutoChat}`
+        break;
+      case 1:
+        seenTime = `visto por último ontem às ${horaChat}:${minutoChat}`
+        break;
+      default:
+        seenTime = `visto por último ${userSeen.getDate()}/${userSeen.getMonth() + 1}/${userSeen.getFullYear()}`
+        break;
     }
-    else if (hoje.getDate() - userSeen.getDate() == 1) {
-    
-      seenTime = `visto por último ontem às ${horaChat}:${minutoChat}`
-    } else {
 
-      seenTime = `visto por último ${new Date(chatactiveUserLastSeen).getDate()}/${new Date(chatactiveUserLastSeen).getMonth() + 1}/${new Date(chatactiveUserLastSeen).getFullYear()}`
-    }
 
   }
 
@@ -59,9 +60,9 @@ function Header() {
   }
 
   useEffect(() => {
-  
-      getLastTime()
-  
+
+    getLastTime()
+
   }, [chatactive])
 
   return (
