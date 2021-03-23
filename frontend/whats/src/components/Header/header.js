@@ -33,13 +33,15 @@ function Header() {
     seenTime = 'online'
   } else {
 
-    let sub = new Date() - new Date(chatactiveUserLastSeen)
+  
+    let hoje = new Date()
+    let userSeen = new Date(chatactiveUserLastSeen)
 
-    if (sub < 86400000) {
+    if (hoje.getDate() - userSeen.getDate() == 0) {
      
       seenTime = `visto por último hoje às ${horaChat}:${minutoChat}`
     }
-    else if (sub >= 86400000 && sub < 86400000 * 2) {
+    else if (hoje.getDate() - userSeen.getDate() == 1) {
     
       seenTime = `visto por último ontem às ${horaChat}:${minutoChat}`
     } else {
@@ -57,9 +59,9 @@ function Header() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+  
       getLastTime()
-    }, 500);
+  
   }, [chatactive])
 
   return (
