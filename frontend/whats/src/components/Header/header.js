@@ -15,6 +15,7 @@ function Header() {
   const [isSearchActive, setIsSearchActive] = useState(false)
   const [isDetailsActive, setIsDetailsActive] = useState(false)
   const [isDeleteActive, setIsDeleteActive] = useState(false)
+  const [seenTime, setSeenTime] = useState('')
 
   const [chatactiveUserLastSeen, setChatactiveUserLastSeen] = useState(null)
 
@@ -26,28 +27,42 @@ function Header() {
 
   let horaChat = new Date(chatactiveUserLastSeen).getHours()
   let minutoChat = String(new Date(chatactiveUserLastSeen).getMinutes()).padStart(2, '0')
-  let seenTime = chatactiveUserLastSeen !== 'online' ? `visto por último hoje às ${horaChat}:${minutoChat}` : chatactiveUserLastSeen
+  //let seenTime = chatactiveUserLastSeen !== 'online' ? `visto por último hoje às ${horaChat}:${minutoChat}` : chatactiveUserLastSeen
+ // let seenTime = ''
+
+  useEffect(()=> {
+
+    let hoje = new Date()
+    let userSeen = new Date(Number(chatactiveUserLastSeen))
+
+    if (chatactiveUserLastSeen === 'online'){
+      setSeenTime('online')
+    }else
+      switch (hoje.getDate() - userSeen.getDate()) {
+
+        case 0:
+          setSeenTime( `visto por último hoje às ${horaChat}:${minutoChat}`)
+          break;
+        case 1:
+          setSeenTime(`visto por último ontem às ${horaChat}:${minutoChat}`)
+          break;
+        default:
+          setSeenTime(`visto por último ${userSeen.getDate()}/${userSeen.getMonth() + 1}/${userSeen.getFullYear()}`)
+          break;
+      }
+
+      //console.log(chatactive.idUserChat)
+    
+  },[chatactiveUserLastSeen])
 
 
   async function getLastTime() {
-    await api.getChatActiveUserLastSeen(chatactive, setChatactiveUserLastSeen)
-
-    console.log('use ls', chatactiveUserLastSeen)
-
-    /* if((Date.now()-new Date(chatactiveUserLastSeen).getTime()) <= 86400000){
-      setDay('hoje')
-  }
-  else if((Date.now()-new Date(chatactiveUserLastSeen).getTime()) >= (86400000*2)){
-    setDay('ontem')
-  }else{
-    setDay(`${new Date(chatactiveUserLastSeen).getDate()}/${new Date(chatactiveUserLastSeen).getMonth()+1}/${new Date(chatactiveUserLastSeen).getFullYear()}`)
-  }  */
+    await api.getChatActiveUserLastSeen(chatactive.idUserChat, setChatactiveUserLastSeen) 
+    //console.log('use ls', chatactiveUserLastSeen)
 
   }
 
-  useEffect(() => {
-    getLastTime()
-  }, [chatactive])
+  getLastTime()
 
   return (
     <>

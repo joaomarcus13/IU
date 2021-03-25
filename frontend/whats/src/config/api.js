@@ -32,7 +32,7 @@ function ifExists(id, conversas) {
 }
 
 
-function findChat(id,conversas) {
+function findChat(id, conversas) {
     for (let i in conversas) {
         if (conversas[i].idUserChat === id) {
             return conversas[i]
@@ -201,7 +201,7 @@ export const api = {
             })
 
         } else {
-            let clickedChat = findChat(clickedContact.id,conversas)
+            let clickedChat = findChat(clickedContact.id, conversas)
             if (clickedChat) {
                 setChatactive(clickedChat)
             }
@@ -279,14 +279,19 @@ export const api = {
 
     },
 
-    getChatActiveUserLastSeen: async function (chatactive, setChatactiveUser) {
-        
-        firebase.firestore().collection('users').doc(chatactive.idUserChat).onSnapshot(doc => {
+    getChatActiveUserLastSeen: async function (idUserChat, setChatactiveUser) {
+        //console.log('chatativo',chatactive)
+        //let doc = await 
+        firebase.firestore().collection('users').doc(idUserChat).onSnapshot(doc => {
             if (doc.exists) {
+            
+                //console.log(idUserChat)
                 setChatactiveUser(doc.data().lastSeen)
             }
+            
             return
         })
+       
 
 
 
@@ -302,7 +307,7 @@ export const api = {
 
     logout: function () {
         firebase.auth().signOut().then(() => {
-           
+
             console.log('deslogado')
         }).catch((error) => {
             console.log('logout ', error)
