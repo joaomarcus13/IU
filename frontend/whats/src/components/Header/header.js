@@ -32,48 +32,37 @@ function Header() {
 
   useEffect(()=> {
 
-    setTimeout(() => {
+    let hoje = new Date()
+    let userSeen = new Date(Number(chatactiveUserLastSeen))
 
-    if (chatactiveUserLastSeen === 'online') {
-      setSeenTime ('online')
-    } else {
+    if (chatactiveUserLastSeen === 'online'){
+      setSeenTime('online')
+    }else
+      switch (hoje.getDate() - userSeen.getDate()) {
 
-      let sub = new Date() - new Date(chatactiveUserLastSeen)
-
-      if (sub < 86400000) {
-      
-        setSeenTime(`visto por último hoje às ${horaChat}:${minutoChat}`)
+        case 0:
+          setSeenTime( `visto por último hoje às ${horaChat}:${minutoChat}`)
+          break;
+        case 1:
+          setSeenTime(`visto por último ontem às ${horaChat}:${minutoChat}`)
+          break;
+        default:
+          setSeenTime(`visto por último ${userSeen.getDate()}/${userSeen.getMonth() + 1}/${userSeen.getFullYear()}`)
+          break;
       }
-      else if (sub >= 86400000 && sub < 86400000 * 2) {
-      
-        setSeenTime(`visto por último ontem às ${horaChat}:${minutoChat}`)
-      } else {
 
-        setSeenTime(`visto por último ${new Date(chatactiveUserLastSeen).getDate()}/${new Date(chatactiveUserLastSeen).getMonth() + 1}/${new Date(chatactiveUserLastSeen).getFullYear()}`)
-      }
-
-    }
-    console.log(seenTime)
-
-  }, 0);
- 
+      //console.log(chatactive.idUserChat)
     
   },[chatactiveUserLastSeen])
 
 
   async function getLastTime() {
-    console.log('JJJ')
-    await api.getChatActiveUserLastSeen(chatactive.idUserChat, setChatactiveUserLastSeen)
-    
+    await api.getChatActiveUserLastSeen(chatactive.idUserChat, setChatactiveUserLastSeen) 
     //console.log('use ls', chatactiveUserLastSeen)
 
   }
 
-  //useEffect(() => {
-   // setTimeout(() => {
-      getLastTime()
-  //  }, 500);
-  //}, [chatactive])
+  getLastTime()
 
   return (
     <>
