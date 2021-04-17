@@ -1,0 +1,17 @@
+#form-input-code input.codigo {
+    height: 50px;
+    width: 40px;
+    /* padding: 10px 15px; */
+    font-size: 1.3em;
+    text-align: center;
+    border: none;
+    
+    border-bottom: 2px solid var(--verde);
+}
+
+#form-input-code input.codigo::-webkit-input-placeholder {
+    text-align: center;
+    width: 100%;
+    font-size: 1em;
+    letter-spacing: 10px;
+}

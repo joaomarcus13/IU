@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import Context from '../../context'
 import firebase, { api } from '../../config/api'
 import './Login.css'
@@ -6,6 +6,9 @@ import imgUser from '../../assets/images/7189bwar9pdx.jpg'
 import logoWhats from '../../assets/icons/logoWhats.svg'
 import addFoto from '../../assets/icons/addfoto.svg'
 import camera from '../../assets/icons/camera.svg'
+import InputCode from '../inputCode/inputCode'
+
+
 
 
 function Login() {
@@ -28,60 +31,49 @@ function Login() {
     function handleLogin(e) {
 
         if (phone) {
-           
             setProgressBar(true)
-
             e.preventDefault()
             window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
                 'size': 'invisible',
                 'callback': (response) => {
                 }
             });
-
-            console.log(phone)
-
+            //console.log(phone)
             const appVerifier = window.recaptchaVerifier;
-
             api.signIn(phone, appVerifier, setPhone, setCodigo, setProgressBar)
-
         }
     }
 
     function validCode(e) {
-
         if (inputCode) {
             let lastSeen = 'online'
             e.preventDefault()
             setSpinner(true)
             setErrorCode(false)
-
-            console.log(inputCode)
-
+            //console.log(inputCode)
             window.confirmationResult.confirm(inputCode).then((result) => {
                 const user = result.user
-                console.log(user.uid)
-
-                api.verifyUserToLogin(user, setUser, setConversas, setCadastro, setUserId, setSpinner,lastSeen)
-
-
+                //console.log(user.uid)
+                api.verifyUserToLogin(user, setUser, setConversas, setCadastro, setUserId, setSpinner, lastSeen)
             }).catch((error) => {
                 setErrorCode(true)
                 console.log(error)
             });
-
         }
     }
 
-
     function createUser() {
         const lastSeen = 'online'
-        api.createAccount(userId, phone, inputName, inputStatus,lastSeen)
+        api.createAccount(userId, phone, inputName, inputStatus, lastSeen)
 
         setUser({ id: userId, img: imgUser, name: inputName, status: inputStatus, lastSeen })
         console.log('conta criada')
     }
 
-   
+
+    function handleInputCode(value) {
+        setInputCode(value)
+    }
 
 
     return (
@@ -120,8 +112,11 @@ function Login() {
                                     <div>
                                         <p>digite o código de seis dígitos</p>
 
-                                        <input onChange={e => { setInputCode(e.target.value) }} type="text" placeholder='- - -  - - -' id='codigo' required ></input>
-
+                                        <InputCode
+                                            length={6}
+                                            label="Code Label"
+                                            onComplete={setInputCode}
+                                        />
                                     </div>
                                     <button type='button' onClick={validCode} id='codigo'>Entrar</button>
                                     <div className='area-spinner'>

@@ -97,7 +97,7 @@ form.login-form div p {
     width: 80%;
 }
 
-.login-container form.login-form input:first-child {
+.login-container form.login-form .input-phone input:first-child {
     width: 35px;
     border: none;
     padding: 10px 5px;
@@ -106,7 +106,7 @@ form.login-form div p {
     text-align: left;
 }
 
-.login-container form.login-form input:first-child:-moz-placeholder {
+.login-container form.login-form .input-phone input:first-child:-moz-placeholder {
     color: black;
 }
 
@@ -138,20 +138,18 @@ form.login-form div p {
     border-bottom: 2px solid var(--verde);
 }
 
-.login-container form.login-form input#codigo {
-    width: 80%;
-    padding: 10px 15px;
-    border: none;
-    background-color: transparent;
-    border-bottom: 2px solid var(--verde);
+#form-input-code{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
 }
 
-.login-container form.login-form input#codigo::-webkit-input-placeholder {
+
+
+form.login-form > div > p{
     text-align: center;
-    width: 100%;
-    font-size: 2em;
-    letter-spacing: 10px;
-}
+} 
 
 form.login-form .adft {
     width: 90%;
